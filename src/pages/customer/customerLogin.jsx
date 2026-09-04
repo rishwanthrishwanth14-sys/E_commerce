@@ -1,8 +1,7 @@
-
 import { useState } from "react";
+import api from "../../service/api";
 
 const CustomerLogin = () => {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,32 +15,20 @@ const CustomerLogin = () => {
         setMessage("");
 
         try {
-            const response = await fetch(
-                "http://localhost:2525/api/customer/login",
+            const response = await api.post(
+                "/api/customer/login",
                 {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password
-                    })
+                    email,
+                    password
                 }
             );
 
-            const data = await response.json();
+            const data = response.data;
 
-            if (!response.ok) {
-                throw new Error(
-                    data.message || "Login failed"
-                );
-            }
-
-            // Save token
+            // Save customer JWT token
             localStorage.setItem("token", data.token);
 
-            // Save role if backend sends it
+            // Save role
             if (data.role) {
                 localStorage.setItem("role", data.role);
             }
@@ -51,7 +38,10 @@ const CustomerLogin = () => {
             console.log("Login response:", data);
 
         } catch (error) {
-            setMessage(error.message);
+            setMessage(
+                error.response?.data?.message ||
+                "Login failed"
+            );
         } finally {
             setLoading(false);
         }

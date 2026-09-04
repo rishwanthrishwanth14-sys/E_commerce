@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import api from "../../service/api";
 
 const CreateCustomer = () => {
     const [formData, setFormData] = useState({
@@ -36,24 +36,14 @@ const CreateCustomer = () => {
         setMessage("");
 
         try {
-            const response = await fetch(
-                "http://localhost:2525/api/customer/register",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData)
-                }
+            const response = await api.post(
+                "/api/customer/register",
+                formData
             );
 
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || "Customer creation failed");
-            }
-
-            setMessage("Customer created successfully!");
+            setMessage(
+                response.data.message || "Customer created successfully!"
+            );
 
             // Clear form
             setFormData({
@@ -72,7 +62,10 @@ const CreateCustomer = () => {
             });
 
         } catch (error) {
-            setMessage(error.message);
+            setMessage(
+                error.response?.data?.message ||
+                "Customer creation failed"
+            );
         } finally {
             setLoading(false);
         }
@@ -214,9 +207,7 @@ const CreateCustomer = () => {
 
             </form>
 
-            {message && (
-                <p>{message}</p>
-            )}
+            {message && <p>{message}</p>}
         </div>
     );
 };

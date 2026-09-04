@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../service/api";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -10,33 +11,29 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // stop the page from refreshing
+    e.preventDefault();
+
     setError("");
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:2525/api/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await api.post("/api/user/login", {
+        email,
+        password,
       });
 
-      const data = await response.json();
+      const data = response.data;
 
-      if (!response.ok) {
-        setError(data.message || "Login failed");
-        setLoading(false);
-        return;
-      }
-
-      // save the token so we can use it on future requests
+      // Save JWT token
       localStorage.setItem("token", data.token);
 
-      navigate("/dashboard"); // go to whatever page comes after login
+      // Login success
+      navigate("/dashboard");
+
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(
+        err.response?.data?.message || "Something went wrong. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -49,9 +46,11 @@ function Login() {
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       <form onSubmit={handleSubmit}>
+
         <div style={{ marginBottom: 12 }}>
           <label>Email</label>
           <br />
+
           <input
             type="email"
             value={email}
@@ -64,6 +63,7 @@ function Login() {
         <div style={{ marginBottom: 12 }}>
           <label>Password</label>
           <br />
+
           <input
             type="password"
             value={password}
@@ -73,9 +73,14 @@ function Login() {
           />
         </div>
 
-        <button type="submit" disabled={loading} style={{ width: "100%", padding: 10 }}>
+        <button
+          type="submit"
+          disabled={loading}
+          style={{ width: "100%", padding: 10 }}
+        >
           {loading ? "Logging in..." : "Login"}
         </button>
+
       </form>
     </div>
   );
