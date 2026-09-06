@@ -1,4 +1,4 @@
-function Dashboard() {
+function AdminDashboard() {
   return (
     <div className="container-fluid">
 
@@ -215,4 +215,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default AdminDashboard;

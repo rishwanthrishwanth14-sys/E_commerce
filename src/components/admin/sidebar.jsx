@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
@@ -13,7 +14,9 @@ function Sidebar() {
         className="sidebar-link"
       >
         <i className="bi bi-grid"></i>
-        <span>Dashboard</span>
+
+          Dashboard
+        
       </NavLink>
 
 

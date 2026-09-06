@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./sidebar";
 
-function Layout() {
+function AdminLayout() {
   return (
     <div className="app">
 
@@ -23,4 +23,4 @@ function Layout() {
   );
 }
 
-export default Layout;
+export default AdminLayout;
