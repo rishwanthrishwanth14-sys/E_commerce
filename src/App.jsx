@@ -58,7 +58,7 @@ export default function App() {
       />
 
       <Route
-        path="/customer"
+        path="/customer/dashboard"
         element={<CustomerLayout />}
        />
 
