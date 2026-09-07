@@ -6,7 +6,7 @@ const CustomerSidebar = () => {
   const menuItems = [
     {
       name: "Dashboard",
-      path: "/customer/dashboard",
+      path: "dashboard",
       icon: "bi-grid"
     },
     {
@@ -33,8 +33,11 @@ const CustomerSidebar = () => {
 
   return (
     <aside
-      className="bg-white border-end vh-100 d-flex flex-column p-3"
-      style={{ width: "260px" }}
+      className="bg-white border-end vh-100 d-flex flex-column p-3 position-fixed top-0 start-0"
+      style={{
+        width: "260px",
+        zIndex: 1000
+      }}
     >
 
       {/* Brand */}
@@ -79,10 +82,9 @@ const CustomerSidebar = () => {
             key={item.path}
             to={item.path}
             className={({ isActive }) =>
-              `text-decoration-none rounded-3 px-3 py-3 d-flex align-items-center gap-3 ${
-                isActive
-                  ? "bg-primary text-white shadow-sm"
-                  : "text-secondary"
+              `text-decoration-none rounded-3 px-3 py-3 d-flex align-items-center gap-3 ${isActive
+                ? "bg-primary text-white shadow-sm"
+                : "text-secondary"
               }`
             }
           >

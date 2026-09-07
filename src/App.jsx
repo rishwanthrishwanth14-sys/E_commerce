@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
-import Login from "./pages/admin/AdminLogin";
+import Login from "./pages/homePage/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/Dashboard";
 
-import CreateCustomer from "./pages/customer/customerCreate";
-import CustomerLogin from "./pages/customer/customerLogin";
+import CreateCustomer from "./pages/homePage/customer/customerCreate";
+import CustomerLogin from "./pages/homePage/customer/customerLogin";
 import CustomerDashboard from "./pages/customer/customerdashboard";
 import CustomerAddresses from "./pages/customer/customerAddress";
 import CustomerOrders from "./pages/customer/customeOrder";
@@ -13,6 +13,7 @@ import CustomerShop from "./pages/customer/customerShop";
 
 import AdminLayout from "./components/admin/layout";
 import CustomerLayout from "./components/customer/layout";
+import Home from "./pages/home";
 
 export default function App() {
   return (
@@ -47,50 +48,28 @@ export default function App() {
           CUSTOMER
       ========================= */}
 
-      <Route
-        path="customer/register"
-        element={<CreateCustomer />}
-      />
+      {/* Home */}
+      
+
+      <Route path="/customer/register" element={<CreateCustomer />} />
+      <Route path="/customer/login" element={<CustomerLogin />} />
+
 
       <Route
-        path="customer/login"
-        element={<CustomerLogin />}
+        path="/"
+        element={<Home />}
       />
+      <Route path="/customer" element={<CustomerLayout />}>
+        <Route index element={<CustomerDashboard />} />
+        <Route path="addresses" element={<CustomerAddresses />} />
+        <Route path="dashboard" element={<CustomerDashboard />} />
 
-      <Route
-        path="/customer/dashboard"
-        element={<CustomerLayout />}
-       />
+        <Route path="orders" element={<CustomerOrders />} />
+        <Route path="profile" element={<CustomerProfile />} />
 
-      <Route
-        index
-        element={<CustomerDashboard />}
-      />
+        <Route path="shop" element={<CustomerShop />} />
 
-      <Route
-          path="dashboard"
-          element={<CustomerDashboard />}
-      />
-
-      <Route
-        path="customer/addresses"
-        element={<CustomerAddresses />}
-      />
-
-      <Route
-        path="customer/order"
-        element={<CustomerOrders />}
-      />
-
-      <Route
-        path="customer/profile"
-        element={<CustomerProfile />}
-      />
-
-      <Route
-        path="customer/shop"
-        element={<CustomerShop />}
-      />
+      </Route>
 
     </Routes>
   );

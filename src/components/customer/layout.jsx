@@ -1,16 +1,21 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "../customer/sidebar"
 import Navbar from "../customer/navbar"
+import CustomerSidebar from "../customer/sidebar";
 
 const CustomerLayout = () => {
   return (
     <div className="d-flex min-vh-100 bg-light">
 
       {/* Sidebar */}
-      <Sidebar />
+      <CustomerSidebar />
 
       {/* Main Area */}
-      <div className="flex-grow-1">
+      <div className="flex-grow-1"
+      style={{
+          marginLeft: "260px",
+          minHeight: "100vh",
+          padding: "24px"
+        }}  >
 
         <Navbar />
 
