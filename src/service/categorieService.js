@@ -1,8 +1,9 @@
 import api from "./api";
 
-const createCategory =async()=>{
+const createCategory =async(categoryData)=>{
     const response = await api.post(
-        "/api/admin/category"
+        "/api/admin/category",
+        categoryData  //namma anupura data vea store panuradhuku 
     );
 
     return response.data;
@@ -11,12 +12,11 @@ const createCategory =async()=>{
 const getCategories = async()=>{
     const response = await api.get(
         "/api/admin/categories",
-        categoryData  //namma anupura data vea store panuradhuku 
     );
     return response.data;
 };
 
-const updateCategory = async() => {
+const updateCategory = async( categoryId, categoryData ) => {
     const response = await api.put(
         `/api/admin/category/${categoryId}`,
         categoryData
@@ -24,10 +24,10 @@ const updateCategory = async() => {
     return response.data;
 }
 
-const deleteCategory = async()=>{
+const deleteCategory = async(categoryId)=>{
     const response = await api.delete(
         `/api/admin/category/${categoryId}`,
-        categoryData
+        
     )
     return response.data
 }
