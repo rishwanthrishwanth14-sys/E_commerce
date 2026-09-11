@@ -1,287 +1,294 @@
-import { useState } from "react";
-import { createProduct } from "../../../services/productService";
-import { uploadProductImages } from "../../../services/productImageService";
+    import { useState } from "react";
+    import { createProduct } from "../../service/productService";
+    import uploadProductImage  from "../../service/productImageService";
+    import uploadProductImages from "../../service/productImageService";
 
-const CreateProduct = () => {
+    const CreateProduct = () => {
 
-    const [formData, setFormData] = useState({
-        productName: "",
-        description: "",
-        categoryId: "",
-        sku: "",
-        price: "",
-        quantity: "",
-        sortOrder: 0,
-        status: 1,
-        metaTitle: "",
-        metaDescription: "",
-        metaKeywords: ""
-    });
+        const [formData, setFormData] = useState({
+            productName: "",
+            description: "",
+            categoryId: "",
+            sku: "",
+            price: "",
+            quantity: "",
+            sortOrder: 0,
+            status: 1,
+            metaTitle: "",
+            metaDescription: "",
+            metaKeywords: ""
+        });
 
-    const [images, setImages] = useState([]);
+        const [images, setImages] = useState([]);
+        const [image, setImage] = useState([]);
 
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState("");
-    const [error, setError] = useState("");
+        const [loading, setLoading] = useState(false);
+        const [message, setMessage] = useState("");
+        const [error, setError] = useState("");
 
-    const handleChange = (e) => {
+        const handleChange = (e) => {
 
-        const { name, value } = e.target;
+            const { name, value } = e.target;
 
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value
+            }));
+        };
 
-    const handleImageChange = (e) => {
+        const handleImageChange = (e) => {
 
-        const selectedFiles = Array.from(e.target.files);
+            const selectedFiles = Array.from(e.target.files);
 
-        setImages(selectedFiles);
-    };
+            setImages(selectedFiles);
+        };
 
-    const handleSubmit = async (e) => {
+        const handleSubmit = async (e) => {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        setLoading(true);
-        setError("");
-        setMessage("");
+            setLoading(true);
+            setError("");
+            setMessage("");
 
-        try {
+            try {
 
-            // STEP 1: Create product
-            const productResponse = await createProduct(formData);
+                // STEP 1: Create product
+                const productResponse = await createProduct(formData);
 
-            const productId = productResponse.productId;
+                const productId = productResponse.productId;
 
-            // STEP 2: Upload images
-            if (images.length > 0) {
+                // STEP 2: Upload images
+                if (images.length > 0) {
 
-                await uploadProductImages(
-                    productId,
-                    images
+                    await uploadProductImages(
+                        productId,
+                        images
+                    );
+                } else if(image.length == 1){
+                      await uploadProductImage(
+                        productId,
+                        image
+                    );
+                }
+
+                setMessage("Product created successfully");
+
+                // Reset
+                setFormData({
+                    productName: "",
+                    description: "",
+                    categoryId: "",
+                    sku: "",
+                    price: "",
+                    quantity: "",
+                    sortOrder: 0,
+                    status: 1,
+                    metaTitle: "",
+                    metaDescription: "",
+                    metaKeywords: ""
+                });
+
+                setImages([]);
+
+            } catch (error) {
+
+                setError(
+                    error.response?.data?.message ||
+                    "Failed to create product"
                 );
+
+            } finally {
+
+                setLoading(false);
             }
+        };
 
-            setMessage("Product created successfully");
+        return (
+            <div className="container mt-4">
 
-            // Reset
-            setFormData({
-                productName: "",
-                description: "",
-                categoryId: "",
-                sku: "",
-                price: "",
-                quantity: "",
-                sortOrder: 0,
-                status: 1,
-                metaTitle: "",
-                metaDescription: "",
-                metaKeywords: ""
-            });
+                <h3 className="mb-4">
+                    Create Product
+                </h3>
 
-            setImages([]);
-
-        } catch (error) {
-
-            setError(
-                error.response?.data?.message ||
-                "Failed to create product"
-            );
-
-        } finally {
-
-            setLoading(false);
-        }
-    };
-
-    return (
-        <div className="container mt-4">
-
-            <h3 className="mb-4">
-                Create Product
-            </h3>
-
-            {message && (
-                <div className="alert alert-success">
-                    {message}
-                </div>
-            )}
-
-            {error && (
-                <div className="alert alert-danger">
-                    {error}
-                </div>
-            )}
-
-            <form onSubmit={handleSubmit}>
-
-                <div className="mb-3">
-                    <label className="form-label">
-                        Product Name
-                    </label>
-
-                    <input
-                        type="text"
-                        name="productName"
-                        className="form-control"
-                        value={formData.productName}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">
-                        Description
-                    </label>
-
-                    <textarea
-                        name="description"
-                        className="form-control"
-                        rows="4"
-                        value={formData.description}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="row">
-
-                    <div className="col-md-6 mb-3">
-
-                        <label className="form-label">
-                            Category ID
-                        </label>
-
-                        <input
-                            type="number"
-                            name="categoryId"
-                            className="form-control"
-                            value={formData.categoryId}
-                            onChange={handleChange}
-                        />
-
+                {message && (
+                    <div className="alert alert-success">
+                        {message}
                     </div>
+                )}
 
-                    <div className="col-md-6 mb-3">
+                {error && (
+                    <div className="alert alert-danger">
+                        {error}
+                    </div>
+                )}
 
+                <form onSubmit={handleSubmit}>
+
+                    <div className="mb-3">
                         <label className="form-label">
-                            SKU
+                            Product Name
                         </label>
 
                         <input
                             type="text"
-                            name="sku"
+                            name="productName"
                             className="form-control"
-                            value={formData.sku}
+                            value={formData.productName}
                             onChange={handleChange}
                         />
-
                     </div>
-
-                </div>
-
-                <div className="row">
-
-                    <div className="col-md-6 mb-3">
-
-                        <label className="form-label">
-                            Price
-                        </label>
-
-                        <input
-                            type="number"
-                            name="price"
-                            className="form-control"
-                            value={formData.price}
-                            onChange={handleChange}
-                        />
-
-                    </div>
-
-                    <div className="col-md-6 mb-3">
-
-                        <label className="form-label">
-                            Quantity
-                        </label>
-
-                        <input
-                            type="number"
-                            name="quantity"
-                            className="form-control"
-                            value={formData.quantity}
-                            onChange={handleChange}
-                        />
-
-                    </div>
-
-                </div>
-
-                <div className="mb-3">
-
-                    <label className="form-label">
-                        Product Images
-                    </label>
-
-                    <input
-                        type="file"
-                        className="form-control"
-                        multiple
-                        accept="image/*"
-                        onChange={handleImageChange}
-                    />
-
-                </div>
-
-                {images.length > 0 && (
 
                     <div className="mb-3">
+                        <label className="form-label">
+                            Description
+                        </label>
 
-                        <p>
-                            Selected Images: {images.length}
-                        </p>
+                        <textarea
+                            name="description"
+                            className="form-control"
+                            rows="4"
+                            value={formData.description}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                        <div className="d-flex gap-2 flex-wrap">
+                    <div className="row">
 
-                            {images.map((image, index) => (
+                        <div className="col-md-6 mb-3">
 
-                                <div key={index}>
+                            <label className="form-label">
+                                Category ID
+                            </label>
 
-                                    <img
-                                        src={URL.createObjectURL(image)}
-                                        alt={image.name}
-                                        width="100"
-                                        height="100"
-                                        style={{
-                                            objectFit: "cover"
-                                        }}
-                                    />
+                            <input
+                                type="number"
+                                name="categoryId"
+                                className="form-control"
+                                value={formData.categoryId}
+                                onChange={handleChange}
+                            />
 
-                                </div>
+                        </div>
 
-                            ))}
+                        <div className="col-md-6 mb-3">
+
+                            <label className="form-label">
+                                SKU
+                            </label>
+
+                            <input
+                                type="text"
+                                name="sku"
+                                className="form-control"
+                                value={formData.sku}
+                                onChange={handleChange}
+                            />
 
                         </div>
 
                     </div>
-                )}
 
-                <button
-                    type="submit"
-                    className="btn btn-primary"
-                    disabled={loading}
-                >
-                    {loading
-                        ? "Creating..."
-                        : "Create Product"
-                    }
-                </button>
+                    <div className="row">
 
-            </form>
+                        <div className="col-md-6 mb-3">
 
-        </div>
-    );
-};
+                            <label className="form-label">
+                                Price
+                            </label>
 
-export default CreateProduct;
+                            <input
+                                type="number"
+                                name="price"
+                                className="form-control"
+                                value={formData.price}
+                                onChange={handleChange}
+                            />
+
+                        </div>
+
+                        <div className="col-md-6 mb-3">
+
+                            <label className="form-label">
+                                Quantity
+                            </label>
+
+                            <input
+                                type="number"
+                                name="quantity"
+                                className="form-control"
+                                value={formData.quantity}
+                                onChange={handleChange}
+                            />
+
+                        </div>
+
+                    </div>
+
+                    <div className="mb-3">
+
+                        <label className="form-label">
+                            Product Images
+                        </label>
+
+                        <input
+                            type="file"
+                            className="form-control"
+                            multiple
+                            accept="image/*"
+                            onChange={handleImageChange}
+                        />
+
+                    </div>
+
+                    {images.length > 0 && (
+
+                        <div className="mb-3">
+
+                            <p>
+                                Selected Images: {images.length}
+                            </p>
+
+                            <div className="d-flex gap-2 flex-wrap">
+
+                                {images.map((image, index) => (
+
+                                    <div key={index}>
+
+                                        <img
+                                            src={URL.createObjectURL(image)}
+                                            alt={image.name}
+                                            width="100"
+                                            height="100"
+                                            style={{
+                                                objectFit: "cover"
+                                            }}
+                                        />
+
+                                    </div>
+
+                                ))}
+
+                            </div>
+
+                        </div>
+                    )}
+
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                        disabled={loading}
+                    >
+                        {loading
+                            ? "Creating..."
+                            : "Create Product"
+                        }
+                    </button>
+
+                </form>
+
+            </div>
+        );
+    };
+
+    export default CreateProduct;

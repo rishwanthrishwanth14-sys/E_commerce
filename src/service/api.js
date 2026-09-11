@@ -24,3 +24,14 @@ api.interceptors.request.use(
 );
 
 export default api;
+
+
+
+// config ={
+//     method: "get",
+//     url: "/api/products",
+//     headers: {
+//         "Content-Type": "application/json",
+//         "Authorization": "Bearer abc123"
+//     }
+// }

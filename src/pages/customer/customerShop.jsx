@@ -5,19 +5,19 @@ const CustomerShop = () => {
       id: 1,
       name: "Running Shoes",
       price: "₹2,500",
-      image: "https://via.placeholder.com/300"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPNY9X-Fg-o6t7h8Cf39S7jAWjmVyFUu-p7YzhSfuSyg&s  "
     },
     {
       id: 2,
       name: "Sports T-Shirt",
       price: "₹1,200",
-      image: "https://via.placeholder.com/300"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxL_MzEqpWoIUNuCBQnxYxbdaTQRw4Uoww_1LetHlYRQ&s=10"
     },
     {
       id: 3,
       name: "Football",
       price: "₹1,500",
-      image: "https://via.placeholder.com/300"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeU8Ag_Fmp5I8XZ5OZuvA87dWKqF1NWGXxbYx9Su81iw&s=10"
     }
   ];
 

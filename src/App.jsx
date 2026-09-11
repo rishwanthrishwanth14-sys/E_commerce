@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "./pages/homePage/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/Dashboard";
+import ProductList from "./pages/admin/ProductList";
+import CreateProduct from "./pages/admin/CreateProduct";
 
 import CreateCustomer from "./pages/homePage/customer/customerCreate";
 import CustomerLogin from "./pages/homePage/customer/customerLogin";
@@ -34,13 +36,26 @@ export default function App() {
       ========================= */}
 
       <Route
-        path="/admin/dashboard"
+        path="/admin"
         element={<AdminLayout />}
       >
         <Route
           index
           element={<AdminDashboard />}
         />
+
+        <Route
+          path="dashboard" 
+          element={<AdminDashboard />} />
+  
+
+        <Route
+          path="products" 
+          element={<ProductList />} />
+
+        <Route
+          path="products/create"
+          element = {<CreateProduct />} />
       </Route>
 
 

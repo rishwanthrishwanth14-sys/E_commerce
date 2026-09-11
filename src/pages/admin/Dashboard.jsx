@@ -1,60 +1,48 @@
+import { useNavigate } from "react-router-dom";
+
 function AdminDashboard() {
+
+  const navigate = useNavigate();
+
   return (
     <div className="container-fluid">
 
       {/* Page Header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
+
         <div>
-          <h2 className="fw-bold mb-1">Dashboard</h2>
+          <h2 className="fw-bold mb-1">
+            Dashboard
+          </h2>
+
           <p className="text-muted mb-0">
-            Welcome back, Admin
+            Manage your products and store
           </p>
         </div>
 
-        <button className="btn btn-primary">
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/admin/products/create")}
+        >
           <i className="bi bi-plus-lg me-2"></i>
           Add Product
         </button>
+
       </div>
 
 
       {/* Statistics */}
       <div className="row g-4">
 
-        {/* Orders */}
+        {/* Total Products */}
         <div className="col-xl-3 col-md-6">
+
           <div className="card border-0 shadow-sm h-100">
+
             <div className="card-body d-flex justify-content-between">
 
               <div>
-                <p className="text-muted mb-2">
-                  Total Orders
-                </p>
 
-                <h3 className="fw-bold">
-                  1,248
-                </h3>
-
-                <small className="text-success">
-                  +12% this month
-                </small>
-              </div>
-
-              <div className="fs-1 text-primary">
-                <i className="bi bi-cart3"></i>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-
-        {/* Products */}
-        <div className="col-xl-3 col-md-6">
-          <div className="card border-0 shadow-sm h-100">
-            <div className="card-body d-flex justify-content-between">
-
-              <div>
                 <p className="text-muted mb-2">
                   Total Products
                 </p>
@@ -64,8 +52,9 @@ function AdminDashboard() {
                 </h3>
 
                 <small className="text-success">
-                  +8 new products
+                  +8 this month
                 </small>
+
               </div>
 
               <div className="fs-1 text-primary">
@@ -73,69 +62,209 @@ function AdminDashboard() {
               </div>
 
             </div>
+
           </div>
+
         </div>
 
 
-        {/* Customers */}
+        {/* Active Products */}
         <div className="col-xl-3 col-md-6">
+
           <div className="card border-0 shadow-sm h-100">
+
             <div className="card-body d-flex justify-content-between">
 
               <div>
+
                 <p className="text-muted mb-2">
-                  Total Customers
+                  Active Products
                 </p>
 
                 <h3 className="fw-bold">
-                  8,542
+                  328
                 </h3>
 
                 <small className="text-success">
-                  +18% this month
+                  92% of total products
                 </small>
+
               </div>
 
-              <div className="fs-1 text-primary">
-                <i className="bi bi-people"></i>
+              <div className="fs-1 text-success">
+                <i className="bi bi-check-circle"></i>
               </div>
 
             </div>
+
           </div>
+
         </div>
 
 
-        {/* Revenue */}
+        {/* Out of Stock */}
         <div className="col-xl-3 col-md-6">
+
           <div className="card border-0 shadow-sm h-100">
+
             <div className="card-body d-flex justify-content-between">
 
               <div>
+
                 <p className="text-muted mb-2">
-                  Total Revenue
+                  Out of Stock
                 </p>
 
                 <h3 className="fw-bold">
-                  ₹4.8L
+                  18
                 </h3>
 
-                <small className="text-success">
-                  +15% this month
+                <small className="text-danger">
+                  Need attention
                 </small>
+
               </div>
 
-              <div className="fs-1 text-primary">
-                <i className="bi bi-currency-rupee"></i>
+              <div className="fs-1 text-danger">
+                <i className="bi bi-exclamation-triangle"></i>
               </div>
 
             </div>
+
           </div>
+
+        </div>
+
+
+        {/* Categories */}
+        <div className="col-xl-3 col-md-6">
+
+          <div className="card border-0 shadow-sm h-100">
+
+            <div className="card-body d-flex justify-content-between">
+
+              <div>
+
+                <p className="text-muted mb-2">
+                  Total Categories
+                </p>
+
+                <h3 className="fw-bold">
+                  24
+                </h3>
+
+                <small className="text-primary">
+                  Product categories
+                </small>
+
+              </div>
+
+              <div className="fs-1 text-primary">
+                <i className="bi bi-grid"></i>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
 
-      {/* Recent Orders */}
+      {/* Quick Actions */}
+      <div className="row g-4 mt-2">
+
+        <div className="col-md-4">
+
+          <div
+            className="card border-0 shadow-sm h-100"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/products/create")}
+          >
+
+            <div className="card-body">
+
+              <div className="fs-2 text-primary mb-3">
+                <i className="bi bi-plus-square"></i>
+              </div>
+
+              <h5 className="fw-bold">
+                Add Product
+              </h5>
+
+              <p className="text-muted mb-0">
+                Create a new product and upload product images.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div className="col-md-4">
+
+          <div
+            className="card border-0 shadow-sm h-100"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/products")}
+          >
+
+            <div className="card-body">
+
+              <div className="fs-2 text-success mb-3">
+                <i className="bi bi-boxes"></i>
+              </div>
+
+              <h5 className="fw-bold">
+                Manage Products
+              </h5>
+
+              <p className="text-muted mb-0">
+                View, edit and delete your products.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div className="col-md-4">
+
+          <div
+            className="card border-0 shadow-sm h-100"
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/admin/categories")}
+          >
+
+            <div className="card-body">
+
+              <div className="fs-2 text-warning mb-3">
+                <i className="bi bi-tags"></i>
+              </div>
+
+              <h5 className="fw-bold">
+                Manage Categories
+              </h5>
+
+              <p className="text-muted mb-0">
+                Create and manage product categories.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* Recent Products */}
       <div className="card border-0 shadow-sm mt-4">
 
         <div className="card-body">
@@ -143,10 +272,13 @@ function AdminDashboard() {
           <div className="d-flex justify-content-between align-items-center mb-3">
 
             <h5 className="fw-bold mb-0">
-              Recent Orders
+              Recent Products
             </h5>
 
-            <button className="btn btn-outline-primary btn-sm">
+            <button
+              className="btn btn-outline-primary btn-sm"
+              onClick={() => navigate("/admin/products")}
+            >
               View All
             </button>
 
@@ -158,47 +290,125 @@ function AdminDashboard() {
             <table className="table table-hover align-middle">
 
               <thead>
+
                 <tr>
-                  <th>Order ID</th>
-                  <th>Customer</th>
-                  <th>Amount</th>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
                   <th>Status</th>
                 </tr>
+
               </thead>
+
 
               <tbody>
 
                 <tr>
-                  <td>#ORD-1001</td>
-                  <td>Ravi Kumar</td>
-                  <td>₹2,499</td>
+
+                  <td>
+                    Nike Air Max
+                  </td>
+
+                  <td>
+                    NK-AM-001
+                  </td>
+
+                  <td>
+                    ₹2,499
+                  </td>
+
+                  <td>
+                    25
+                  </td>
+
                   <td>
                     <span className="badge bg-success">
-                      Completed
+                      Active
                     </span>
                   </td>
+
                 </tr>
 
+
                 <tr>
-                  <td>#ORD-1002</td>
-                  <td>Arun Kumar</td>
-                  <td>₹1,899</td>
+
+                  <td>
+                    Adidas Running Shoes
+                  </td>
+
+                  <td>
+                    AD-RS-002
+                  </td>
+
+                  <td>
+                    ₹3,199
+                  </td>
+
+                  <td>
+                    12
+                  </td>
+
+                  <td>
+                    <span className="badge bg-success">
+                      Active
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    Puma Sports Shoes
+                  </td>
+
+                  <td>
+                    PM-SS-003
+                  </td>
+
+                  <td>
+                    ₹2,899
+                  </td>
+
+                  <td>
+                    3
+                  </td>
+
                   <td>
                     <span className="badge bg-warning text-dark">
-                      Pending
+                      Low Stock
                     </span>
                   </td>
+
                 </tr>
 
+
                 <tr>
-                  <td>#ORD-1003</td>
-                  <td>Vijay Raj</td>
-                  <td>₹3,299</td>
+
                   <td>
-                    <span className="badge bg-info">
-                      Processing
+                    Reebok Classic
+                  </td>
+
+                  <td>
+                    RB-CL-004
+                  </td>
+
+                  <td>
+                    ₹2,299
+                  </td>
+
+                  <td>
+                    0
+                  </td>
+
+                  <td>
+                    <span className="badge bg-danger">
+                      Out of Stock
                     </span>
                   </td>
+
                 </tr>
 
               </tbody>
