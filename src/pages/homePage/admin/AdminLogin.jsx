@@ -17,20 +17,35 @@ function Login() {
     setLoading(true);
 
     try {
+
+        console.log("LOGIN START");
+        console.log("EMAIL:", email);
+
+
       const response = await api.post("/api/user/login", {
         email,
         password,
       });
+      console.log("LOGIN RESPONSE:", response.data);
 
       const data = response.data;
 
       // Save JWT token
       localStorage.setItem("token", data.token);
+      localStorage.setItem("role","user")
+
+        console.log("TOKEN:", localStorage.getItem("token"));
+        console.log("ROLE:", localStorage.getItem("role"));
 
       // Login success
-      navigate("/customer/dashboard");
+      navigate("/admin/dashboard");
 
     } catch (err) {
+
+        console.log("LOGIN ERROR:", err);
+        console.log("STATUS:", err.response?.status);
+        console.log("BACKEND MESSAGE:", err.response?.data);
+        
       setError(
         err.response?.data?.message ||
           "Something went wrong. Please try again."

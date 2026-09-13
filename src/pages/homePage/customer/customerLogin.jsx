@@ -30,6 +30,7 @@ const CustomerLogin = () => {
             const data = response.data;
 
             localStorage.setItem("token", data.token);
+            localStorage.setItem("role","customer")
 
             if (data.role) {
                 localStorage.setItem("role", data.role);

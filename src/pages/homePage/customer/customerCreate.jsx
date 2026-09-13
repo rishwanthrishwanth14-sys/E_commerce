@@ -64,6 +64,10 @@ const CreateCustomer = () => {
                 country: ""
             });
 
+            setTimeout(() => {
+                navigate("/customer/dashboard");
+            }, 500);
+
         } catch (error) {
             setMessage(
                 error.response?.data?.message ||

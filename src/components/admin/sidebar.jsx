@@ -1,7 +1,16 @@
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+
+
+    navigate("/admin/login")
+  }
   return (
     <aside className="sidebar">
 
@@ -77,7 +86,8 @@ function Sidebar() {
 
       <div className="sidebar-bottom">
 
-        <button className="logout-btn">
+        <button className="logout-btn"
+        onClick={handleLogout}>
           <i className="bi bi-box-arrow-right"></i>
           <span>Logout</span>
         </button>

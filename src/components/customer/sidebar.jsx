@@ -1,7 +1,18 @@
 
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CustomerSidebar = () => {
+
+    const navigate = useNavigate();
+  
+    const handleLogout = ()=>{
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+  
+  
+      navigate("/customer/login")
+    }
 
   const menuItems = [
     {
@@ -135,6 +146,7 @@ const CustomerSidebar = () => {
 
         {/* Logout */}
         <button
+        onClick={handleLogout}
           type="button"
           className="btn btn-light w-100 text-danger d-flex align-items-center gap-3 px-3 py-2"
         >
