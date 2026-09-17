@@ -13,6 +13,7 @@ api.interceptors.request.use( //request naa backend ku poradhuku munadi
         const token = localStorage.getItem("token");
 
         if (token) {
+            config.headers =config.headers || {};
             config.headers.Authorization = `Bearer ${token}`;
         }
 
@@ -24,20 +25,26 @@ api.interceptors.request.use( //request naa backend ku poradhuku munadi
 );
 
 api.interceptors.response.use(  //respons naa backend ku poitu front end la respons varum 
-    (response) =>{
-        console.log("SUCCESS RESPONSE:", response.status);
-        return response;
-    },
-
+    (response) => response,
     (error) =>{
-          console.log("INTERCEPTOR ERROR:", error.response?.status);
-        if (error.response?.status === 401){
+         const status = error.response?.status;
+         const requestHadToken = Boolean(
+            error.config?.headers?.Authorization
+         );
+        if (status === 401 && requestHadToken){
+            const role = localStorage.getItem("role")
 
-            console.log("401 dedected")
             localStorage.removeItem("token");
             localStorage.removeItem("role");
 
-            window.location.href ="/";
+            const loginPath =
+                role === "customer"
+                    ?"/customer/loin"
+                    :role === "admin"
+                     ?"/admin/login"
+                     :"/";
+
+            window.location.href =loginPath;
         }
 
         return Promise.reject(error)

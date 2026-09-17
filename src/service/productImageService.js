@@ -48,7 +48,7 @@ const uploadProductImage = async (productId, file) => {
     return response.data;
 };
 
-export default{
+export default {
     uploadProductImages,
     getProductImages,
     deleteProductImage,

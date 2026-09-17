@@ -1,98 +1,36 @@
-const CustomerProfile = () => {
+import { useState, useEffect } from "react";
+import {getMyProfile, updateMyProfile } from "../../service/customerService";
 
-  return (
-    <div>
+const customerProfile = ()=>{
+  const [formData , setFormData]=useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    company: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    postcode: "",
+    country: ""
+  });
+  const[error, setError]=useState("");
+  const[message,setMessage]=useState("");
+  const[loading, setLoading]=useState(true);
+  const[saving, setSaving]=useState(false);
 
-      <h3 className="mb-4">
-        My Profile
-      </h3>
-
-      <div className="card border-0 shadow-sm">
-
-        <div className="card-body">
-
-          <form>
-
-            <div className="row g-3">
-
-              <div className="col-md-6">
-
-                <label className="form-label">
-                  First Name
-                </label>
-
-                <input
-                  type="text"
-                  className="form-control"
-                  defaultValue="Rishwanth"
-                />
-
-              </div>
-
-
-              <div className="col-md-6">
-
-                <label className="form-label">
-                  Last Name
-                </label>
-
-                <input
-                  type="text"
-                  className="form-control"
-                  defaultValue="R"
-                />
-
-              </div>
-
-
-              <div className="col-md-6">
-
-                <label className="form-label">
-                  Email
-                </label>
-
-                <input
-                  type="email"
-                  className="form-control"
-                  defaultValue="rishwanth@example.com"
-                />
-
-              </div>
-
-
-              <div className="col-md-6">
-
-                <label className="form-label">
-                  Phone
-                </label>
-
-                <input
-                  type="text"
-                  className="form-control"
-                  defaultValue="+91 9876543210"
-                />
-
-              </div>
-
-
-              <div className="col-12">
-
-                <button className="btn btn-primary">
-                  Update Profile
-                </button>
-
-              </div>
-
-            </div>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-  );
-};
-
-export default CustomerProfile;
+  useEffect(()=>{
+    const loadProfile = async ()=>{
+      try{
+        const result = await getMyProfile();
+        setFormData((prev)=>({...prev, ...result}));
+      }catch(err){
+        setError(err?.result?.message?.err||"faild to load profile")
+      }finally{
+        setLoading(false);
+      }
+    }
+    loadProfile();
+  },[])
+}

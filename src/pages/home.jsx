@@ -60,7 +60,7 @@ const Home = () => {
 
               <button
                 className="btn btn-primary btn-lg px-4 me-2"
-                onClick={() => navigate("/customer/signup")}
+                onClick={() => navigate("/customer/register")}
               >
                 Start Shopping
               </button>
