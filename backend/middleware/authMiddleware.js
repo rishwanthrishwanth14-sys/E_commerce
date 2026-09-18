@@ -20,12 +20,8 @@ const authenticate = (req, res, next) => {
         // EXPECTED FORMAT:
         // Bearer TOKEN
 
-        const parts =
-            authHeader.split(" ");
-        if (
-            parts.length !== 2 ||
-            parts[0] !== "Bearer" || !parts[1]
-        ) {
+         const parts = authHeader.trim().split(/\s+/);
+        if (parts.length !== 2 || parts[0] !== "Bearer" || !parts[1]) {
             return res.status(401).json({
                 success: false,
                 message: "Invalid authorization format"
@@ -53,9 +49,9 @@ const isAdmin = (req, res, next) => {
     // admin routes are reserved for logins that came through the
     // /api/user/login endpoint (the "user" table), never customer logins
     const isAdminToken =
-        req.user &&
-        req.user.isUser === true &&
-        req.user.role !== "customer";
+        req.user ||
+        req.user.isUser !== true ||
+        req.user.role !== "admin";
 
     if (!isAdminToken) {
         return res.status(403).json({
@@ -63,7 +59,7 @@ const isAdmin = (req, res, next) => {
             message: "Admin access required"
         });
     }
-    next();
+     return next();
 };
 
 const isCustomer = (req, res, next) => {
@@ -77,7 +73,7 @@ const isCustomer = (req, res, next) => {
             message: "Customer access required"
         });
     }
-    next();
+    return next();
 };
 
 const isOwnerCustomer = (req, res, next) => {
@@ -100,7 +96,7 @@ const isOwnerCustomer = (req, res, next) => {
             message: "You can only access your own data"
         });
     }
-    next();
+    return next();
 };
 
 module.exports = {
