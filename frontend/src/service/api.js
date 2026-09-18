@@ -13,7 +13,7 @@ api.interceptors.request.use( //request naa backend ku poradhuku munadi
         const token = localStorage.getItem("token");
 
         if (token) {
-            config.headers =config.headers || {};
+            config.headers =config.headers || {}; // just for safety checks dha namma already header attach panniyachu 
             config.headers.Authorization = `Bearer ${token}`;
         }
 
