@@ -1,7 +1,6 @@
     import { useState } from "react";
     import { createProduct } from "../../service/productService";
-    import uploadProductImage  from "../../service/productImageService";
-    import uploadProductImages from "../../service/productImageService";
+import { uploadProductImages } from "../../service/productImageService";
 
     const CreateProduct = () => {
 
@@ -20,8 +19,7 @@
         });
 
         const [images, setImages] = useState([]);
-        const [image, setImage] = useState([]);
-
+        
         const [loading, setLoading] = useState(false);
         const [message, setMessage] = useState("");
         const [error, setError] = useState("");
@@ -64,11 +62,6 @@
                     await uploadProductImages(
                         productId,
                         images
-                    );
-                } else if(image.length == 1){
-                      await uploadProductImage(
-                        productId,
-                        image
                     );
                 }
 

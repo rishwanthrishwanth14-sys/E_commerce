@@ -1,10 +1,18 @@
 
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {useEffect, useState} from "react";
+import { getMyProfile } from "../../service/customerService";
 
 const CustomerSidebar = () => {
-
+    const [profile, setProfile] = useState();
     const navigate = useNavigate();
+
+    useEffect(()=>{
+      getMyProfile()
+      .then((result)=> setProfile(result.data))
+      .catch(()=>{});
+    },[])
   
     const handleLogout = ()=>{
       localStorage.removeItem("token");

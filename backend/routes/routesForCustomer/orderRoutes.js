@@ -22,4 +22,10 @@ router.get(
     orderController.listOrdersByCustomer
 );
 
+router.get(
+    "/api/orders/customer/:customerId",
+    authenticate,
+    orderController.listOrdersByCustomer
+);
+
 module.exports = router;

@@ -54,4 +54,4 @@ const getCustomerByIdForAdmin = async (req, res) => {
 module.exports = {
     getCustomersForAdmin,
     getCustomerByIdForAdmin
-}
+};

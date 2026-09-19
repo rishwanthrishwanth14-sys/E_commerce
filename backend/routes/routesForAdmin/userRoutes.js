@@ -18,5 +18,6 @@ router.put("/api/user/:userId",authenticate,isAdmin, userController.updateUser);
 
 router.delete("/api/user/:userId",authenticate,isAdmin ,userController.deleteUser);
 
- 
+router.get("api/admin/profile", authenticate,isAdmin ,userController.getUserById)
+
 module.exports = router;

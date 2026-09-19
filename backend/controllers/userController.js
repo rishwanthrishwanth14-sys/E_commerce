@@ -302,14 +302,16 @@ const loginUser = async (req, res) => {
         const token = generateToken({
             userId: user.userId,
             userType: user.userType,
-            isUser: true
+            isUser: true,
+            role: "admin"
         });
 
         // SUCCESS RESPONSE
         return res.status(200).json({
             success: true,
             message: "Login successful",
-            token
+            token,
+            role: "admin"
         });
 
     } catch (error) {
@@ -331,4 +333,4 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser
-}
+};
