@@ -1,76 +1,83 @@
+import { useEffect, useState } from "react";
+import { getCustomerProducts } from "../../service/customerProductService";
+
 const CustomerShop = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-  const products = [
-    {
-      id: 1,
-      name: "Running Shoes",
-      price: "₹2,500",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPNY9X-Fg-o6t7h8Cf39S7jAWjmVyFUu-p7YzhSfuSyg&s  "
-    },
-    {
-      id: 2,
-      name: "Sports T-Shirt",
-      price: "₹1,200",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxL_MzEqpWoIUNuCBQnxYxbdaTQRw4Uoww_1LetHlYRQ&s=10"
-    },
-    {
-      id: 3,
-      name: "Football",
-      price: "₹1,500",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeU8Ag_Fmp5I8XZ5OZuvA87dWKqF1NWGXxbYx9Su81iw&s=10"
+    useEffect(() => {
+        const loadProducts = async () => {
+            try {
+                const result = await getCustomerProducts();
+                setProducts(result.data || []);
+            } catch (err) {
+                setError(err.response?.data?.message || "Failed to load products");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadProducts();
+    }, []);
+
+    const imageUrl = (image) => {
+        if (!image) return null;
+        if (image.startsWith("http")) return image;
+        return `${import.meta.env.VITE_API_URL}/uploads/products/${image}`;
+    };
+
+    if (loading) {
+        return <div className="text-center py-5"><div className="spinner-border" /></div>;
     }
-  ];
 
-  return (
-    <div>
+    return (
+        <div>
+            <h3 className="mb-4">Shop Products</h3>
 
-      <h3 className="mb-4">
-        Shop Products
-      </h3>
+            {error && <div className="alert alert-danger">{error}</div>}
 
-      <div className="row g-4">
+            {!error && products.length === 0 && (
+                <div className="alert alert-info">No products available.</div>
+            )}
 
-        {products.map((product) => (
+            <div className="row g-4">
+                {products.map((product) => {
+                    const image = product.images?.[0]?.image || product.image;
 
-          <div
-            className="col-md-6 col-lg-4"
-            key={product.id}
-          >
+                    return (
+                        <div className="col-md-6 col-lg-4" key={product.productId}>
+                            <div className="card h-100 border-0 shadow-sm">
+                                {image ? (
+                                    <img
+                                        src={imageUrl(image)}
+                                        className="card-img-top"
+                                        alt={product.productName}
+                                        style={{ height: "240px", objectFit: "cover" }}
+                                    />
+                                ) : (
+                                    <div className="d-flex align-items-center justify-content-center bg-light"
+                                        style={{ height: "240px" }}>
+                                        No Image
+                                    </div>
+                                )}
 
-            <div className="card h-100 border-0 shadow-sm">
-
-              <img
-                src={product.image}
-                className="card-img-top"
-                alt={product.name}
-              />
-
-              <div className="card-body">
-
-                <h5>
-                  {product.name}
-                </h5>
-
-                <h6 className="mb-3">
-                  {product.price}
-                </h6>
-
-                <button className="btn btn-primary w-100">
-                  View Product
-                </button>
-
-              </div>
-
+                                <div className="card-body">
+                                    <h5>{product.productName}</h5>
+                                    <h6 className="mb-2">₹{Number(product.price || 0).toFixed(2)}</h6>
+                                    <p className="text-muted mb-0">
+                                        {Number(product.quantity) > 0
+                                            ? `${product.quantity} available`
+                                            : "Out of stock"}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-
-          </div>
-
-        ))}
-
-      </div>
-
-    </div>
-  );
+        </div>
+    );
 };
 
 export default CustomerShop;
