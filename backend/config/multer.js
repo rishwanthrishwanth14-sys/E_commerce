@@ -1,36 +1,47 @@
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs")
 const { v4: uuidv4 } = require("uuid");
 
-    const storage = multer.diskStorage({
-        destination:(req, File, cb)=>{
-            cb(null,'uplodes/products/')
-        },
+const uplodeDir = path.join(
+    __dirname,
+    "..",
+    "uplodes",
+    "products"
+);
 
-        filename:(req, file, cb) =>{
-            const ext = path.extname(file.originalname);
-            const uniqueName = uuidv4() + ext
-            cb(null,uniqueName)
-        }
-    });
+fs.mkdirSync(uplodeDir, {
+    recursive: true
+});
 
-    const fileFilter = (req, file, cb)=>{
-        const allowtypes = /jpeg|jpg|png|webp/;
-        const  isValidExt = allowtypes.test(path.extname(file.originalname).toLocaleLowerCase());
-        const isValidMime = allowtypes.test(file.mimetype);                               //multipurpose internet mail extension
+const storage = multer.diskStorage({
+    destination: (req, File, cb) => {
+        cb(null, uplodeDir)
+    },
 
-        if(isValidExt && isValidExt ){
-            cb(null , true)
-        } else {
-            cb(new Error('Only image files (jpeg, jpg, png, webp) are allowed'))
-        }
-    };
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname).toLowerCase();
+        const filename = `${uuidv4()}${ext}`
+        cb(null, filename)
+    }
+});
 
-    const uplode = multer({
-        storage,
-        fileFilter,
-        limits:{fileSize: 5* 1024* 1024 } //5 mb
-    });
+const fileFilter = (req, file, cb) => {
+    const allowtypes = /jpeg|jpg|png|webp/;
+    const isValidExt = allowtypes.test(path.extname(file.originalname).toLowerCase());
+    const isValidMime = allowtypes.test(file.mimetype);                               //multipurpose internet mail extension
 
-    module.exports=uplode   
-    
+    if (isValidExt && isValidExt) {
+        cb(null, true)
+    } else {
+        cb(new Error('Only image files (jpeg, jpg, png, webp) are allowed'))
+    }
+};
+
+const uplode = multer({
+    storage,
+    fileFilter,
+    limits: { fileSize: 5 * 1024 * 1024 } //5 mb
+});
+
+module.exports = uplode
