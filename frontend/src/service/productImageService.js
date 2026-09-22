@@ -1,6 +1,6 @@
 import api from "./api";
 
-const uploadProductImages = async (productId, files) => {
+export const uploadProductImages = async (productId, files) => {
 
     const formData = new FormData();
 
@@ -10,13 +10,18 @@ const uploadProductImages = async (productId, files) => {
 
     const response = await api.post(
         `/api/admin/product/${productId}/images`,
-        formData
+        formData,
+        {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }
     );
 
     return response.data;
 };
 
-const uploadProductImage = async (productId, file) => {
+export const uploadProductImage = async (productId, file) => {
 
     const formData = new FormData();
 
@@ -24,13 +29,18 @@ const uploadProductImage = async (productId, file) => {
 
     const response = await api.post(
         `/api/admin/product/${productId}/image`,
-        formData
+        formData,
+        {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }
     );
 
     return response.data;
 };
 
- const getProductImages = async (productId) => {
+export const getProductImages = async (productId) => {
 
     const response = await api.get(
         `/api/admin/product/${productId}/images`
@@ -39,7 +49,7 @@ const uploadProductImage = async (productId, file) => {
     return response.data;
 };
 
- const deleteProductImage = async (imageId) => {
+export const deleteProductImage = async (imageId) => {
 
     const response = await api.delete(
         `/api/admin/product-image/${imageId}`
@@ -48,9 +58,4 @@ const uploadProductImage = async (productId, file) => {
     return response.data;
 };
 
-export default {
-    uploadProductImages,
-    getProductImages,
-    deleteProductImage,
-    uploadProductImage
-}       
+    
