@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getMyProfile } from "../../service/customerService";
-import { getMyOrders } from "../../service/orderService";
+import { getMyOrder } from "../../service/orderService";
 import { getAddresses } from "../../service/addressService";
 
 const CustomerDashboard = () => {
@@ -19,7 +19,7 @@ const CustomerDashboard = () => {
                 const [profileResult, ordersResult, addressResult] =
                     await Promise.all([
                         getMyProfile(),
-                        getMyOrders(),
+                        getMyOrder(),
                         getAddresses()
                     ]);
 

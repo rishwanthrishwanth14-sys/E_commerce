@@ -2,15 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
-const productImageController =
-    require("../../controllers/productImageController");
+const productImageController = require("../../controllers/productImageController");
+const upload = require("../../config/multer");  
 
 const {
     authenticate,
     isAdmin
 } = require("../../middleware/authMiddleware");
-
-const upload = require("../../middleware/uploadMiddleware");
 
 
 // SINGLE IMAGE

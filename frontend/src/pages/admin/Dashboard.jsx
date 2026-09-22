@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getProducts } from "../../service/productService";
 import { getCategories } from "../../service/categorieService";
+import { getMyProfile } from "../../service/adminService";
 
 function AdminDashboard() {
   const navigate = useNavigate();
@@ -21,10 +22,12 @@ function AdminDashboard() {
         const [productResult, categoryResult, profileResult] = await Promise.all([
           getProducts(),
           getCategories(),
-          profileResult()
+          getMyProfile()
         ]);
         const products = productResult.data || [];
         const categories = categoryResult.data || [];
+
+        setProfile(profileResult.data || null);
 
         setStats({
           products: products.length,
@@ -62,6 +65,15 @@ function AdminDashboard() {
       </div>
 
       {error && <div className="alert alert-danger">{error}</div>}
+
+      {profile && (
+        <div className="card border-0 shadow-sm mb-4">
+          <div className="card-body">
+            <h5 className="fw-bold mb-1">{profile.firstname} {profile.lastname}</h5>
+            <p className="text-muted mb-0">{profile.email}</p>
+          </div>
+        </div>
+      )}
 
       <div className="row g-4">
         {cards.map(([title, value, icon]) => (

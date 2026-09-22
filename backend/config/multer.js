@@ -29,9 +29,9 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
     const allowtypes = /jpeg|jpg|png|webp/;
     const isValidExt = allowtypes.test(path.extname(file.originalname).toLowerCase());
-    const isValidMime = allowtypes.test(file.mimetype);                               //multipurpose internet mail extension
+    const isValidMime = allowtypes.test(file.mimetype);//mime = multipurpose internet mail extension  edhu yedhuku naa sila person image illama pdf ahh name change panni image la uplode panna vaipu iruku adha dedect panuradhuku 
 
-    if (isValidExt && isValidExt) {
+    if (isValidExt && isValidMime) {
         cb(null, true)
     } else {
         cb(new Error('Only image files (jpeg, jpg, png, webp) are allowed'))

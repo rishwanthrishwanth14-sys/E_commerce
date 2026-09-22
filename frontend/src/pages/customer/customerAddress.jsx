@@ -1,149 +1,66 @@
 import { useEffect, useState } from "react";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import {
+    getAddresses,
+    createAddress,
+    updateAddress,
+    deleteAddress
+} from "../../service/addressService";
 
 const CustomerAddresses = () => {
-
   const [addresses, setAddresses] = useState([]);
-
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-
   const [showModal, setShowModal] = useState(false);
-
   const [editingAddressId, setEditingAddressId] = useState(null);
-
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    company: "",
-    address1: "",
-    address2: "",
-    city: "",
-    state: "",
-    postcode: "",
-    country: "",
-    phoneNumber: ""
-  });
-
-
-  // --------------------------------
-  // GET ALL ADDRESSES
-  // --------------------------------
+  const emptyForm = {
+    firstName: "", lastName: "", company: "", address1: "", address2: "",
+    city: "", state: "", postcode: "", country: "", phoneNumber: ""
+  };
+  const [formData, setFormData] = useState(emptyForm);
 
   const fetchAddresses = async () => {
-
     try {
-
       setLoading(true);
       setError("");
-
-      // const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `${API_URL}/api/addresses`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          result.message || "Failed to fetch addresses"
-        );
-      }
-
+      const result = await getAddresses();
       setAddresses(result.data || []);
-
-    } catch (error) {
-
-      setError(error.message);
-
+    } catch (err) {
+      setError(err.response?.data?.message || err.message || "Failed to fetch addresses");
     } finally {
-
       setLoading(false);
-
     }
   };
 
-
   useEffect(() => {
-    fetchAddresses();
+    const loadInitialAddresses = async () => {
+      await fetchAddresses();
+    };
+
+    loadInitialAddresses();
   }, []);
 
-
-  // --------------------------------
-  // INPUT CHANGE
-  // --------------------------------
-
   const handleChange = (e) => {
-
     const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-
-  // --------------------------------
-  // RESET FORM
-  // --------------------------------
 
   const resetForm = () => {
-
-    setFormData({
-      firstName: "",
-      lastName: "",
-      company: "",
-      address1: "",
-      address2: "",
-      city: "",
-      state: "",
-      postcode: "",
-      country: "",
-      phoneNumber: ""
-    });
-
+    setFormData(emptyForm);
     setEditingAddressId(null);
-
   };
-
-
-  // --------------------------------
-  // OPEN ADD MODAL
-  // --------------------------------
 
   const handleAddAddress = () => {
-
     resetForm();
-
     setError("");
     setSuccess("");
-
     setShowModal(true);
-
   };
 
-
-  // --------------------------------
-  // OPEN EDIT MODAL
-  // --------------------------------
-
   const handleEdit = (address) => {
-
     setEditingAddressId(address.addressId);
-
     setFormData({
       firstName: address.firstName || "",
       lastName: address.lastName || "",
@@ -156,134 +73,46 @@ const CustomerAddresses = () => {
       country: address.country || "",
       phoneNumber: address.phoneNumber || ""
     });
+    setError("");
+    setSuccess("");
+    setShowModal(true);
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSaving(true);
     setError("");
     setSuccess("");
 
-    setShowModal(true);
-
-  };
-
-
-  // --------------------------------
-  // CREATE / UPDATE ADDRESS
-  // --------------------------------
-
-  const handleSubmit = async (e) => {
-
-    e.preventDefault();
-
     try {
+      const result = editingAddressId
+        ? await updateAddress(editingAddressId, formData)
+        : await createAddress(formData);
 
-      setSaving(true);
-      setError("");
-      setSuccess("");
-
-      const token = localStorage.getItem("token");
-
-      const url = editingAddressId
-        ? `${API_URL}/api/address/${editingAddressId}`
-        : `${API_URL}/api/create/address`;
-
-      const method = editingAddressId
-        ? "PUT"
-        : "POST";
-
-      const response = await fetch(
-        url,
-        {
-          method,
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify(formData)
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          result.message || "Something went wrong"
-        );
-      }
-
-      setSuccess(result.message);
-
+      setSuccess(result.message || "Address saved successfully");
       setShowModal(false);
-
       resetForm();
-
       await fetchAddresses();
-
-    } catch (error) {
-
-      setError(error.message);
-
+    } catch (err) {
+      setError(err.response?.data?.message || err.message || "Something went wrong");
     } finally {
-
       setSaving(false);
-
     }
   };
-
-
-  // --------------------------------
-  // DELETE ADDRESS
-  // --------------------------------
 
   const handleDelete = async (addressId) => {
-
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this address?"
-    );
-
-    if (!confirmDelete) {
-      return;
-    }
+    if (!window.confirm("Are you sure you want to delete this address?")) return;
 
     try {
-
       setError("");
       setSuccess("");
-
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `${API_URL}/api/address/${addressId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          result.message || "Failed to delete address"
-        );
-      }
-
-      setSuccess(result.message);
-
-      setAddresses((prev) =>
-        prev.filter(
-          (address) =>
-            address.addressId !== addressId
-        )
-      );
-
-    } catch (error) {
-
-      setError(error.message);
-
+      const result = await deleteAddress(addressId);
+      setSuccess(result.message || "Address deleted successfully");
+      setAddresses((prev) => prev.filter((address) => address.addressId !== addressId));
+    } catch (err) {
+      setError(err.response?.data?.message || err.message || "Failed to delete address");
     }
   };
-
 
   return (
     <div>

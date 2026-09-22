@@ -1,3 +1,6 @@
+const fs = require("fs/promises");
+const path = require("path");
+
 const {
     createOneProductImage,
     createManyProductImages,
@@ -6,24 +9,65 @@ const {
     updateProductImageById,
     deleteImageById,
     deleteImagesByProductId
-} = require("../models/productImage.model");
+} = require("../models/productImageModel");
 
+const { getProductById } = require("../models/productModel");
+
+const uploadDir = path.join(
+    __dirname,
+    "..",
+    "uploads",
+    "products"
+);
+
+const removeUploadedFile = async (filename) => {
+    if (!filename) return;
+
+    try {
+        await fs.unlink(path.join(uploadDir, filename));
+    } catch (error) {
+        if (error.code !== "ENOENT") {
+            console.error("Failed to remove uploaded file:", error.message);
+        }
+    }
+};
 
 // ADD SINGLE IMAGE TO A PRODUCT
 const addProductImage = async (req, res) => {
     try {
-        const { productId } = req.params    ;
+        const { productId } = req.params;
+
+        // Check whether image was uploaded
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: "Image is required"
+            });
+        }
+
+        
+        const product = await getProductById(productId);
+
+        if (!product || Number(product.status) !== 1) {
+            await removeUploadedFile(req.file.filename);
+
+            return res.status(404).json({
+                success: false,
+                message: "Product not found or inactive"
+            });
+        }
 
         const result = await createOneProductImage({
             productId,
-            image: req.file 
-            ? req.file.filename 
-            : req.body.image,
 
-            sortOrder: req.body.sortOrder,
-            status: req.body.status,
+            // Store ONLY filename in database
+            image: req.file.filename,
 
-            createdBy: req.user?.id || null
+            sortOrder: req.body.sortOrder || 0,
+            status: req.body.status ?? 1,
+
+            // JWT middleware puts user id inside req.user.userId
+            createdBy: req.user?.userId || null
         });
 
         return res.status(201).json({
@@ -42,7 +86,7 @@ const addProductImage = async (req, res) => {
 };
 
 
-// ADD MULTIPLE IMAGES TO A PRODUCT (gallery upload)
+// ADD MULTIPLE IMAGES TO A PRODUCT
 const addProductImages = async (req, res) => {
     try {
         const { productId } = req.params;
@@ -56,7 +100,21 @@ const addProductImages = async (req, res) => {
             });
         }
 
+        const product = await getProductById(productId);
+
+        if (!product || Number(product.status) !== 1) {
+            await Promise.all(
+                files.map((file) => removeUploadedFile(file.filename))
+            );
+
+            return res.status(404).json({
+                success: false,
+                message: "Product not found or inactive"
+            });
+        }
+
         const images = files.map((file, index) => ({
+            // Store ONLY filename
             image: file.filename,
             sortOrder: index
         }));
@@ -73,6 +131,13 @@ const addProductImages = async (req, res) => {
         });
 
     } catch (error) {
+
+        if (req.files?.length) {
+            await Promise.all(
+                req.files.map((file) => removeUploadedFile(file.filename))
+            );
+        }
+
         return res.status(500).json({
             success: false,
             message: "Failed to add images",
@@ -133,7 +198,7 @@ const getSingleImage = async (req, res) => {
 };
 
 
-// UPDATE IMAGE (sort order / status)
+// UPDATE IMAGE
 const updateProductImage = async (req, res) => {
     try {
         const { imageId } = req.params;
@@ -141,7 +206,8 @@ const updateProductImage = async (req, res) => {
         const result = await updateProductImageById(imageId, {
             sortOrder: req.body.sortOrder,
             status: req.body.status,
-            updatedBy: req.user?.id || null
+
+            updatedBy: req.user?.userId || null
         });
 
         if (result.affectedRows === 0) {
@@ -173,7 +239,7 @@ const deleteProductImage = async (req, res) => {
 
         const result = await deleteImageById(
             imageId,
-            req.user?.id || null
+            req.user?.userId || null
         );
 
         if (result.affectedRows === 0) {
@@ -182,6 +248,8 @@ const deleteProductImage = async (req, res) => {
                 message: "Image not found or already deleted"
             });
         }
+
+        await removeUploadedFile(result.image);
 
         return res.status(200).json({
             success: true,
@@ -202,10 +270,15 @@ const deleteProductImage = async (req, res) => {
 const deleteAllProductImages = async (req, res) => {
     try {
         const { productId } = req.params;
+        const images = await getImagesByProductId(productId);
 
         await deleteImagesByProductId(
             productId,
-            req.user?.id || null
+            req.user?.userId || null
+        );
+
+            await Promise.all(
+            images.map((image) => removeUploadedFile(image.image))
         );
 
         return res.status(200).json({

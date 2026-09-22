@@ -1,43 +1,55 @@
+import { useEffect, useState } from "react";
+import { getMyProfile } from "../../service/adminService";
+
 function Header() {
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      try {
+        const result = await getMyProfile();
+        setProfile(result.data || null);
+      } catch {
+        setProfile(null);
+      }
+    };
+
+    loadProfile();
+  }, []);
+
+  const adminName = [profile?.firstname, profile?.lastname]
+    .filter(Boolean)
+    .join(" ") || "Admin";
+
+  const adminInitial = adminName.charAt(0).toUpperCase();
+
   return (
     <header className="header">
-
-      {/* Logo */}
       <div className="header-logo">
         <i className="bi bi-bag-check-fill"></i>
         <span>ShopAdmin</span>
       </div>
 
-      {/* Search */}
       <div className="header-search">
         <i className="bi bi-search"></i>
-
-        <input
-          type="text"
-          placeholder="Search..."
-        />
+        <input type="text" placeholder="Search..." />
       </div>
 
-      {/* Right Side */}
       <div className="header-right">
-
-        {/* Notification */}
-        <button className="header-icon">
+        <button type="button" className="header-icon">
           <i className="bi bi-bell"></i>
           <span className="notification-dot"></span>
         </button>
 
-        {/* Profile */}
         <div className="profile">
           <div className="profile-image">
-            A
+            {adminInitial}
           </div>
 
           <div className="profile-info">
             <span className="profile-name">
-              Admin
+              {adminName}
             </span>
-
             <span className="profile-role">
               Administrator
             </span>
@@ -45,9 +57,7 @@ function Header() {
 
           <i className="bi bi-chevron-down"></i>
         </div>
-
       </div>
-
     </header>
   );
 }

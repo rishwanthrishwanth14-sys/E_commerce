@@ -1,7 +1,7 @@
 const { mysqlPool } = require("../config/db");
-const {getAddressById}= require("../models/customerAdddressModel")
 
-const createOneOrder = async (orderData, items) => {
+
+const createOneOrder = async (orderData, items, clearCustomerCart = false) => {
 
     const {
         orderNumber,
@@ -26,9 +26,7 @@ const createOneOrder = async (orderData, items) => {
         shippingPostCode,
         shippingCountry,
         shippingPhoneNumber,
-        subtotal,
         shippingAmount,
-        totalAmount,
         paymentMethod,
         customerComment,
         createdBy
@@ -37,6 +35,73 @@ const createOneOrder = async (orderData, items) => {
     const connection = await mysqlPool.getConnection();
     try {
         await connection.beginTransaction();
+
+        const verifiedItems = [];
+        let subtotal = 0;
+
+
+        // Lock every product row before calculating the final order amount.
+        // This prevents stock races and keeps the order snapshot consistent.
+        for (const item of items) {
+            const [productRows] = await connection.execute(
+                `SELECT
+                    product_id AS productId,
+                    product_name AS productName,
+                    sku,
+                    price,
+                    quantity,
+                    status
+                 FROM product
+                 WHERE product_id = ?
+                   AND deleted_at IS NULL
+                 FOR UPDATE`,
+                [item.productId]
+            );
+
+            const product = productRows[0];
+
+            if (!product || Number(product.status) !== 1) {
+                throw new Error(
+                    `Product ${item.productId} is unavailable`
+                );
+            }
+
+            const quantity = Number(item.quantity);
+
+            if (
+                !Number.isInteger(quantity) ||
+                quantity < 1
+            ) {
+                throw new Error(
+                    `Invalid quantity for product ${item.productId}`
+                );
+            }
+
+            if (quantity > Number(product.quantity)) {
+                throw new Error(
+                    `Insufficient stock for ${product.productName}. Available: ${product.quantity}`
+                );
+            }
+
+            const price = Number(product.price);
+            const total = price * quantity;
+
+            subtotal += total;
+
+            verifiedItems.push({
+                productId: product.productId,
+                productName: product.productName,
+                sku: product.sku,
+                price,
+                quantity,
+                total
+            });
+        }
+
+
+        const shipping = Number(shippingAmount) || 0;
+        const totalAmount = subtotal + shipping
+
 
         const orderSql = /*sql*/`
             INSERT INTO \`order\`
@@ -96,10 +161,10 @@ const createOneOrder = async (orderData, items) => {
             shippingPostCode,
             shippingCountry,
             shippingPhoneNumber,
-            subtotal || 0,
-            shippingAmount || 0,
-            totalAmount || 0,
-            paymentMethod,
+            subtotal,
+            shippingAmount,
+            totalAmount,
+            paymentMethod || "cod",
             customerComment || null,
             createdBy || null
         ]);
@@ -120,7 +185,28 @@ const createOneOrder = async (orderData, items) => {
             VALUES (?, ?, ?, ?, ?, ?, ?)
         `;
 
-        for (const item of items) {
+        for (const item of verifiedItems) {
+            const [stockResult] = await connection.execute(
+                //  SET quantity = quantity - ?  => customer yevlo qut venumo adha db la irundhu dlt panudhu 
+                // WHERE product_id = ?  =>customer enna product ahh select panuraru nu productId vachu db la select panna 
+                // AND quantity >= ? =>  edhu yedhuku naa customer choose panna alavu db la iruka nu pakuradhuku
+                `UPDATE product
+                 SET quantity = quantity - ?
+                 WHERE product_id = ?
+                 AND deleted_at IS NULL
+                 AND quantity >= ?`,
+                [
+                    item.quantity,
+                    item.productId,
+                    item.quantity
+                ]
+            );
+            if (stockResult.affectedRows === 0) {
+                throw new Error(
+                    `Insufficient stock for ${item.productName}`
+                );
+            }
+
             await connection.execute(itemSql, [
                 orderId,
                 item.productId,
@@ -132,36 +218,66 @@ const createOneOrder = async (orderData, items) => {
             ]);
         }
 
-        await connection.commit();
+        // DELETE ci, FROM cart_item=ci /cart_item ahh dlt pannu 
+        //INNER JOIN cart c ON c.cartId = ci.cartId inner joint panitu /cart table-oda cartId and cart_item table-oda cartId same-ah irukkura records-a connect pannu.
+        //WHERE c.customerId = ? customerIId ku atch aagura cart items mattum select/delete pannu.
 
-        return { orderId, ...orderResult };
+        if (clearCustomerCart) {        // cart clear panna venduma?
 
-    } catch (error) {
-        await connection.rollback();
-        throw error;
-    } finally {
-        connection.release();
+            await connection.execute(   // DB query execute panni wait pannu
+
+                `DELETE ci
+                 FROM cart_item ci
+                 INNER JOIN cart c
+                    ON c.cartId = ci.cartId
+                 WHERE c.customerId = ?`,
+
+                [customerId]             // ? = customerId
+            );
+        }
+
+        await connection.commit();       // transaction changes final-ah save pannu
+
+            return {                         // result return pannu
+                 orderId,                     // orderId
+                 subtotal,                    // subtotal
+                 shippingAmount: shipping,    // shipping variable → shippingAmount
+                 totalAmount,                 // total amount
+            ...orderResult               // orderResult values-um add pannu
+        };
+
+    } catch (error) {                // error vandha
+        await connection.rollback(); // changes ellam undo pannu
+        throw error;                 // error-a caller/controller-ku anuppu
+    } finally {                      // success/error, rendu case-layum
+        connection.release();        // DB connection pool-ku return pannu
     }
 };
-
 
 
 const getAllOrders = async () => {
 
     const sql = /*sql*/`
         SELECT
-            order_id AS orderId,
-            order_number AS orderNumber,
-            customer_id AS customerId,
-            total_amount AS totalAmount,
-            payment_status AS paymentStatus,
-            order_status AS orderStatus,
-            shipping_status AS shippingStatus,
-            tracking_number AS trackingNumber,
-            created_at AS createdAt
-        FROM \`order\`
-        WHERE deleted_at IS NULL
-        ORDER BY order_id DESC
+            o.order_id AS orderId,
+            o.order_number AS orderNumber,
+            o.customer_id AS customerId,
+            CONCAT(c.first_name, ' ', c.last_name) AS customerName,
+            c.email AS customerEmail,
+            o.subtotal,
+            o.shipping_amount AS shippingAmount,
+            o.total_amount AS totalAmount,
+            o.payment_method AS paymentMethod,
+            o.payment_status AS paymentStatus,
+            o.order_status AS orderStatus,
+            o.shipping_status AS shippingStatus,
+            o.tracking_number AS trackingNumber,
+            o.created_at AS createdAt
+        FROM \`order\` o
+        INNER JOIN customer c
+            ON c.customer_id = o.customer_id
+        WHERE o.deleted_at IS NULL
+        ORDER BY o.order_id DESC
     `;
 
     const [rows] = await mysqlPool.execute(sql);
@@ -192,8 +308,41 @@ const getOrdersByCustomerId = async (customerId) => {
     return rows;
 };
 
-module.exports={
+const updateOrderStatus = async (
+    orderId,
+    orderStatus,
+    shippingStatus,
+    paymentStatus,
+    trackingNumber,
+    updatedBy
+) => {
+    const sql = /*sql*/`
+        UPDATE \`order\`
+        SET
+            order_status = ?,
+            shipping_status = ?,
+            payment_status = ?,
+            tracking_number = ?,
+            updated_by = ?
+        WHERE order_id = ?
+          AND deleted_at IS NULL
+    `;
+
+    const [result] = await mysqlPool.execute(sql, [
+        orderStatus,
+        shippingStatus,
+        paymentStatus,
+        trackingNumber || null,
+        updatedBy || null,
+        orderId
+    ]);
+
+    return result;
+};
+
+module.exports = {
     createOneOrder,
     getAllOrders,
-    getOrdersByCustomerId
+    getOrdersByCustomerId,
+    updateOrderStatus
 }

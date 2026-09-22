@@ -45,21 +45,19 @@ const authenticate = (req, res, next) => {
 // ADMIN ONLY
 // ============================================================
 const isAdmin = (req, res, next) => {
-
-    // admin routes are reserved for logins that came through the
-    // /api/user/login endpoint (the "user" table), never customer logins
-    const isAdminToken =
-        req.user ||
+    console.log("ADMIN CHECK:", req.user);
+    if (
+        !req.user ||
         req.user.isUser !== true ||
-        req.user.role !== "admin";
-
-    if (!isAdminToken) {
+        req.user.role !== "user"
+    ) {
         return res.status(403).json({
             success: false,
             message: "Admin access required"
         });
     }
-     return next();
+
+    return next();
 };
 
 const isCustomer = (req, res, next) => {

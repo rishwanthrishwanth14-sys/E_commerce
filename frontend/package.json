@@ -1,9 +1,9 @@
 {
-  "name": "backend",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "vite",
     "start": "node app.js"
   },
   "dependencies": {

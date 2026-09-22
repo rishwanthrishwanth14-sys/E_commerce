@@ -1,34 +1,43 @@
+import { useEffect, useState } from "react";
+import { getMyProfile } from "../../service/customerService";
+
 const CustomerNavbar = () => {
+    const [profile, setProfile] = useState(null);
 
-  return (
-    <nav className="navbar navbar-light bg-white border-bottom px-4 py-3">
+    useEffect(() => {
+        const loadProfile = async () => {
+            try {
+                const result = await getMyProfile();
+                setProfile(result.data || null);
+            } catch {
+                setProfile(null);
+            }
+        };
 
-      <div>
-        <h5 className="mb-0">
-          Customer Panel
-        </h5>
-      </div>
+        loadProfile();
+    }, []);
 
-      <div className="d-flex align-items-center gap-3">
+    const customerName = [profile?.firstName, profile?.lastName]
+        .filter(Boolean)
+        .join(" ") || "Customer";
 
-        <span>
-          <i className="bi bi-person-circle fs-4"></i>
-        </span>
+    return (
+        <nav className="navbar navbar-light bg-white border-bottom px-4 py-3">
+            <div>
+                <h5 className="mb-0">Customer Panel</h5>
+            </div>
 
-        <div>
-          <small className="text-muted d-block">
-            Welcome
-          </small>
-
-          <strong>
-            Rishwanth
-          </strong>
-        </div>
-
-      </div>
-
-    </nav>
-  );
+            <div className="d-flex align-items-center gap-3">
+                <span>
+                    <i className="bi bi-person-circle fs-4"></i>
+                </span>
+                <div>
+                    <small className="text-muted d-block">Welcome</small>
+                    <strong>{customerName}</strong>
+                </div>
+            </div>
+        </nav>
+    );
 };
 
 export default CustomerNavbar;

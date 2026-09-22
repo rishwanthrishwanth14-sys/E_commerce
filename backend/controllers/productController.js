@@ -95,8 +95,16 @@
 
             const products = await productModel.getAllProducts();
 
+            const visibleProducts =
+                req.user?.role === "customer"
+                    ? products.filter(
+                        (product) =>
+                            Number(product.status) === 1
+                    )
+                    : products;
+
             const productsWithImages= await Promise.all(
-                products.map(async(product)=>{
+                visibleProducts.map(async(product)=>{
                     const images =
                     await getImagesByProductId(product.productId);
 
@@ -109,7 +117,7 @@
 
             res.status(200).json({
                 success: true,
-                data: products
+                data: productsWithImages
             });
 
         } catch (error) {
@@ -133,7 +141,12 @@ const getProductById = async (req, res) => {
                 req.params.productId
             );
 
-        if (!product) {
+        if (!product ||
+            (
+                req.user?.role === "customer" &&
+                Number(product.status) !== 1                
+            )
+        ) {
             return res.status(404).json({
                 success: false,
                 message: "Product not found"
@@ -255,9 +268,6 @@ const getProductById = async (req, res) => {
             });
         }
     };
-
-    
-
 
     module.exports = {
         createProduct,

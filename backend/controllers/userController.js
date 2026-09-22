@@ -133,7 +133,6 @@ const getUsers = async (req, res) => {
     }
 };
 
-// get user by id
 const getUserById = async (req, res) => {
 
     try {
@@ -154,6 +153,81 @@ const getUserById = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "internal server error",
+            error: error.message
+        });
+    }
+};
+
+// get user by id
+const getMyProfile = async (req, res) => {
+
+    try {
+
+        console.log("PROFILE req.user:", req.user);
+        const user = await userModel.getUserById(req.user.userId);
+        console.log("PROFILE USER:", user);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "user not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: user
+        });
+    } catch (error) {
+
+        console.log("PROFILE ERROR:", error);
+        res.status(500).json({
+            success: false,
+            message: "internal server error",
+            error: error.message
+        });
+    }
+};
+const updateMyProfile = async (req, res) => {
+
+    try {
+
+        const {
+            firstname,
+            lastname,
+            email,
+            image
+        } = req.body;
+
+        const result = await userModel.updateUserById(
+            req.user.userId,
+            {
+                firstname,
+                lastname,
+                email,
+                image,
+                updatedBy: req.user.userId
+            }
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Profile updated successfully"
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Failed to update profile",
             error: error.message
         });
     }
@@ -303,7 +377,7 @@ const loginUser = async (req, res) => {
             userId: user.userId,
             userType: user.userType,
             isUser: true,
-            role: "admin"
+            role: "user"
         });
 
         // SUCCESS RESPONSE
@@ -311,7 +385,7 @@ const loginUser = async (req, res) => {
             success: true,
             message: "Login successful",
             token,
-            role: "admin"
+            role: "user"
         });
 
     } catch (error) {
@@ -329,8 +403,10 @@ const loginUser = async (req, res) => {
 module.exports = {
     createUser,
     getUsers,
-    getUserById,
+    getMyProfile,
     updateUser,
     deleteUser,
-    loginUser
+    loginUser,
+    getUserById,
+    updateMyProfile
 };

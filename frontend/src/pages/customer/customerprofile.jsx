@@ -24,9 +24,9 @@ const CustomerProfile = () => {
     const loadProfile = async () => {
       try {
         const result = await getMyProfile();
-        setFormData((prev) => ({ ...prev, ...result }));
+        setFormData((prev) => ({ ...prev, ...(result.data || {}) }));
       } catch (err) {
-        setError(err?.result?.message?.err || "faild to load profile")
+        setError(err.response?.data?.message || "Failed to load profile")
       } finally {
         setLoading(false);
       }
@@ -41,7 +41,7 @@ const CustomerProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setSaving(true);
     setMessage("");
     setError("");
 

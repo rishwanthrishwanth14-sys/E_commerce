@@ -1,101 +1,128 @@
-import { Navigate, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getMyProfile } from "../../service/adminService";
 
 function Sidebar() {
-  const navigate = useNavigate();
 
-  const handleLogout = ()=>{
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
+    const [profile, setProfile] = useState(null);
 
+    const navigate = useNavigate();
 
-    navigate("/admin/login")
-  }
-  return (
-    <aside className="sidebar">
+    useEffect(() => {
+        getMyProfile()
+            .then((result) => {
+                setProfile(result.data);
+            })
+            .catch(() => {});
+    }, []);
 
-      <p className="sidebar-title">
-        MAIN
-      </p>
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
 
-      <NavLink
-        to="/admin/dashboard"
-        className="sidebar-link"
-      >
-        <i className="bi bi-grid"></i>
+        navigate("/admin/login");
+    };
 
-          Dashboard
-        
-      </NavLink>
+    return (
+        <aside className="sidebar">
 
+            <p className="sidebar-title">
+                MAIN
+            </p>
 
-      <p className="sidebar-title">
-        PRODUCT MANAGEMENT
-      </p>
-
-      <NavLink
-        to="/admin/products"
-        className="sidebar-link"
-      >
-        <i className="bi bi-box-seam"></i>
-        <span>Products</span>
-      </NavLink>
-
-      <NavLink
-        to="/admin/categories"
-        className="sidebar-link"
-      >
-        <i className="bi bi-tags"></i>
-        <span>Categories</span>
-      </NavLink>
+            <NavLink
+                to="/admin/dashboard"
+                className="sidebar-link"
+            >
+                <i className="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </NavLink>
 
 
-      <p className="sidebar-title">
-        ORDER MANAGEMENT
-      </p>
+            <p className="sidebar-title">
+                PRODUCT MANAGEMENT
+            </p>
 
-      <NavLink
-        to="/admin/orders"
-        className="sidebar-link"
-      >
-        <i className="bi bi-cart3"></i>
-        <span>Orders</span>
-      </NavLink>
+            <NavLink
+                to="/admin/products"
+                className="sidebar-link"
+            >
+                <i className="bi bi-box-seam"></i>
+                <span>Products</span>
+            </NavLink>
 
-
-      <p className="sidebar-title">
-        CUSTOMER MANAGEMENT
-      </p>
-
-      <NavLink
-        to="/customer/register"
-        className="sidebar-link"
-      >
-        <i className="bi bi-person-plus"></i>
-        <span>Add Customer</span>
-      </NavLink>
-
-      <NavLink
-        to="/admin/customers"
-        className="sidebar-link"
-      >
-        <i className="bi bi-people"></i>
-        <span>Customers</span>
-      </NavLink>
+            <NavLink
+                to="/admin/categories"
+                className="sidebar-link"
+            >
+                <i className="bi bi-tags"></i>
+                <span>Categories</span>
+            </NavLink>
 
 
-      <div className="sidebar-bottom">
+            <p className="sidebar-title">
+                ORDER MANAGEMENT
+            </p>
 
-        <button className="logout-btn"
-        onClick={handleLogout}>
-          <i className="bi bi-box-arrow-right"></i>
-          <span>Logout</span>
-        </button>
+            <NavLink
+                to="/admin/orders"
+                className="sidebar-link"
+            >
+                <i className="bi bi-cart3"></i>
+                <span>Orders</span>
+            </NavLink>
 
-      </div>
 
-    </aside>
-  );
+            <p className="sidebar-title">
+                CUSTOMER MANAGEMENT
+            </p>
+
+            <NavLink
+                to="/customer/register"
+                className="sidebar-link"
+            >
+                <i className="bi bi-person-plus"></i>
+                <span>Add Customer</span>
+            </NavLink>
+
+            <NavLink
+                to="/admin/customers"
+                className="sidebar-link"
+            >
+                <i className="bi bi-people"></i>
+                <span>Customers</span>
+            </NavLink>
+
+
+            <div className="sidebar-bottom">
+
+                {/* Profile information */}
+                <div className="sidebar-profile">
+
+                    <strong>
+                        {profile ? `${profile.firstname || ""} ${profile.lastname || ""}`.trim() : "Admin"}
+                    </strong>
+
+                    <small>
+                        {profile?.email}
+                    </small>
+
+                </div>
+
+
+                {/* Logout */}
+                <button
+                    className="logout-btn"
+                    onClick={handleLogout}
+                >
+                    <i className="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                </button>
+
+            </div>
+
+        </aside>
+    );
 }
 
 export default Sidebar;

@@ -13,13 +13,13 @@ const {
 router.post("/api/place/order", authenticate, isCustomer, orderController.placeOrder);
 
 // admin: every order in the system
-router.get("/api/orders", authenticate, isAdmin, orderController.listAllOrders);
+router.get("/api/my/orders", authenticate, isAdmin, orderController.listMyOrders);
 
 // a customer viewing their own history, or an admin looking up a customer's history
 router.get(
-    "/api/orders/customer/:customerId",
+    "/api/orders/",
     authenticate,
-    orderController.listOrdersByCustomer
+    orderController.listAllOrders
 );
 
 router.get(

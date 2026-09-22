@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../service/productService";
+import { getProductImageUrl } from "../../service/imageUrl";
 
 const ProductList = () => {
 
@@ -68,7 +69,7 @@ const ProductList = () => {
                             {product.images?.length > 0 ? (
 
                                 <img
-                                    src={`${import.meta.env.VITE_API_URL}/uploads/products/${product.images[0].image}`}
+                                    src={getProductImageUrl(product.images[0].image)}
                                     className="card-img-top"
                                     alt={product.productName}
                                     style={{

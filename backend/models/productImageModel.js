@@ -28,9 +28,9 @@ const createOneProductImage = async (imageData) => {
         [
             productId,
             image,
-            sortOrder || 0,
+            sortOrder ?? 0,
             status ?? 1,
-            createdBy || null
+            createdBy ?? null
         ]);
     return result
 };
@@ -47,7 +47,7 @@ const createManyProductImages = async (
 
     const results = [];
 
-    for (i = 0; i < images.length; i++) {
+    for (let i = 0; i < images.length; i++) {
         const result = await createOneProductImage({
             productId,
             image: images[i].image,
@@ -75,7 +75,8 @@ const getImagesByProductId = async (productId) => {
         FROM product_image
         WHERE product_id = ?
         AND deleted_at IS NULL
-        ORDER BY sort_order ASC
+        AND status = 1
+        ORDER BY sort_order ASC,image_id ASC
     `;
 
     const [rows] = await mysqlPool.execute(sql, [productId]);
@@ -130,9 +131,9 @@ const updateProductImageById = async (
     `;
 
     const [result] = await mysqlPool.execute(sql, [
-        sortOrder || 0,
+        sortOrder ?? 0,
         status,
-        updatedBy || null,
+        updatedBy ?? null,
         imageId
     ]);
 
@@ -159,7 +160,7 @@ const deleteImageById = async (
     const [result] = await mysqlPool.execute(
         sql,
         [
-            deletedBy,
+            deletedBy ?? null,
             imageId
         ]
     );

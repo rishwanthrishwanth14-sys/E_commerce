@@ -6,165 +6,201 @@ import {
     deleteCategory
 } from "../../service/categorieService"
 
+const emptyForm = {
+    categoryName: "",
+    metaTitle: "",
+    description: "",
+    parent: "",
+    status: 1,
+    sortOrder: 0
+};
 
 const Categories = () => {
-const [categories, setCategories] = useState([]);
-const [formData, setFormData] = useState({
-    categoryName: "", //name of the product ex. mobile
-    parentId: "", // mobile = electronic
-    status: 1 //active or inactive
-});
+    const [categories, setCategories] = useState([]);
+    const [formData, setFormData] = useState(emptyForm);
 
-const [editingId, setEditingId] = useState(null); // edhu yedhuku naa category ya edit panuradhuku use panurom initally null
+    const [editingId, setEditingId] = useState(null); // edhu yedhuku naa category ya edit panuradhuku use panurom initally null
+    const [loading, setLoding] = useState(false);
+    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
+    const [saving, setSaving] = useState(false);
 
-const [loading, setLoding] = useState(false);
-const [error, setError] = useState("");
-const [message, setMessage] = useState("");
+    //get categories
 
-//get categories
+    const fetchCtegories = async () => {
+        try {
+            setLoding(true);
+            setError("");
 
-const fetchCtegories = async () => {
-    try {
-        setLoding(true);
-        setError("");
+            const response = await getCategories();
 
-        const response = await getCategories();
+            setCategories(response.data || []);
+        } catch (error) {
+            setError(
+                error.response?.data.message ||
+                "failed to fetch categories"
+            );
+        } finally {
+            setLoding(false)
+        }
+    };
 
-        setCategories(response.data || []);
-    } catch (error) {
-        setError(
-            error.response?.data.message ||
-            "failed to fetch categories"
-        );
-    } finally {
-        setLoding(false)
-    }
-};
+    useEffect(() => {
+        const loadCategories = async () => {
+            await fetchCtegories();
+        };
 
-useEffect(() => {
-    fetchCtegories
-}, []);
+        loadCategories();
+    }, []);
 
-const handleChange = (e) => {
+    const handleChange = (e) => {
 
-    const { name, value } = e.target;
+        const { name, value } = e.target;
 
-    setFormData((prev) => ({  //prev = previous dataForm
-        ...prev,
-        [name]: value
-    }));
-};
+        setFormData((prev) => ({  //prev = previous dataForm
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const resetForm = () => {
+        setFormData(emptyForm);
+        setEditingId(null);
+    };
 
 
-// update and create in same function
-const handleSubmit = async (e) => {
+    // update and create in same function
+    const handleSubmit = async (e) => {
 
-    e.preventDefault();
-    try {
-        setError("");
-        setMessage("");
+        e.preventDefault();
 
         if (!formData.categoryName.trim()) {
-            setError("categoryName is required");
+            setError("Category name is required");
             return;
         }
 
-        const categoryData ={
-            ...formData,
-            categoryName:formData.categoryName.trim().toUpperCase()
-        };
-
-        if (editingId) {
-
-            await updateCategory(
-                editingId,
-                categoryData
-            );
-
-            setMessage(
-                "category update successfully"
-            );
-        } else {
-            await createCategory(formData);
-
-            setMessage(
-                "category created successfully"
-            );
+        if (!formData.metaTitle.trim()) {
+            setError("Meta title is required");
+            return;
         }
+        try {
+            setSaving(true);
+            setError("");
+            setMessage("");
+
+            const categoryData = {
+                ...formData,
+                categoryName:
+                    formData.categoryName.trim().toUpperCase(),
+                metaTitle:
+                    formData.metaTitle.trim().toUpperCase(),
+                parent:
+                    formData.parent
+                        ? Number(formData.parent)
+                        : null,
+                sortOrder:
+                    Number(formData.sortOrder) || 0,
+                status:
+                    Number(formData.status)
+            };
+
+            if (editingId) {
+
+                await updateCategory(
+                    editingId,
+                    categoryData
+                );
+
+                setMessage(
+                    "category update successfully"
+                );
+            } else {
+                await createCategory(categoryData);
+
+                setMessage(
+                    "category created successfully"
+                );
+            }
+
+            resetForm();
+            setEditingId(null);
+
+            await fetchCtegories();
+        } catch (error) {
+            setError(
+                error.response?.data?.message ||
+                "Something went wrong"
+            );
+        } finally {
+            setSaving(false);
+        }
+    };
+
+
+    //edit
+    const handleEdit = async (category) => {
+        setEditingId(category.categoryId);
 
         setFormData({
-            categoryName: "",
-            parentId: "",
-            status: 1
+            categoryName:
+                category.categoryName || "",
+            metaTitle:
+                category.metaTitle || "",
+            description:
+                category.description || "",
+            parent:
+                category.parent || "",
+            status:
+                Number(category.status),
+            sortOrder:
+                category.sortOrder || 0
         });
+
+        setError("");
+        setMessage("");
+    }
+
+    //Cancel edit 
+    const handleCancel = () => {
 
         setEditingId(null);
 
-        fetchCtegories();
-    } catch {
-        setError(
-            error.response?.data?.message ||
-            "Something went wrong"
+        resetForm();
+    };
+
+    //delete 
+    const handleDelete = async (categoryId) => {
+
+        const confirmDelete = window.confirm(
+            "Are You Sure You Want To Delete Category ?"
         );
-    }
-};
 
+        if (!confirmDelete) {
+            return;
+        }
 
-//edit
-const handleEdit = async (category) => {
-    setEditingId(category.categoryId);
+        try {
+            setError("");
+            await deleteCategory(categoryId);
 
-    setFormData({
-        categoryName: category.categoryName,
-        parentId: category.parentId || "",
-        status: category.status
-    });
+            setMessage(
+                "Category deleted successfully"
+            )
+            if (editingId === categoryId) {
+                resetForm();
+            }
 
-    setError("");
-    setMessage("");
-}
+            await fetchCtegories();
+        } catch (error) {
 
-//Cancel edit 
-const handleCancele = () => {
+            setError(
+                error.respons?.data.message ||
+                "Failed To Delete Category"
+            );
+        }
+    };
 
-    setEditingId(null);
-
-    setFormData({
-        categoryName: "",
-        parentId: "",
-        status: 1
-    });
-};
-
-//delete 
-const handleDelete = async (categoryId) => {
-
-    const confirmDelete = Window.comfirm(
-        "Are You Sure You Want To Delete Category ?"
-    );
-
-    if (!confirmDelete) {
-        return;
-    }
-
-    try {
-        await deleteCategory(categoryId);
-
-        setMessage(
-            "Category deleted successfully"
-        )
-
-        fetchCtegories();
-    } catch (error) {
-
-        setError(
-            error.respons?.data.message ||
-            "Failed To Delete Category"
-        );
-    }
-};
-
-return (
+    return (
 
 
         <div className="container-fluid py-4">
@@ -242,6 +278,39 @@ return (
 
                                 </div>
 
+                                <div className="mb-3">
+                                    <label className="form-label">
+                                        Meta Title
+                                    </label>
+                                    <input
+                                        className="form-control"
+                                        name="metaTitle"
+                                        value={
+                                            formData.metaTitle
+                                        }
+                                        onChange={
+                                            handleChange
+                                        }
+                                    />
+                                </div>
+
+                                <div className="mb-3">
+                                    <label className="form-label">
+                                        Description
+                                    </label>
+                                    <textarea
+                                        className="form-control"
+                                        name="description"
+                                        rows="3"
+                                        value={
+                                            formData.description
+                                        }
+                                        onChange={
+                                            handleChange
+                                        }
+                                    />
+                                </div>
+
 
                                 {/* PARENT CATEGORY */}
 
@@ -290,32 +359,51 @@ return (
 
                                 </div>
 
+                                <div className="row g-3 mb-4">
+                                    <div className="col-6">
+                                        <label className="form-label">
+                                            Sort Order
+                                        </label>
+                                        <input
+                                            type="number"
+                                            className="form-control"
+                                            name="sortOrder"
+                                            value={
+                                                formData.sortOrder
+                                            }
+                                            onChange={
+                                                handleChange
+                                            }
+                                        />
+                                    </div>
 
-                                {/* STATUS */}
 
-                                <div className="mb-4">
+                                    {/* STATUS */}
 
-                                    <label className="form-label">
-                                        Status
-                                    </label>
+                                    <div className="mb-4">
 
-                                    <select
-                                        name="status"
-                                        className="form-select"
-                                        value={formData.status}
-                                        onChange={handleChange}
-                                    >
+                                        <label className="form-label">
+                                            Status
+                                        </label>
 
-                                        <option value={1}>
-                                            Active
-                                        </option>
+                                        <select
+                                            name="status"
+                                            className="form-select"
+                                            value={formData.status}
+                                            onChange={handleChange}
+                                        >
 
-                                        <option value={0}>
-                                            Inactive
-                                        </option>
+                                            <option value={1}>
+                                                Active
+                                            </option>
 
-                                    </select>
+                                            <option value={0}>
+                                                Inactive
+                                            </option>
 
+                                        </select>
+
+                                    </div>
                                 </div>
 
 
@@ -324,6 +412,7 @@ return (
                                     <button
                                         type="submit"
                                         className="btn btn-primary"
+                                        disabled={saving}
                                     >
                                         {editingId
                                             ? "Update Category"
@@ -535,6 +624,7 @@ return (
             </div>
 
         </div>
+       
     );
 
 };
