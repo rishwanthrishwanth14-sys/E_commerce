@@ -183,6 +183,12 @@ body {
   overflow-y: auto;
 }
 
+.sidebar-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .sidebar-title {
   font-size: 11px;
 
