@@ -41,3 +41,12 @@ export const deleteProduct = async (productId) => {
 
     return response.data;
 };
+
+export const addStock = async (productId, quantity) => {
+    const response = await api.patch(
+        `/api/admin/product/${productId}/stock`,
+        { quantity }
+    );
+
+    return response.data;
+};

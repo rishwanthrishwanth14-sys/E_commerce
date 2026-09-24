@@ -5,7 +5,7 @@ const router = express.Router();
 const userController = require("../../controllers/userController");
 const { authenticate, isAdmin } = require("../../middleware/authMiddleware");
 
-router.post("/api/user", authenticate, isAdmin, userController.createUser);
+router.post("/api/user/register", authenticate, isAdmin, userController.createUser);
 router.post("/api/user/login", userController.loginUser);
 
 router.get("/api/users", authenticate, isAdmin, userController.getUsers);

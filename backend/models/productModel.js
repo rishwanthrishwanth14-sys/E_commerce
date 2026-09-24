@@ -237,6 +237,40 @@ const deleteProductById = async (
     return result;
 };
 
+const addStock = async (productId, quantity, updatedBy) => {
+    const [result] = await mysqlPool.query(
+        `
+        UPDATE product
+        SET
+            quantity = quantity + ?,
+            updated_by = ?,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE product_id = ?
+        AND deleted_at IS NULL
+        `,
+        [quantity, updatedBy, productId]
+    );
+
+    if (result.affectedRows === 0) {
+        return "PRODUCT_NOT_FOUND";
+    }
+
+    const [rows] = await mysqlPool.query(
+        `
+        SELECT
+            product_id AS productId,
+            product_name AS productName,
+            quantity
+        FROM product
+        WHERE product_id = ?
+        AND deleted_at IS NULL
+        LIMIT 1
+        `,
+        [productId]
+    );
+
+    return rows[0];
+};
 
 module.exports = {
     createOneProduct,
@@ -244,5 +278,6 @@ module.exports = {
     getProductById,
     updateProductById,
     decrementProductQuantity,
-    deleteProductById
+    deleteProductById,
+    addStock
 };

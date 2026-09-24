@@ -21,5 +21,7 @@ router.put("/api/admin/product/:productId", authenticate, isAdmin, productContro
 
 router.delete("/api/admin/product/:productId", authenticate, isAdmin, productController.deleteProduct);
 
+router.patch("/api/admin/product/:productId/stock",authenticate,isAdmin,productController.addStock);
+
 
 module.exports = router;

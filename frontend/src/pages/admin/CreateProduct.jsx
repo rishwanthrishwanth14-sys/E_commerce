@@ -90,7 +90,6 @@
             setError("SKU is required");
             return;
         }
-
         if (
             formData.price === "" ||
             Number(formData.price) < 0
@@ -98,7 +97,6 @@
             setError("Valid price is required");
             return;
         }
-
         if (
             formData.quantity === "" ||
             Number(formData.quantity) < 0
@@ -106,13 +104,10 @@
             setError("Valid quantity is required");
             return;
         }
-
         if (!formData.metaTitle.trim()) {
             setError("Meta title is required");
             return;
         }
-
-        
         try {
             setLoading(true);
             setError("");

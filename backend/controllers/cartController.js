@@ -8,7 +8,7 @@ const addToCart = async (req,res)=>{
             req.body.quantity ?? 1
         );
 
-        if(result.error === "PRODUCT NOT FOUND"){
+        if(result.error === "PRODUCT_NOT_FOUND"){
             return res.status(404).json({
                 success:false,
                 message: "product not found or unavailable"

@@ -102,7 +102,7 @@ const registerCustomer = async (req, res) => {
 const loginCustomer = async (req, res) => {
 
     try {
-
+         console.log("LOGIN BODY:", req.body);
         const {
             email,
             password
@@ -115,7 +115,7 @@ const loginCustomer = async (req, res) => {
             });
         }
 
-        const customer = await customerModel.getCustomerByEmail(email);
+    const customer = await customerModel.getCustomerByEmail(email)
 
         if (!customer) {
             return res.status(401).json({

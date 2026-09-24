@@ -268,11 +268,60 @@ const getProductById = async (req, res) => {
             });
         }
     };
+    const addStock = async (req, res) => {
+    try {
+        const productId = Number(req.params.productId);
+        const quantity = Number(req.body.quantity);
+
+        if (!Number.isInteger(productId) || productId <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid product ID"
+            });
+        }
+
+        if (!Number.isInteger(quantity) || quantity <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Stock quantity must be a positive whole number"
+            });
+        }
+
+        const result = await productModel.addStock(
+            productId,
+            quantity,
+            req.user.userId
+        );
+
+        if (result === "PRODUCT_NOT_FOUND") {
+            return res.status(404).json({
+                success: false,
+                message: "Product not found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Stock added successfully",
+            data: result
+        });
+
+    } catch (error) {
+        console.error("ADD STOCK ERROR:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Failed to add stock",
+            error: error.message
+        });
+    }
+};
 
     module.exports = {
         createProduct,
         getProducts,
         getProductById,
         updateProduct,
-        deleteProduct
+        deleteProduct,
+        addStock
     };

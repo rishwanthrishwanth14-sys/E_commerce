@@ -25,12 +25,31 @@ const { logger, requestLogger } = require("./services/loggerService");
 const app = express();
 const PORT = process.env.PORT || 2525;
 
+console.log(
+    "UPLOAD PATH:",
+    path.join(__dirname, "uploads")
+);
+
+console.log(
+    "PRODUCT IMAGE EXISTS:",
+    require("fs").existsSync(
+        path.join(
+            __dirname,
+            "uploads",
+            "products",
+            "c3c4b80d-e9e0-4279-95f6-bd0eb1f805da.webp"
+        )
+    )
+);
+
+
 app.use(
     "/uploads",
     express.static(path.join(__dirname, "uploads"))
 );
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(requestLogger);
 
