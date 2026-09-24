@@ -23,7 +23,7 @@ const { connectDB } = require("./config/db");
 const { logger, requestLogger } = require("./services/loggerService");
 
 const app = express();
-const PORT = process.env.PORT || 2525;
+const PORT = process.env.PORT || 2522;
 
 console.log(
     "UPLOAD PATH:",
