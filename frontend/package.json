@@ -2,10 +2,11 @@
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
-  "scripts": {
+ "scripts": {
     "dev": "vite",
-    "start": "node app.js"
-  },
+    "build": "vite build",
+    "preview": "vite preview"
+},
   "dependencies": {
     "axios": "^1.20.0",
     "bcrypt": "^6.0.0",
