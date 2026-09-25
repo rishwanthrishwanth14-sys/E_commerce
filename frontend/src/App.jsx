@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/home";
+import Home from "./pages/frontPage/homePage/home";
 
-import Login from "./pages/homePage/admin/AdminLogin";
+import Login from "./pages/frontPage/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/Dashboard";
 import ProductList from "./pages/admin/ProductList";
 import CreateProduct from "./pages/admin/CreateProduct";
@@ -13,8 +13,8 @@ import AdminProductDetails from "./pages/admin/adminProductDetails";
 import EditProduct from "./pages/admin/editProduct";
 import ProductImages from "./pages/admin/productImage";
 
-import CreateCustomer from "./pages/homePage/customer/customerCreate";
-import CustomerLogin from "./pages/homePage/customer/customerLogin";
+import CreateCustomer from "./pages/frontPage/customer/customerCreate";
+import CustomerLogin from "./pages/frontPage/customer/customerLogin";
 import CustomerDashboard from "./pages/customer/customerdashboard";
 import CustomerAddresses from "./pages/customer/customerAddress";
 import CustomerOrders from "./pages/customer/customeOrder";
