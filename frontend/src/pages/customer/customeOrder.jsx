@@ -129,7 +129,7 @@ const CustomerOrders = () => {
                                             </td>
                                             <td>
                                                 <strong>
-                                                    ₹{Number(order.totalAmount || 0).toFixed(2)}
+                                                    ₹{Number(order.totalAmount || 0).toLocaleString("en-IN")}
                                                 </strong>
                                             </td>
                                             <td>

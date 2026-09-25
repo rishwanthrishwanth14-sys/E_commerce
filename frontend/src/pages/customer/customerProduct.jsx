@@ -192,7 +192,7 @@ const CustomerProduct = () => {
 
                     <h3 className="mb-3">
                         ₹
-                        {Number(product.price).toFixed(2)}
+                        {Number(product.price).toLocaleString("en-IN")}
                     </h3>
 
                     <p>

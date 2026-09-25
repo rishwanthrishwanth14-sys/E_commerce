@@ -86,7 +86,7 @@ const CustomerDashboard = () => {
                     ["Total Orders", orders.length, "bi-box-seam"],
                     ["Pending Orders", pending, "bi-clock"],
                     ["Completed Orders", completed, "bi-check-circle"],
-                    ["Total Spent", `₹${totalSpent.toFixed(2)}`, "bi-currency-rupee"]
+                    ["Total Spent", `₹${totalSpent.toLocaleString("en-IN")}`, "bi-currency-rupee"]
                 ].map(([title, value, icon]) => (
                     <div className="col-md-6 col-xl-3" key={title}>
                         <div className="card border-0 shadow-sm h-100">
@@ -139,7 +139,7 @@ const CustomerDashboard = () => {
                                                     ? new Date(order.createdAt).toLocaleDateString()
                                                     : "-"}
                                             </td>
-                                            <td>₹{Number(order.totalAmount || 0).toFixed(2)}</td>
+                                            <td>₹{Number(order.totalAmount || 0).toLocaleString("en-IN")}</td>
                                             <td>{order.paymentStatus || "-"}</td>
                                             <td>{order.orderStatus || "-"}</td>
                                         </tr>

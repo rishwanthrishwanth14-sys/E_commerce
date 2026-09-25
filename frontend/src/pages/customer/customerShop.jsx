@@ -89,7 +89,7 @@ const CustomerShop = () => {
 
                                 <div className="card-body">
                                     <h5>{product.productName}</h5>
-                                    <h6 className="mb-2">₹{Number(product.price || 0).toFixed(2)}</h6>
+                                    <h6 className="mb-2">₹{Number(product.price || 0).toLocaleString("en-IN")}</h6>
                                     <p className="text-muted mb-3">
                                         {Number(product.quantity) > 0
                                             ? `${product.quantity} available`

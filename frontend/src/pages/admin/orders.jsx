@@ -131,7 +131,7 @@ const AdminOrders = () => {
                                             ₹
                                             {Number(
                                                 order.totalAmount
-                                            ).toFixed(2)}
+                                            ).toLocaleString("en-IN")}
                                         </td>
 
                                         <td>
