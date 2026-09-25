@@ -1,22 +1,25 @@
 import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-vh-100 bg-light">
+    <div className="home-page">
 
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg bg-white border-bottom">
+      <nav className="navbar navbar-expand-lg home-navbar">
         <div className="container py-2">
 
-          <a className="navbar-brand fw-bold fs-4" href="/">
+          <a className="navbar-brand fw-bold" href="/">
             <i className="bi bi-bag-fill text-primary me-2"></i>
             ShopHub
           </a>
 
           <div className="d-flex align-items-center gap-2">
+
             <button
+              type="button"
               className="btn btn-outline-primary"
               onClick={() => navigate("/customer/login")}
             >
@@ -24,11 +27,13 @@ const Home = () => {
             </button>
 
             <button
+              type="button"
               className="btn btn-primary"
               onClick={() => navigate("/admin/login")}
             >
               Admin Sign In
             </button>
+
           </div>
 
         </div>
@@ -36,72 +41,78 @@ const Home = () => {
 
 
       {/* Hero Section */}
-      <section className="py-5">
+      <section className="home-hero">
+
         <div className="container">
 
-          <div className="row align-items-center min-vh-75">
+          <div className="row align-items-center home-hero-row">
 
-            {/* Left */}
+            {/* Left Content */}
             <div className="col-lg-6 mb-5 mb-lg-0">
 
-              <span className="badge bg-primary-subtle text-primary px-3 py-2 mb-3">
+              <span className="home-badge">
                 Welcome to ShopHub
               </span>
 
-              <h1 className="display-4 fw-bold mb-3">
+              <h1 className="home-title">
                 Everything You Need,
-                <span className="text-primary"> All in One Place.</span>
+                <span className="text-primary">
+                  {" "}All in One Place.
+                </span>
               </h1>
 
-              <p className="lead text-secondary mb-4">
+              <p className="home-description">
                 Discover quality products, manage your orders,
                 and enjoy a simple shopping experience with ShopHub.
               </p>
 
-              <button
-                className="btn btn-primary btn-lg px-4 me-2"
-                onClick={() => navigate("/customer/register")}
-              >
-                Start Shopping
-              </button>
+              <div className="home-hero-buttons">
 
-              <button
-                className="btn btn-outline-secondary btn-lg px-4"
-                onClick={() => navigate("/customer/login")}
-              >
-                Sign In
-              </button>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-lg px-4"
+                  onClick={() => navigate("/customer/register")}
+                >
+                  Start Shopping
+                </button>
+
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary btn-lg px-4"
+                  onClick={() => navigate("/customer/login")}
+                >
+                  Sign In
+                </button>
+
+              </div>
 
             </div>
 
 
-            {/* Right */}
+            {/* Right Content */}
             <div className="col-lg-6">
 
-              <div className="card border-0 shadow-lg rounded-4">
-                <div className="card-body p-4">
+              <div className="card home-main-card">
+
+                <div className="card-body">
 
                   <div className="row g-3">
 
                     {/* Customer */}
                     <div className="col-12">
 
-                      <div className="card border rounded-4">
-                        <div className="card-body p-4">
+                      <div className="card home-role-card">
+
+                        <div className="card-body">
 
                           <div className="d-flex align-items-center mb-3">
 
-                            <div
-                              className="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center me-3"
-                              style={{
-                                width: "50px",
-                                height: "50px"
-                              }}
-                            >
-                              <i className="bi bi-person fs-4"></i>
+                            <div className="home-role-icon bg-primary text-white me-3">
+                              <i className="bi bi-person"></i>
                             </div>
 
                             <div>
+
                               <h4 className="fw-bold mb-1">
                                 Customer
                               </h4>
@@ -109,13 +120,16 @@ const Home = () => {
                               <small className="text-muted">
                                 Shop products and manage your orders
                               </small>
+
                             </div>
 
                           </div>
 
+
                           <div className="d-flex gap-2">
 
                             <button
+                              type="button"
                               className="btn btn-primary flex-grow-1"
                               onClick={() =>
                                 navigate("/customer/login")
@@ -125,6 +139,7 @@ const Home = () => {
                             </button>
 
                             <button
+                              type="button"
                               className="btn btn-outline-primary flex-grow-1"
                               onClick={() =>
                                 navigate("/customer/register")
@@ -136,6 +151,7 @@ const Home = () => {
                           </div>
 
                         </div>
+
                       </div>
 
                     </div>
@@ -144,22 +160,18 @@ const Home = () => {
                     {/* Admin */}
                     <div className="col-12">
 
-                      <div className="card border rounded-4">
-                        <div className="card-body p-4">
+                      <div className="card home-role-card">
+
+                        <div className="card-body">
 
                           <div className="d-flex align-items-center mb-3">
 
-                            <div
-                              className="bg-dark text-white rounded-3 d-flex align-items-center justify-content-center me-3"
-                              style={{
-                                width: "50px",
-                                height: "50px"
-                              }}
-                            >
-                              <i className="bi bi-shield-lock fs-4"></i>
+                            <div className="home-role-icon bg-dark text-white me-3">
+                              <i className="bi bi-shield-lock"></i>
                             </div>
 
                             <div>
+
                               <h4 className="fw-bold mb-1">
                                 Admin
                               </h4>
@@ -167,11 +179,14 @@ const Home = () => {
                               <small className="text-muted">
                                 Manage products, orders and customers
                               </small>
+
                             </div>
 
                           </div>
 
+
                           <button
+                            type="button"
                             className="btn btn-dark w-100"
                             onClick={() =>
                               navigate("/admin/login")
@@ -182,6 +197,7 @@ const Home = () => {
                           </button>
 
                         </div>
+
                       </div>
 
                     </div>
@@ -189,6 +205,7 @@ const Home = () => {
                   </div>
 
                 </div>
+
               </div>
 
             </div>
@@ -196,11 +213,13 @@ const Home = () => {
           </div>
 
         </div>
+
       </section>
 
 
       {/* Footer */}
-      <footer className="bg-white border-top py-4">
+      <footer className="home-footer">
+
         <div className="container text-center">
 
           <small className="text-muted">
@@ -208,6 +227,7 @@ const Home = () => {
           </small>
 
         </div>
+
       </footer>
 
     </div>
