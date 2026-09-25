@@ -5,6 +5,7 @@
 .home-page {
     min-height: 100vh;
     background: #f5f7fa;
+
     display: flex;
     flex-direction: column;
 }
@@ -29,12 +30,17 @@
 ========================= */
 
 .home-hero {
-    padding: 30px 0;
     flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    padding: 30px 0;
 }
 
 .home-hero-row {
-    min-height: auto;
+    width: 100%;
+    align-items: center;
 }
 
 
@@ -130,7 +136,9 @@
 }
 
 
-/* Role Icon */
+/* =========================
+   ROLE ICON
+========================= */
 
 .home-role-icon {
     width: 48px;
@@ -141,7 +149,6 @@
     border-radius: 12px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -154,7 +161,7 @@
 ========================= */
 
 .home-footer {
-    background: white;
+    background: #ffffff;
 
     border-top: 1px solid #e5e7eb;
 

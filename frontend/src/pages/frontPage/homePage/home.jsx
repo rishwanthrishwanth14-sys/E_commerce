@@ -45,7 +45,7 @@ const Home = () => {
 
         <div className="container">
 
-          <div className="row align-items-center home-hero-row">
+          <div className="row home-hero-row">
 
             {/* Left Content */}
             <div className="col-lg-6 mb-5 mb-lg-0">
