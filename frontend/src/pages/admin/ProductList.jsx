@@ -212,7 +212,7 @@ const ProductList = () => {
                                 {/* Price */}
 
                                 <p className="card-text">
-                                    ₹{product.price}
+                                   ₹ {Number(product.price).toLocaleString("en-IN")}
                                 </p>
 
                                 {/* SKU */}

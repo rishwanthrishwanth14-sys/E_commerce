@@ -230,9 +230,7 @@ const CustomerCart = () => {
                                                         ₹
                                                         {Number(
                                                             item.price
-                                                        ).toFixed(
-                                                            2
-                                                        )}
+                                                        ).toLocaleString("en-IN")}
                                                     </td>
 
                                                     <td>
@@ -296,9 +294,7 @@ const CustomerCart = () => {
                                                             Number(
                                                                 item.quantity
                                                             )
-                                                        ).toFixed(
-                                                            2
-                                                        )}
+                                                        ).toLocaleString("en-IN")}
                                                     </td>
 
                                                     <td>
@@ -331,9 +327,7 @@ const CustomerCart = () => {
                                     <span>Subtotal</span>
                                     <strong>
                                         ₹
-                                        {subtotal.toFixed(
-                                            2
-                                        )}
+                                        {subtotal.toLocaleString("en-IN")}
                                     </strong>
                                 </div>
 
@@ -348,9 +342,7 @@ const CustomerCart = () => {
                                     <strong>Total</strong>
                                     <strong>
                                         ₹
-                                        {subtotal.toFixed(
-                                            2
-                                        )}
+                                        {subtotal.toLocaleString("en-IN")}
                                     </strong>
                                 </div>
 
