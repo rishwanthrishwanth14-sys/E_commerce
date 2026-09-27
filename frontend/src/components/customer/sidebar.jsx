@@ -82,19 +82,24 @@ const CustomerSidebar = () => {
 
         <aside
             style={{
-                width: "260px",
-                position: "fixed",
-                top: 0,
-                left: 0,
-                bottom: 0,
-                backgroundColor: "#ffffff",
-                borderRight: "1px solid #e5e7eb",
-                padding: "20px 15px",
-                display: "flex",
-                flexDirection: "column",
-                overflowY: "auto",
-                zIndex: 1000
-            }}
+        width: "clamp(200px, 20vw, 260px)",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        bottom: 0,
+
+        backgroundColor: "#ffffff",
+        borderRight: "1px solid #e5e7eb",
+
+        padding: "20px 15px",
+
+        display: "flex",
+        flexDirection: "column",
+
+        overflowY: "auto",
+
+        zIndex: 1000
+    }}
         >
 
             {/* LOGO */}

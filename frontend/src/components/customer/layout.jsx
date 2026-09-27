@@ -16,8 +16,9 @@ const CustomerLayout = () => {
 
             <div
                 style={{
-                    marginLeft: "260px",
-                    minHeight: "100vh"
+                    marginLeft: "clamp(200px, 20vw, 260px)",
+                    minHeight: "100vh",
+                    width: "calc(100% - clamp(200px, 20vw, 260px))"
                 }}
             >
 
