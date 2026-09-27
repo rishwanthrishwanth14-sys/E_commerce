@@ -636,3 +636,155 @@ body {
     color: #0d6efd;
   }
 }
+
+/* =====================================================
+   CUSTOMER PANEL
+   This CSS affects CUSTOMER only
+===================================================== */
+
+.customer-layout {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+/* =========================
+   CUSTOMER MAIN AREA
+========================= */
+
+.customer-main-area {
+  margin-left: 260px;
+  min-height: 100vh;
+}
+
+/* =========================
+   CUSTOMER NAVBAR
+========================= */
+
+.customer-layout .navbar {
+  height: 70px;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 0 25px !important;
+}
+
+.customer-layout .navbar h5 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* =========================
+   CUSTOMER CONTENT
+========================= */
+
+.customer-main-content {
+  padding: 30px;
+}
+
+/* =========================
+   CUSTOMER SIDEBAR
+========================= */
+
+.customer-layout > aside {
+  width: 260px !important;
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+  padding: 20px 15px !important;
+}
+
+/* Sidebar active menu */
+
+.customer-layout > aside .bg-primary {
+  background-color: #0d6efd !important;
+}
+
+/* Sidebar normal menu */
+
+.customer-layout > aside nav a {
+  color: #555 !important;
+  transition: 0.2s ease;
+}
+
+.customer-layout > aside nav a:hover {
+  background: #f1f5f9;
+  color: #0d6efd !important;
+}
+
+/* Active menu should remain white */
+
+.customer-layout > aside nav a.bg-primary {
+  color: #ffffff !important;
+}
+
+/* =========================
+   CUSTOMER CARDS
+========================= */
+
+.customer-layout .card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+}
+
+/* =========================
+   CUSTOMER STAT CARDS
+========================= */
+
+.customer-layout .stat-card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* =========================
+   CUSTOMER BUTTONS
+========================= */
+
+.customer-layout .btn-primary {
+  background: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.customer-layout .btn-primary:hover {
+  background: #0b5ed7;
+  border-color: #0b5ed7;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* Sidebar hide */
+
+  .customer-layout > aside {
+    display: none !important;
+  }
+
+  /* Main area */
+
+  .customer-main-area {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+
+  /* Navbar */
+
+  .customer-layout .navbar {
+    height: 60px;
+    padding: 0 15px !important;
+  }
+
+  .customer-layout .navbar h5 {
+    font-size: 18px;
+  }
+
+  /* Content */
+
+  .customer-main-content {
+    padding: 20px 15px 80px;
+  }
+
+}
