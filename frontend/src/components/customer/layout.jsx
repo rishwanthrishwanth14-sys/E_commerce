@@ -1,22 +1,25 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "../customer/navbar";
+import CustomerSidebar from "../customer/sidebar";
+
 const CustomerLayout = () => {
-  return (
-    <div className="customer-layout">
+    return (
+        <div className="customer-layout">
 
-      <CustomerSidebar />
+            <CustomerSidebar />
 
-      <div
-        className="flex-grow-1 customer-main-area"
-      >
-        <Navbar />
+            <div className="flex-grow-1 customer-main-area">
 
-        <main className="customer-main-content">
-          <Outlet />
-        </main>
+                <Navbar />
 
-      </div>
+                <main className="customer-main-content">
+                    <Outlet />
+                </main>
 
-    </div>
-  );
+            </div>
+
+        </div>
+    );
 };
 
 export default CustomerLayout;

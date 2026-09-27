@@ -50,7 +50,7 @@ export default function App() {
           <Route path="products/create" element={<CreateProduct />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="customers" element={<AdminCustomers />} />
-          <Route path="/admin/products/:productId" element={<AdminProductDetails />} />
+          <Route path="products/:productId" element={<AdminProductDetails />} />
           <Route
             path="products/edit/:productId"
             element={<EditProduct />}
