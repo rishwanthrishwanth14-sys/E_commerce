@@ -5,6 +5,7 @@ import { getMyProfile } from "../../service/customerService";
 const CustomerSidebar = () => {
 
     const [profile, setProfile] = useState(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const navigate = useNavigate();
 
@@ -25,6 +26,23 @@ const CustomerSidebar = () => {
 
     }, []);
 
+
+    // Detect screen size
+    useEffect(() => {
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+
+    }, []);
+
+
     const handleLogout = () => {
 
         localStorage.removeItem("token");
@@ -36,7 +54,32 @@ const CustomerSidebar = () => {
 
     };
 
+
     const menuItems = [
+        {
+            name: "Dashboard",
+            path: "dashboard",
+            icon: "bi-house"
+        },
+        {
+            name: "Shop",
+            path: "shop",
+            icon: "bi-shop"
+        },
+        {
+            name: "Cart",
+            path: "cart",
+            icon: "bi-cart3"
+        },
+        {
+            name: "Orders",
+            path: "orders",
+            icon: "bi-box-seam"
+        }
+    ];
+
+
+    const sidebarItems = [
         {
             name: "Dashboard",
             path: "dashboard",
@@ -69,6 +112,7 @@ const CustomerSidebar = () => {
         }
     ];
 
+
     const customerName =
         [
             profile?.firstName,
@@ -78,28 +122,113 @@ const CustomerSidebar = () => {
             .join(" ") || "Customer";
 
 
+    /*
+    =========================================
+    MOBILE BOTTOM NAV
+    =========================================
+    */
+
+    if (isMobile) {
+
+        return (
+
+            <>
+
+                <nav
+                    style={{
+                        position: "fixed",
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        height: "70px",
+                        backgroundColor: "#ffffff",
+                        borderTop: "1px solid #e5e7eb",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-around",
+                        zIndex: 2000,
+                        boxShadow: "0 -2px 10px rgba(0,0,0,0.05)"
+                    }}
+                >
+
+                    {menuItems.map((item) => (
+
+                        <NavLink
+                            key={item.path}
+                            to={item.path}
+                            style={({ isActive }) => ({
+                                flex: 1,
+                                height: "100%",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                gap: "4px",
+                                textDecoration: "none",
+
+                                color: isActive
+                                    ? "#0d6efd"
+                                    : "#777",
+
+                                fontSize: "11px",
+                                fontWeight: isActive
+                                    ? "600"
+                                    : "400"
+                            })}
+                        >
+
+                            <i
+                                className={`bi ${item.icon}`}
+                                style={{
+                                    fontSize: "20px"
+                                }}
+                            ></i>
+
+                            <span>
+                                {item.name}
+                            </span>
+
+                        </NavLink>
+
+                    ))}
+
+                </nav>
+
+            </>
+
+        );
+    }
+
+
+    /*
+    =========================================
+    DESKTOP SIDEBAR
+    =========================================
+    */
+
     return (
 
         <aside
             style={{
-        width: "clamp(200px, 20vw, 260px)",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        bottom: 0,
+                width: "260px",
+                position: "fixed",
+                top: 0,
+                left: 0,
+                bottom: 0,
 
-        backgroundColor: "#ffffff",
-        borderRight: "1px solid #e5e7eb",
+                backgroundColor: "#ffffff",
 
-        padding: "20px 15px",
+                borderRight: "1px solid #e5e7eb",
 
-        display: "flex",
-        flexDirection: "column",
+                padding: "20px 15px",
 
-        overflowY: "auto",
+                display: "flex",
+                flexDirection: "column",
 
-        zIndex: 1000
-    }}
+                overflowY: "auto",
+
+                zIndex: 1000
+            }}
         >
 
             {/* LOGO */}
@@ -121,13 +250,17 @@ const CustomerSidebar = () => {
                             backgroundColor: "#0d6efd",
                             color: "#ffffff",
                             borderRadius: "10px",
+
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center"
                         }}
                     >
+
                         <i className="bi bi-bag-fill"></i>
+
                     </div>
+
 
                     <div>
 
@@ -172,7 +305,7 @@ const CustomerSidebar = () => {
                 }}
             >
 
-                {menuItems.map((item) => (
+                {sidebarItems.map((item) => (
 
                     <NavLink
                         key={item.path}
@@ -182,9 +315,13 @@ const CustomerSidebar = () => {
                             display: "flex",
                             alignItems: "center",
                             gap: "12px",
+
                             padding: "11px 12px",
+
                             borderRadius: "7px",
+
                             textDecoration: "none",
+
                             fontSize: "14px",
 
                             backgroundColor: isActive
@@ -225,8 +362,7 @@ const CustomerSidebar = () => {
 
             <div
                 style={{
-                    flex: 1,
-                    minHeight: "25px"
+                    flex: 1
                 }}
             ></div>
 
@@ -250,11 +386,13 @@ const CustomerSidebar = () => {
                             height: "42px",
                             backgroundColor: "#f1f3f5",
                             borderRadius: "50%",
+
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center"
                         }}
                     >
+
                         <i
                             className="bi bi-person"
                             style={{
@@ -262,21 +400,16 @@ const CustomerSidebar = () => {
                                 color: "#6c757d"
                             }}
                         ></i>
+
                     </div>
 
-                    <div
-                        style={{
-                            minWidth: 0
-                        }}
-                    >
+
+                    <div>
 
                         <div
                             style={{
                                 fontWeight: "600",
-                                color: "#212529",
-                                whiteSpace: "nowrap",
-                                overflow: "hidden",
-                                textOverflow: "ellipsis"
+                                color: "#212529"
                             }}
                         >
                             {customerName}
@@ -284,8 +417,7 @@ const CustomerSidebar = () => {
 
                         <small
                             style={{
-                                color: "#888",
-                                fontSize: "12px"
+                                color: "#888"
                             }}
                         >
                             Customer
@@ -306,14 +438,22 @@ const CustomerSidebar = () => {
                         width: "100%",
                         border: "none",
                         backgroundColor: "transparent",
+
                         padding: "11px 12px",
+
                         display: "flex",
                         alignItems: "center",
+
                         gap: "12px",
+
                         color: "#dc3545",
+
                         borderRadius: "7px",
+
                         fontSize: "14px",
+
                         textAlign: "left",
+
                         cursor: "pointer"
                     }}
                 >

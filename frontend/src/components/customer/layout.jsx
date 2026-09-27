@@ -16,9 +16,12 @@ const CustomerLayout = () => {
 
             <div
                 style={{
-                    marginLeft: "clamp(200px, 20vw, 260px)",
-                    minHeight: "100vh",
-                    width: "calc(100% - clamp(200px, 20vw, 260px))"
+                    marginLeft:
+                        window.innerWidth <= 768
+                            ? "0"
+                            : "260px",
+
+                    minHeight: "100vh"
                 }}
             >
 
@@ -26,10 +29,17 @@ const CustomerLayout = () => {
 
                 <main
                     style={{
-                        padding: "30px"
+                        padding: "30px",
+
+                        paddingBottom:
+                            window.innerWidth <= 768
+                                ? "90px"
+                                : "30px"
                     }}
                 >
+
                     <Outlet />
+
                 </main>
 
             </div>
