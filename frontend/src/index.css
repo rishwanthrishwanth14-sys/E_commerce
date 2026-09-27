@@ -162,7 +162,7 @@ body {
 
 
 /* =========================
-   ADMIN SIDEBAR
+   SIDEBAR
 ========================= */
 
 .sidebar {
@@ -184,9 +184,9 @@ body {
 }
 
 .sidebar-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .sidebar-title {
@@ -366,6 +366,52 @@ body {
 
 @media (max-width: 768px) {
 
+  .header-logo {
+    width: auto;
+  }
+
+  .header-logo span {
+    display: none;
+  }
+
+  .header-search {
+    display: none;
+  }
+
+  .profile-info {
+    display: none;
+  }
+
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar-title,
+  .sidebar-link span,
+  .logout-btn span {
+    display: none;
+  }
+
+  .sidebar-link,
+  .logout-btn {
+    justify-content: center;
+  }
+
+  .main-content {
+    margin-left: 70px;
+    padding: 20px;
+  }
+
+}
+
+
+
+/* =========================
+   MOBILE UI
+========================= */
+
+@media (max-width: 768px) {
+
   /* =========================
      HEADER
   ========================= */
@@ -417,7 +463,7 @@ body {
 
 
   /* =========================
-     ADMIN SIDEBAR
+     SIDEBAR
   ========================= */
 
   .sidebar {
@@ -435,9 +481,7 @@ body {
 
   .main-content {
     margin-left: 0;
-
     padding: 20px 15px 80px;
-
     width: 100%;
   }
 
@@ -447,12 +491,10 @@ body {
   ========================= */
 
   .page-header {
+    display: flex;
     flex-direction: column;
-
     align-items: flex-start;
-
     gap: 12px;
-
     margin-bottom: 20px;
   }
 
@@ -471,9 +513,7 @@ body {
 
   .stat-card {
     padding: 16px;
-
     border-radius: 10px;
-
     min-height: 100px;
   }
 
@@ -488,7 +528,6 @@ body {
   .stat-icon {
     width: 42px;
     height: 42px;
-
     font-size: 18px;
   }
 
@@ -508,7 +547,6 @@ body {
 
   .table-responsive {
     overflow-x: auto;
-
     -webkit-overflow-scrolling: touch;
   }
 
@@ -524,7 +562,6 @@ body {
   .form-control,
   .form-select {
     font-size: 14px;
-
     min-height: 42px;
   }
 
@@ -538,7 +575,6 @@ body {
   }
 }
 
-
 /* =========================
    MOBILE BOTTOM NAV
 ========================= */
@@ -551,7 +587,6 @@ body {
 
   .mobile-bottom-nav {
     position: fixed;
-
     left: 0;
     right: 0;
     bottom: 0;
@@ -578,7 +613,6 @@ body {
     height: 100%;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
@@ -603,27 +637,24 @@ body {
   }
 }
 
-
 /* =====================================================
    CUSTOMER PANEL
+   This CSS affects CUSTOMER only
 ===================================================== */
 
 .customer-layout {
   min-height: 100vh;
-
   background: #f5f7fa;
 }
 
+/* =========================
+   CUSTOMER MAIN AREA
+========================= */
+
 .customer-main-area {
   margin-left: 260px;
-
   min-height: 100vh;
 }
-
-.customer-main-content {
-  padding: 30px;
-}
-
 
 /* =========================
    CUSTOMER NAVBAR
@@ -631,22 +662,24 @@ body {
 
 .customer-layout .navbar {
   height: 70px;
-
   background: #ffffff !important;
-
   border-bottom: 1px solid #e5e7eb !important;
-
   padding: 0 25px !important;
 }
 
 .customer-layout .navbar h5 {
   font-size: 20px;
-
   font-weight: 600;
-
   color: #111827;
 }
 
+/* =========================
+   CUSTOMER CONTENT
+========================= */
+
+.customer-main-content {
+  padding: 30px;
+}
 
 /* =========================
    CUSTOMER SIDEBAR
@@ -654,34 +687,34 @@ body {
 
 .customer-layout > aside {
   width: 260px !important;
-
   background: #ffffff !important;
-
   border-right: 1px solid #e5e7eb !important;
-
   padding: 20px 15px !important;
 }
+
+/* Sidebar active menu */
 
 .customer-layout > aside .bg-primary {
   background-color: #0d6efd !important;
 }
 
+/* Sidebar normal menu */
+
 .customer-layout > aside nav a {
   color: #555 !important;
-
   transition: 0.2s ease;
 }
 
 .customer-layout > aside nav a:hover {
   background: #f1f5f9;
-
   color: #0d6efd !important;
 }
+
+/* Active menu should remain white */
 
 .customer-layout > aside nav a.bg-primary {
   color: #ffffff !important;
 }
-
 
 /* =========================
    CUSTOMER CARDS
@@ -689,22 +722,20 @@ body {
 
 .customer-layout .card {
   background: #ffffff;
-
   border: 1px solid #eeeeee;
-
   border-radius: 10px;
 }
+
+/* =========================
+   CUSTOMER STAT CARDS
+========================= */
 
 .customer-layout .stat-card {
   background: #ffffff;
-
   border: 1px solid #eeeeee;
-
   border-radius: 10px;
-
   padding: 20px;
 }
-
 
 /* =========================
    CUSTOMER BUTTONS
@@ -712,36 +743,37 @@ body {
 
 .customer-layout .btn-primary {
   background: #0d6efd;
-
   border-color: #0d6efd;
 }
 
 .customer-layout .btn-primary:hover {
   background: #0b5ed7;
-
   border-color: #0b5ed7;
 }
 
-
-/* =========================
-   CUSTOMER MOBILE
-========================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 768px) {
 
+  /* Sidebar hide */
+
+  .customer-layout > aside {
+    display: none !important;
+  }
+
+  /* Main area */
+
   .customer-main-area {
     margin-left: 0 !important;
-
     width: 100%;
   }
 
-  .customer-main-content {
-    padding: 20px 15px 80px;
-  }
+  /* Navbar */
 
   .customer-layout .navbar {
     height: 60px;
-
     padding: 0 15px !important;
   }
 
@@ -749,7 +781,116 @@ body {
     font-size: 18px;
   }
 
-  .customer-layout > aside {
-    width: 260px !important;
+  /* Content */
+
+  .customer-main-content {
+    padding: 20px 15px 80px;
   }
+
+}
+
+/* ============================= */
+/* CUSTOMER RESPONSIVE MENU */
+/* ============================= */
+
+.customer-layout {
+    min-height: 100vh;
+    background: #f5f7fa;
+}
+
+.customer-main-area {
+    margin-left: 260px;
+    min-height: 100vh;
+}
+
+.customer-main-content {
+    padding: 30px;
+}
+
+.customer-sidebar {
+    width: 260px;
+    z-index: 1050;
+    transition: transform 0.3s ease;
+}
+
+.customer-mobile-menu,
+.customer-mobile-close,
+.customer-sidebar-overlay {
+    display: none;
+}
+
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .customer-main-area {
+        margin-left: 0 !important;
+        width: 100%;
+    }
+
+    .customer-main-content {
+        padding: 20px 15px 80px;
+    }
+
+    .customer-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .customer-sidebar.customer-sidebar-open {
+        transform: translateX(0);
+    }
+
+    .customer-mobile-menu {
+        display: flex;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1040;
+
+        width: 42px;
+        height: 42px;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #ddd;
+        border-radius: 8px;
+
+        background: #ffffff;
+        color: #111827;
+
+        font-size: 22px;
+    }
+
+    .customer-mobile-close {
+        display: flex;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        width: 35px;
+        height: 35px;
+
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        background: transparent;
+
+        font-size: 18px;
+    }
+
+    .customer-sidebar-overlay {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.35);
+
+        z-index: 1040;
+    }
 }
