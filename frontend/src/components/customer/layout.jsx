@@ -3,16 +3,31 @@ import Navbar from "../customer/navbar";
 import CustomerSidebar from "../customer/sidebar";
 
 const CustomerLayout = () => {
+
     return (
-        <div className="customer-layout">
+        <div
+            style={{
+                minHeight: "100vh",
+                backgroundColor: "#f5f7fa"
+            }}
+        >
 
             <CustomerSidebar />
 
-            <div className="flex-grow-1 customer-main-area">
+            <div
+                style={{
+                    marginLeft: "260px",
+                    minHeight: "100vh"
+                }}
+            >
 
                 <Navbar />
 
-                <main className="customer-main-content">
+                <main
+                    style={{
+                        padding: "30px"
+                    }}
+                >
                     <Outlet />
                 </main>
 

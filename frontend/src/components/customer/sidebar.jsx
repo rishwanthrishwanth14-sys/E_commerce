@@ -5,185 +5,326 @@ import { getMyProfile } from "../../service/customerService";
 const CustomerSidebar = () => {
 
     const [profile, setProfile] = useState(null);
-    const [menuOpen, setMenuOpen] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
+
         const loadProfile = async () => {
+
             try {
                 const result = await getMyProfile();
                 setProfile(result.data || null);
             } catch {
                 setProfile(null);
             }
+
         };
 
         loadProfile();
+
     }, []);
 
     const handleLogout = () => {
+
         localStorage.removeItem("token");
         localStorage.removeItem("role");
 
         navigate("/customer/login", {
             replace: true
         });
+
     };
 
     const menuItems = [
-        { name: "Dashboard", path: "dashboard", icon: "bi-grid" },
-        { name: "My Orders", path: "orders", icon: "bi-bag" },
-        { name: "My Profile", path: "profile", icon: "bi-person" },
-        { name: "Addresses", path: "addresses", icon: "bi-geo-alt" },
-        { name: "Shop", path: "shop", icon: "bi-shop" },
-        { name: "Cart", path: "cart", icon: "bi-cart3" }
+        {
+            name: "Dashboard",
+            path: "dashboard",
+            icon: "bi-grid"
+        },
+        {
+            name: "My Orders",
+            path: "orders",
+            icon: "bi-bag"
+        },
+        {
+            name: "My Profile",
+            path: "profile",
+            icon: "bi-person"
+        },
+        {
+            name: "Addresses",
+            path: "addresses",
+            icon: "bi-geo-alt"
+        },
+        {
+            name: "Shop",
+            path: "shop",
+            icon: "bi-shop"
+        },
+        {
+            name: "Cart",
+            path: "cart",
+            icon: "bi-cart3"
+        }
     ];
 
     const customerName =
-        [profile?.firstName, profile?.lastName]
+        [
+            profile?.firstName,
+            profile?.lastName
+        ]
             .filter(Boolean)
             .join(" ") || "Customer";
 
+
     return (
-        <>
-            {/* MOBILE MENU BUTTON */}
-            <button
-                type="button"
-                className="customer-mobile-menu"
-                onClick={() => setMenuOpen(true)}
-            >
-                <i className="bi bi-list"></i>
-            </button>
 
-            {/* OVERLAY */}
-            {menuOpen && (
+        <aside
+            style={{
+                width: "260px",
+                position: "fixed",
+                top: 0,
+                left: 0,
+                bottom: 0,
+                backgroundColor: "#ffffff",
+                borderRight: "1px solid #e5e7eb",
+                padding: "20px 15px",
+                display: "flex",
+                flexDirection: "column",
+                overflowY: "auto",
+                zIndex: 1000
+            }}
+        >
+
+            {/* LOGO */}
+
+            <div
+                style={{
+                    padding: "10px 8px 25px"
+                }}
+            >
+
                 <div
-                    className="customer-sidebar-overlay"
-                    onClick={() => setMenuOpen(false)}
-                ></div>
-            )}
+                    className="d-flex align-items-center gap-2"
+                >
 
-            <aside
-                className={`bg-white border-end vh-100 d-flex flex-column p-3 position-fixed top-0 start-0 customer-sidebar ${
-                    menuOpen ? "customer-sidebar-open" : ""
-                }`}
+                    <div
+                        style={{
+                            width: "42px",
+                            height: "42px",
+                            backgroundColor: "#0d6efd",
+                            color: "#ffffff",
+                            borderRadius: "10px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}
+                    >
+                        <i className="bi bi-bag-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <h5 className="fw-bold mb-0">
+                            ShopHub
+                        </h5>
+
+                        <small className="text-muted">
+                            Customer Panel
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {/* MENU TITLE */}
+
+            <small
+                style={{
+                    textTransform: "uppercase",
+                    color: "#999",
+                    fontSize: "11px",
+                    fontWeight: "600",
+                    padding: "0 10px",
+                    marginBottom: "8px"
+                }}
+            >
+                Menu
+            </small>
+
+
+            {/* MENU */}
+
+            <nav
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "4px"
+                }}
             >
 
-                {/* CLOSE BUTTON - MOBILE */}
+                {menuItems.map((item) => (
+
+                    <NavLink
+                        key={item.path}
+                        to={item.path}
+
+                        style={({ isActive }) => ({
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "12px",
+                            padding: "11px 12px",
+                            borderRadius: "7px",
+                            textDecoration: "none",
+                            fontSize: "14px",
+
+                            backgroundColor: isActive
+                                ? "#eaf2ff"
+                                : "transparent",
+
+                            color: isActive
+                                ? "#0d6efd"
+                                : "#555",
+
+                            fontWeight: isActive
+                                ? "600"
+                                : "400"
+                        })}
+                    >
+
+                        <i
+                            className={`bi ${item.icon}`}
+                            style={{
+                                fontSize: "17px",
+                                width: "20px",
+                                textAlign: "center"
+                            }}
+                        ></i>
+
+                        <span>
+                            {item.name}
+                        </span>
+
+                    </NavLink>
+
+                ))}
+
+            </nav>
+
+
+            {/* SPACE */}
+
+            <div
+                style={{
+                    flex: 1,
+                    minHeight: "25px"
+                }}
+            ></div>
+
+
+            {/* PROFILE */}
+
+            <div
+                style={{
+                    borderTop: "1px solid #eeeeee",
+                    paddingTop: "15px"
+                }}
+            >
+
+                <div
+                    className="d-flex align-items-center gap-2 px-2 mb-3"
+                >
+
+                    <div
+                        style={{
+                            width: "42px",
+                            height: "42px",
+                            backgroundColor: "#f1f3f5",
+                            borderRadius: "50%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}
+                    >
+                        <i
+                            className="bi bi-person"
+                            style={{
+                                fontSize: "18px",
+                                color: "#6c757d"
+                            }}
+                        ></i>
+                    </div>
+
+                    <div
+                        style={{
+                            minWidth: 0
+                        }}
+                    >
+
+                        <div
+                            style={{
+                                fontWeight: "600",
+                                color: "#212529",
+                                whiteSpace: "nowrap",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis"
+                            }}
+                        >
+                            {customerName}
+                        </div>
+
+                        <small
+                            style={{
+                                color: "#888",
+                                fontSize: "12px"
+                            }}
+                        >
+                            Customer
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                {/* LOGOUT */}
+
                 <button
                     type="button"
-                    className="customer-mobile-close"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={handleLogout}
+
+                    style={{
+                        width: "100%",
+                        border: "none",
+                        backgroundColor: "transparent",
+                        padding: "11px 12px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        color: "#dc3545",
+                        borderRadius: "7px",
+                        fontSize: "14px",
+                        textAlign: "left",
+                        cursor: "pointer"
+                    }}
                 >
-                    <i className="bi bi-x-lg"></i>
+
+                    <i className="bi bi-box-arrow-left"></i>
+
+                    <span>
+                        Sign Out
+                    </span>
+
                 </button>
 
-                <div className="px-2 py-3 mb-4 flex-shrink-0">
+            </div>
 
-                    <div className="d-flex align-items-center gap-2">
+        </aside>
 
-                        <div
-                            className="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center"
-                            style={{
-                                width: "42px",
-                                height: "42px"
-                            }}
-                        >
-                            <i className="bi bi-bag-fill fs-5"></i>
-                        </div>
-
-                        <div>
-                            <h5 className="fw-bold mb-0">
-                                ShopHub
-                            </h5>
-
-                            <small className="text-muted">
-                                Customer Panel
-                            </small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <small className="text-uppercase text-muted fw-semibold px-2 mb-2">
-                    Menu
-                </small>
-
-                <nav className="d-flex flex-column gap-1">
-
-                    {menuItems.map((item) => (
-
-                        <NavLink
-                            key={item.path}
-                            to={item.path}
-                            onClick={() => setMenuOpen(false)}
-                            className={({ isActive }) =>
-                                `text-decoration-none rounded-3 px-3 py-3 d-flex align-items-center gap-3 ${
-                                    isActive
-                                        ? "bg-primary text-white shadow-sm"
-                                        : "text-secondary"
-                                }`
-                            }
-                        >
-                            <i className={`bi ${item.icon} fs-5`}></i>
-
-                            <span className="fw-medium">
-                                {item.name}
-                            </span>
-                        </NavLink>
-
-                    ))}
-
-                </nav>
-
-                <div
-                    className="flex-grow-1"
-                    style={{ minHeight: "24px" }}
-                ></div>
-
-                <div className="border-top pt-3">
-
-                    <div className="d-flex align-items-center gap-2 px-2 mb-3">
-
-                        <div
-                            className="bg-light rounded-circle d-flex align-items-center justify-content-center"
-                            style={{
-                                width: "42px",
-                                height: "42px"
-                            }}
-                        >
-                            <i className="bi bi-person fs-5 text-secondary"></i>
-                        </div>
-
-                        <div className="overflow-hidden">
-
-                            <div className="fw-semibold text-dark text-truncate">
-                                {customerName}
-                            </div>
-
-                            <small className="text-muted">
-                                Customer
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                    <button
-                        onClick={handleLogout}
-                        type="button"
-                        className="btn btn-light w-100 text-danger d-flex align-items-center gap-3 px-3 py-2"
-                    >
-                        <i className="bi bi-box-arrow-left"></i>
-                        <span>Sign Out</span>
-                    </button>
-
-                </div>
-
-            </aside>
-        </>
     );
 };
 
