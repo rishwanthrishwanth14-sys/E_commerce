@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../service/api";
+import { updateProduct , getProductById } from "../../service/productService"
 
 const EditProduct = () => {
 
@@ -32,11 +33,9 @@ const EditProduct = () => {
 
             try {
 
-                const response = await api.get(
-                    `/api/admin/product/${productId}`
-                );
+                const response = await getProductById(productId);
 
-                const product = response.data.data;
+                const product = response.data;
 
                 setFormData({
                     productName: product.productName || "",
@@ -97,8 +96,8 @@ const EditProduct = () => {
             setSaving(true);
             setError("");
 
-            await api.put(
-                `/api/admin/product/${productId}`,
+            await updateProduct(
+                productId,
                 {
                     ...formData,
                     categoryId: Number(formData.categoryId),

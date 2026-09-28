@@ -371,7 +371,7 @@ const CustomerCheckout = () => {
                                     </strong>
                                     <strong>
                                         ₹
-                                        {subtotal.toLocalString("en-IN")}
+                                        {subtotal.toLocaleString("en-IN")}
                                     </strong>
                                 </div>
 
@@ -384,7 +384,7 @@ const CustomerCheckout = () => {
                                     <strong>Total</strong>
                                     <strong>
                                         ₹
-                                        {subtotal.toLocalString("en-IN")}
+                                        {subtotal.toLocaleString("en-IN")}
                                     </strong>
                                 </div>
 

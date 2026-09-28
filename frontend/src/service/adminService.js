@@ -9,3 +9,8 @@ export const updateMyProfile = async (profileData) => {
     const response = await api.put("/api/user/profile", profileData);
     return response.data;
 };
+
+export const createAdmin = async ()=>{
+    const response = await api.post("/api/user/create");
+    return response.data;
+}

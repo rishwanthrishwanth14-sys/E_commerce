@@ -17,7 +17,7 @@ router.get("/api/admin/products", authenticate, isAdmin, productController.getPr
 
 router.get("/api/admin/product/:productId", authenticate, isAdmin, productController.getProductById);
 
-router.put("/api/admin/product/:productId", authenticate, isAdmin, productController.updateProduct);
+router.put("/api/admin/edit/product/:productId", authenticate, isAdmin, productController.updateProduct);
 
 router.delete("/api/admin/product/:productId", authenticate, isAdmin, productController.deleteProduct);
 

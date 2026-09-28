@@ -195,7 +195,7 @@ const AdminProductDetails = () => {
                         className="btn btn-primary"
                         onClick={() =>
                             navigate(
-                                `/admin/product/edit/${product.productId}`
+                                `/admin/products/edit/${product.productId}`
                             )
                         }
                     >

@@ -191,6 +191,35 @@ const CustomerSidebar = () => {
                         </NavLink>
 
                     ))}
+                    <button
+                        type="button"
+                        onClick={handleLogout}
+                        style={{
+                            flex: 1,
+                            height: "100%",
+                            border: "none",
+                            backgroundColor: "transparent",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "4px",
+                            color: "#dc3545",
+                            fontSize: "11px",
+                            cursor: "pointer"
+                        }}
+                    >
+                        <i
+                            className="bi bi-box-arrow-right"
+                            style={{
+                                fontSize: "20px"
+                            }}
+                        ></i>
+
+                        <span>
+                            Logout
+                        </span>
+                    </button>
 
                 </nav>
 

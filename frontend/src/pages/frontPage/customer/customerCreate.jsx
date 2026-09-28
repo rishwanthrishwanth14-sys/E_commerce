@@ -23,7 +23,7 @@ const CreateCustomer = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
-    const handleChange = (e) => {
+    const handleChange = (e) => {   
         const { name, value } = e.target;
 
         setFormData((prev) => ({
