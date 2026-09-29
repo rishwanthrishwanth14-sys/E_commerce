@@ -78,11 +78,11 @@ function Sidebar() {
             </p>
 
             <NavLink
-                to="/customer/register"
+                to="/admin/create"
                 className="sidebar-link"
             >
                 <i className="bi bi-person-plus"></i>
-                <span>Add Customer</span>
+                <span>Add Admin</span>
             </NavLink>
 
             <NavLink

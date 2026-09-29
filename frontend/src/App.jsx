@@ -12,6 +12,7 @@ import AdminCustomers from "./pages/admin/customers";
 import AdminProductDetails from "./pages/admin/adminProductDetails";
 import EditProduct from "./pages/admin/editProduct";
 import ProductImages from "./pages/admin/productImage";
+import CreateAdmin from "./pages/frontPage/admin/adminCreate";
 
 import CreateCustomer from "./pages/frontPage/customer/customerCreate";
 import CustomerLogin from "./pages/frontPage/customer/customerLogin";
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="orders" element={<AdminOrders />} />
           <Route path="customers" element={<AdminCustomers />} />
           <Route path="products/:productId" element={<AdminProductDetails />} />
+          <Route path="create" element={<CreateAdmin/>} />
           <Route
             path="products/edit/:productId"
             element={<EditProduct />}
