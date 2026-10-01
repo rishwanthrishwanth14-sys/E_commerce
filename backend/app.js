@@ -11,6 +11,7 @@ const adminCustomerRoutes = require("./routes/routesForAdmin/customerRoutes");
 const adminProductImageRoutes = require("./routes/routesForAdmin/productImageRoutes");
 const adminOrderRoutes = require("./routes/routesForAdmin/orderRoutes");
 const userRoutes = require("./routes/routesForAdmin/userRoutes");
+const adminReview = require("./routes/routesForAdmin/adminReviewRoutes");
 
 // Customer routes
 const customerRoutes = require("./routes/routesForCustomer/customerRoutes");
@@ -18,6 +19,7 @@ const orderRoutes = require("./routes/routesForCustomer/orderRoutes");
 const customerAddressRoutes = require("./routes/routesForCustomer/customerAddressRoutes");
 const productRoutes = require("./routes/routesForCustomer/productRoutes");
 const cartRoutes = require("./routes/routesForCustomer/cartRouts");
+const customerReview = require("./routes/routesForCustomer/customerReviewRouts");
 
 const { connectDB } = require("./config/db");
 const { logger, requestLogger } = require("./services/loggerService");
@@ -60,6 +62,7 @@ app.use(adminProductRoutes);
 app.use(adminCustomerRoutes);
 app.use(adminProductImageRoutes);
 app.use(adminOrderRoutes);
+app.use(adminReview);
 
 // Customer
 app.use(customerRoutes);
@@ -67,6 +70,7 @@ app.use(orderRoutes);
 app.use(customerAddressRoutes);
 app.use(productRoutes);
 app.use(cartRoutes);
+app.use(customerReview);
 
 app.get("/test", async (req, res) => {
     try {
