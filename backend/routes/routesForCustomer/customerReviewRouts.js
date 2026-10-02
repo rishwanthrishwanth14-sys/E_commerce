@@ -4,8 +4,8 @@ const router = express.Router();
 
 const reviewController = require("../../controllers/productReviewController");
 
-const authenticate = require("../../middleware/authMiddleware");
-const isCustomer = require("../../middleware/authMiddleware");
+const {authenticate,isCustomer} = require("../../middleware/authMiddleware");
+
 
 
 // Create Review

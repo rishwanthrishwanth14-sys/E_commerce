@@ -171,7 +171,7 @@ const checkVerifiedPurchase = async (
         SELECT
             op.order_product_id
 
-        FROM order o
+        FROM  \`order\` o
 
         INNER JOIN order_product op
             ON o.order_id = op.order_id

@@ -1,4 +1,4 @@
-const reviewModel = require("../models/reviewModel");
+const reviewModel = require("../models/productReviewModel");
 
 
 // Create Review
@@ -56,6 +56,12 @@ const createReview = async (req, res) => {
                 customerId,
                 productId
             );
+        if (!isVerifiedPurchase) {
+            return res.status(403).json({
+                success: false,
+                message: "You can review only products you have purchased"
+            });
+        }
 
 
         // Create review

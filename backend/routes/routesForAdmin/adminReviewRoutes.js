@@ -4,8 +4,8 @@ const router = express.Router();
 
 const reviewController = require("../../controllers/productReviewController");
 
-const authenticate = require("../../middleware/authMiddleware");
-const isAdmin = require("../../middleware/authMiddleware");
+const {authenticate,isAdmin} = require("../../middleware/authMiddleware");
+
 
 
 // Get all reviews
