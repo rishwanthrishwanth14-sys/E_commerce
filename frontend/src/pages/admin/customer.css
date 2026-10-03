@@ -1,0 +1,434 @@
+/* =========================================================
+   ADMIN CUSTOMERS PAGE
+========================================================= */
+
+.container-fluid.py-4 {
+    min-height: 100vh;
+    padding: 32px 36px !important;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(99, 102, 241, 0.06),
+            transparent 25%
+        ),
+        #f8fafc;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.container-fluid.py-4 > h3 {
+    margin-bottom: 22px !important;
+
+    color: #0f172a;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.container-fluid.py-4 > .alert {
+    padding: 13px 16px;
+
+    margin-bottom: 20px;
+
+    border: none;
+    border-radius: 11px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+.container-fluid.py-4 > .alert-danger {
+    color: #b91c1c;
+
+    background: #fef2f2;
+}
+
+
+/* =========================================================
+   CUSTOMER CARD
+========================================================= */
+
+.container-fluid.py-4 > .card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06) !important;
+}
+
+
+/* Gradient top line */
+
+.container-fluid.py-4 > .card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #8b5cf6,
+            #06b6d4
+        );
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.container-fluid.py-4 > .card .table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 18px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.container-fluid.py-4 > .card table {
+    width: 100%;
+
+    min-width: 850px;
+
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.container-fluid.py-4 > .card table thead th {
+    height: 55px;
+
+    padding: 15px 18px;
+
+    color: #64748b;
+
+    background: #f8fafc;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.container-fluid.py-4 > .card table tbody td {
+    height: 65px;
+
+    padding: 15px 18px;
+
+    color: #475569;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eef2f7;
+
+    font-size: 12px;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+
+/* Last row */
+
+.container-fluid.py-4 > .card table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Hover */
+
+.container-fluid.py-4 > .card table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.container-fluid.py-4 > .card table tbody tr:hover td {
+    background: #fafbff;
+}
+
+
+/* =========================================================
+   CUSTOMER NUMBER
+========================================================= */
+
+.container-fluid.py-4 > .card table tbody td:first-child {
+    width: 55px;
+
+    color: #94a3b8;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CUSTOMER NAME
+========================================================= */
+
+.container-fluid.py-4 > .card table tbody td:nth-child(2) {
+    color: #1e293b;
+
+    font-weight: 700;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   EMAIL
+========================================================= */
+
+.container-fluid.py-4 > .card table tbody td:nth-child(3) {
+    color: #475569;
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+.container-fluid.py-4 > .card table tbody td:nth-child(4) {
+    color: #475569;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.container-fluid.py-4 > .card table tbody td:nth-child(5) {
+    color: #64748b;
+
+    max-width: 230px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.container-fluid.py-4 > .card table .badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 62px;
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+/* Active */
+
+.container-fluid.py-4 > .card table .text-bg-success {
+    color: #047857 !important;
+
+    background: #dcfce7 !important;
+
+    border: 1px solid #bbf7d0;
+}
+
+
+/* Inactive */
+
+.container-fluid.py-4 > .card table .text-bg-secondary {
+    color: #64748b !important;
+
+    background: #f1f5f9 !important;
+
+    border: 1px solid #e2e8f0;
+}
+
+
+/* =========================================================
+   LOADING STATE
+========================================================= */
+
+.text-center.py-5 {
+    min-height: 300px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #64748b;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+========================================================= */
+
+.container-fluid.py-4 > .card table tbody:empty::after {
+    content: "No customers found";
+
+    display: block;
+
+    padding: 50px;
+
+    color: #94a3b8;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .container-fluid.py-4 {
+        padding: 25px 22px !important;
+    }
+
+    .container-fluid.py-4 > h3 {
+        font-size: 24px;
+    }
+
+    .container-fluid.py-4 > .card table {
+        min-width: 800px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .container-fluid.py-4 {
+        padding:
+            22px 15px 100px !important;
+    }
+
+    .container-fluid.py-4 > h3 {
+        font-size: 22px;
+    }
+
+    .container-fluid.py-4 > .card {
+        border-radius: 14px !important;
+    }
+
+    .container-fluid.py-4 > .card .table-responsive {
+        border-radius: 14px;
+    }
+
+    .container-fluid.py-4 > .card table {
+        min-width: 850px;
+    }
+
+    .container-fluid.py-4 > .card table thead th,
+    .container-fluid.py-4 > .card table tbody td {
+        padding: 13px 15px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .container-fluid.py-4 {
+        padding:
+            18px 11px 100px !important;
+    }
+
+    .container-fluid.py-4 > h3 {
+        font-size: 20px;
+    }
+
+    .container-fluid.py-4 > .card {
+        border-radius: 12px !important;
+    }
+}
+
+.customers-loading {
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #64748b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.customers-loading .spinner-border {
+    width: 30px;
+    height: 30px;
+}

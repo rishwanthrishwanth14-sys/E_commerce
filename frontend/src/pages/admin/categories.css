@@ -1,0 +1,888 @@
+/* =========================================================
+   CATEGORIES PAGE
+========================================================= */
+
+.container-fluid.py-4 {
+    min-height: 100vh;
+    padding: 32px 36px !important;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(99, 102, 241, 0.06),
+            transparent 25%
+        ),
+        #f8fafc;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.container-fluid.py-4 > .d-flex:first-child {
+    padding: 22px 26px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.container-fluid.py-4 > .d-flex:first-child h3 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+.container-fluid.py-4 > .d-flex:first-child p {
+    margin-top: 5px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.container-fluid.py-4 > .alert {
+    margin-top: 18px;
+
+    padding: 13px 16px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+.container-fluid.py-4 > .alert-success {
+    color: #047857;
+
+    background: #ecfdf5;
+}
+
+.container-fluid.py-4 > .alert-danger {
+    color: #b91c1c;
+
+    background: #fef2f2;
+}
+
+
+/* =========================================================
+   CARD HEADINGS
+========================================================= */
+
+.container-fluid.py-4 .card h5 {
+    color: #0f172a;
+
+    font-size: 17px;
+    font-weight: 750;
+
+    letter-spacing: -0.2px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.container-fluid.py-4 .form-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #475569;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.container-fluid.py-4 .form-control,
+.container-fluid.py-4 .form-select {
+    min-height: 45px;
+
+    padding: 10px 13px;
+
+    color: #1e293b;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe3ee;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.container-fluid.py-4 .form-control::placeholder {
+    color: #94a3b8;
+}
+
+.container-fluid.py-4 .form-control:hover,
+.container-fluid.py-4 .form-select:hover {
+    border-color: #a5b4fc;
+}
+
+.container-fluid.py-4 .form-control:focus,
+.container-fluid.py-4 .form-select:focus {
+    color: #1e293b;
+
+    background: #ffffff;
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.09);
+
+    outline: none;
+}
+
+
+/* Textarea */
+
+.container-fluid.py-4 textarea.form-control {
+    min-height: 95px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   FORM SPACING
+========================================================= */
+
+.container-fluid.py-4 form > .mb-3 {
+    margin-bottom: 19px !important;
+}
+
+.container-fluid.py-4 form > .row.g-3.mb-4 {
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   SORT + STATUS
+========================================================= */
+
+.container-fluid.py-4 .row.g-3.mb-4 > .col-6 {
+    width: 50%;
+}
+
+.container-fluid.py-4 .row.g-3.mb-4 > .mb-4 {
+    margin-bottom: 0 !important;
+}
+
+
+/* =========================================================
+   FORM BUTTONS
+========================================================= */
+
+.container-fluid.py-4 form .btn-primary {
+    min-height: 43px;
+
+    padding: 10px 17px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+        0 7px 17px rgba(99, 102, 241, 0.2);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.container-fluid.py-4 form .btn-primary:hover {
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 23px rgba(99, 102, 241, 0.28);
+}
+
+.container-fluid.py-4 form .btn-primary:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* Cancel */
+
+.container-fluid.py-4 form .btn-secondary {
+    min-height: 43px;
+
+    padding: 10px 17px;
+
+    color: #475569;
+
+    background: #f1f5f9;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: all 0.2s ease;
+}
+
+.container-fluid.py-4 form .btn-secondary:hover {
+    color: #334155;
+
+    background: #e2e8f0;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CATEGORY COUNT BADGE
+========================================================= */
+
+.container-fluid.py-4 .badge.text-bg-light {
+    padding: 7px 11px;
+
+    color: #4f46e5 !important;
+
+    background: #eef2ff !important;
+
+    border: 1px solid #e0e7ff;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.container-fluid.py-4 .table-responsive {
+    overflow-x: auto;
+
+    border: 1px solid #edf1f7;
+
+    border-radius: 12px;
+}
+
+.container-fluid.py-4 table {
+    min-width: 650px;
+
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+
+/* Table Header */
+
+.container-fluid.py-4 .table thead th {
+    padding: 14px 15px;
+
+    color: #64748b;
+
+    background: #f8fafc;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* Table Body */
+
+.container-fluid.py-4 .table tbody td {
+    padding: 15px;
+
+    color: #475569;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eef2f7;
+
+    font-size: 12px;
+
+    vertical-align: middle;
+}
+
+.container-fluid.py-4 .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Row hover */
+
+.container-fluid.py-4 .table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.container-fluid.py-4 .table tbody tr:hover td {
+    background: #fafbff;
+}
+
+
+/* Category name */
+
+.container-fluid.py-4 .table tbody td strong {
+    color: #1e293b;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.container-fluid.py-4 .table .badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.container-fluid.py-4 .table .text-bg-success {
+    color: #047857 !important;
+
+    background: #dcfce7 !important;
+}
+
+.container-fluid.py-4 .table .text-bg-secondary {
+    color: #64748b !important;
+
+    background: #f1f5f9 !important;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.container-fluid.py-4 .table .btn {
+    min-width: 55px;
+
+    padding: 6px 11px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Edit */
+
+.container-fluid.py-4 .table .btn-outline-primary {
+    color: #4f46e5;
+
+    background: #f5f3ff;
+
+    border-color: #c7d2fe;
+}
+
+.container-fluid.py-4 .table .btn-outline-primary:hover {
+    color: #ffffff;
+
+    background: #6366f1;
+
+    border-color: #6366f1;
+
+    transform: translateY(-1px);
+}
+
+
+/* Delete */
+
+.container-fluid.py-4 .table .btn-outline-danger {
+    color: #dc2626;
+
+    background: #fff1f2;
+
+    border-color: #fecdd3;
+}
+
+.container-fluid.py-4 .table .btn-outline-danger:hover {
+    color: #ffffff;
+
+    background: #ef4444;
+
+    border-color: #ef4444;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LOADING / EMPTY STATE
+========================================================= */
+
+.container-fluid.py-4 .text-center.py-5 {
+    padding: 55px 20px !important;
+
+    color: #94a3b8 !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8fafc,
+            #ffffff
+        );
+
+    border: 1px dashed #cbd5e1;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .container-fluid.py-4 {
+        padding: 25px 22px !important;
+    }
+
+    .container-fluid.py-4 .row.g-4 .card-body {
+        padding: 22px;
+    }
+
+    .container-fluid.py-4 > .d-flex:first-child {
+        padding: 20px 22px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .container-fluid.py-4 {
+        padding:
+            20px 15px 95px !important;
+    }
+
+
+    /* Header */
+
+    .container-fluid.py-4 > .d-flex:first-child {
+        display: block !important;
+
+        padding: 19px;
+    }
+
+    .container-fluid.py-4 > .d-flex:first-child h3 {
+        font-size: 23px;
+    }
+
+
+    /* Form and table cards */
+
+    .container-fluid.py-4 .row.g-4 .card-body {
+        padding: 19px;
+    }
+
+
+    /* Table */
+
+    .container-fluid.py-4 .table-responsive {
+        border-radius: 10px;
+    }
+
+    .container-fluid.py-4 .table thead th,
+    .container-fluid.py-4 .table tbody td {
+        padding: 12px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .container-fluid.py-4 {
+        padding:
+            16px 11px 95px !important;
+    }
+
+
+    .container-fluid.py-4 > .d-flex:first-child {
+        border-radius: 14px;
+    }
+
+    .container-fluid.py-4 > .d-flex:first-child h3 {
+        font-size: 21px;
+    }
+
+
+    .container-fluid.py-4 .row.g-4 .card {
+        border-radius: 14px !important;
+    }
+
+    .container-fluid.py-4 .row.g-4 .card-body {
+        padding: 17px;
+    }
+
+
+    /* Form */
+
+    .container-fluid.py-4 form .d-flex.gap-2 {
+        width: 100%;
+    }
+
+    .container-fluid.py-4 form .d-flex.gap-2 .btn {
+        flex: 1;
+    }
+
+
+    /* Sort + status */
+
+    .container-fluid.py-4 .row.g-3.mb-4 > .col-6 {
+        width: 100%;
+    }
+
+    .container-fluid.py-4 .row.g-3.mb-4 > .mb-4 {
+        margin-bottom: 0 !important;
+    }
+
+
+    /* Table action buttons */
+
+    .container-fluid.py-4 .table .btn {
+        margin-bottom: 4px;
+
+        min-width: 52px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .container-fluid.py-4 {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    .container-fluid.py-4 > .d-flex:first-child h3 {
+        font-size: 19px;
+    }
+
+    .container-fluid.py-4 .row.g-4 .card-body {
+        padding: 15px;
+    }
+}
+
+/* =========================================================
+   CATEGORIES - FINAL CARD FIX
+========================================================= */
+
+.container-fluid.py-4 .row.g-4 > .col-lg-4 > .card,
+.container-fluid.py-4 .row.g-4 > .col-lg-8 > .card {
+    position: relative;
+
+    height: auto !important;
+    min-height: 100%;
+
+    overflow: visible !important;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06) !important;
+}
+
+
+/* Top gradient line */
+
+.container-fluid.py-4 .row.g-4 > .col-lg-4 > .card::before,
+.container-fluid.py-4 .row.g-4 > .col-lg-8 > .card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #6366f1,
+        #8b5cf6,
+        #06b6d4
+    );
+
+    border-radius: 18px 18px 0 0;
+}
+
+
+/* Card body */
+
+.container-fluid.py-4 .row.g-4 > .col-lg-4 > .card .card-body,
+.container-fluid.py-4 .row.g-4 > .col-lg-8 > .card .card-body {
+    height: auto !important;
+
+    overflow: visible !important;
+
+    padding: 26px;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.container-fluid.py-4 .col-lg-4 .card {
+    min-height: 650px;
+}
+
+.container-fluid.py-4 .col-lg-4 form {
+    width: 100%;
+}
+
+
+/* Form fields */
+
+.container-fluid.py-4 .col-lg-4 .form-control,
+.container-fluid.py-4 .col-lg-4 .form-select {
+    width: 100%;
+
+    min-height: 46px;
+}
+
+
+/* Description */
+
+.container-fluid.py-4 .col-lg-4 textarea.form-control {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+/* Sort + Status */
+
+.container-fluid.py-4 .col-lg-4 .row.g-3.mb-4 {
+    align-items: flex-start;
+}
+
+.container-fluid.py-4 .col-lg-4 .row.g-3.mb-4 > .col-6 {
+    width: 50%;
+}
+
+.container-fluid.py-4 .col-lg-4 .row.g-3.mb-4 > .mb-4 {
+    margin-bottom: 0 !important;
+}
+
+
+/* Buttons */
+
+.container-fluid.py-4 .col-lg-4 form .d-flex.gap-2 {
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   CATEGORY LIST
+========================================================= */
+
+.container-fluid.py-4 .col-lg-8 .card {
+    min-height: 650px;
+}
+
+.container-fluid.py-4 .col-lg-8 .card-body {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* Table area */
+
+.container-fluid.py-4 .col-lg-8 .table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    border: 1px solid #edf1f7;
+
+    border-radius: 12px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.container-fluid.py-4 .col-lg-8 table {
+    width: 100%;
+
+    min-width: 650px;
+
+    margin-bottom: 0;
+}
+
+.container-fluid.py-4 .col-lg-8 table thead th {
+    height: 48px;
+
+    padding: 13px 15px;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.container-fluid.py-4 .col-lg-8 table tbody td {
+    height: 58px;
+
+    padding: 13px 15px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eef2f7;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+.container-fluid.py-4 .col-lg-8 table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.container-fluid.py-4 .col-lg-8 table tbody tr:hover td {
+    background: #fafbff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .container-fluid.py-4 .col-lg-4 .card,
+    .container-fluid.py-4 .col-lg-8 .card {
+        min-height: auto;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .container-fluid.py-4 {
+        padding-bottom: 100px !important;
+    }
+
+    .container-fluid.py-4 .row.g-4 > .col-lg-4 > .card .card-body,
+    .container-fluid.py-4 .row.g-4 > .col-lg-8 > .card .card-body {
+        padding: 20px;
+    }
+
+    .container-fluid.py-4 .col-lg-4 .row.g-3.mb-4 > .col-6 {
+        width: 50%;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .container-fluid.py-4 .col-lg-4 .row.g-3.mb-4 > .col-6 {
+        width: 100%;
+    }
+
+    .container-fluid.py-4 .col-lg-4 .row.g-3.mb-4 > .mb-4 {
+        margin-top: 12px;
+    }
+
+    .container-fluid.py-4 .col-lg-4 .card .card-body,
+    .container-fluid.py-4 .col-lg-8 .card .card-body {
+        padding: 17px;
+    }
+}

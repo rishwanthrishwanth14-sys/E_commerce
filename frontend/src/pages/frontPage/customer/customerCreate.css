@@ -1,0 +1,582 @@
+/* =========================================
+   CUSTOMER CREATE / REGISTER PAGE
+========================================= */
+
+.min-vh-100.bg-light.py-5 {
+    min-height: 100vh !important;
+    padding: 45px 20px !important;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(99, 102, 241, 0.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(6, 182, 212, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #eef2ff 50%,
+            #f8fafc 100%
+        ) !important;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.card {
+    border: 1px solid rgba(226, 232, 240, 0.85) !important;
+    border-radius: 24px !important;
+
+    background: rgba(255, 255, 255, 0.97) !important;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.10),
+        0 8px 25px rgba(99, 102, 241, 0.06) !important;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   CARD BODY
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.card-body {
+    padding: 45px !important;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.card-body
+.text-center.mb-4 {
+    padding-bottom: 10px;
+}
+
+
+/* Logo */
+
+.min-vh-100.bg-light.py-5
+.card-body
+.bg-primary.text-white.rounded-3 {
+    width: 64px !important;
+    height: 64px !important;
+
+    border-radius: 18px !important;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    ) !important;
+
+    box-shadow:
+        0 12px 28px rgba(99, 102, 241, 0.28);
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+
+.min-vh-100.bg-light.py-5
+.card-body
+.bg-primary.text-white.rounded-3:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 16px 32px rgba(99, 102, 241, 0.35);
+}
+
+
+.min-vh-100.bg-light.py-5
+.card-body
+.bg-primary.text-white.rounded-3 i {
+    font-size: 25px !important;
+}
+
+
+/* Heading */
+
+.min-vh-100.bg-light.py-5
+.card-body
+.text-center.mb-4 h2 {
+    color: #0f172a;
+
+    font-size: 30px;
+
+    font-weight: 800 !important;
+
+    letter-spacing: -0.6px;
+}
+
+
+.min-vh-100.bg-light.py-5
+.card-body
+.text-center.mb-4 p {
+    color: #64748b !important;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.card-body
+.mb-4 h5 {
+    display: flex;
+    align-items: center;
+
+    color: #1e293b;
+
+    font-size: 17px;
+
+    font-weight: 700 !important;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid #eef2f7;
+}
+
+
+.min-vh-100.bg-light.py-5
+.card-body
+.mb-4 h5 i {
+    color: #6366f1 !important;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   FORM LABEL
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.form-label {
+    color: #334155;
+
+    font-size: 13px;
+
+    font-weight: 600 !important;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================================
+   NORMAL INPUTS
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.form-control,
+.min-vh-100.bg-light.py-5
+.form-select {
+    min-height: 47px;
+
+    border: 1px solid #dbe2ea !important;
+
+    border-radius: 11px !important;
+
+    background: #ffffff !important;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    box-shadow: none !important;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.min-vh-100.bg-light.py-5
+.form-control:hover,
+.min-vh-100.bg-light.py-5
+.form-select:hover {
+    border-color: #c7d2fe !important;
+}
+
+
+.min-vh-100.bg-light.py-5
+.form-control:focus,
+.min-vh-100.bg-light.py-5
+.form-select:focus {
+    border-color: #6366f1 !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10) !important;
+}
+
+
+/* Placeholder */
+
+.min-vh-100.bg-light.py-5
+.form-control::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.input-group {
+    border-radius: 11px;
+}
+
+
+.min-vh-100.bg-light.py-5
+.input-group-text {
+    min-width: 47px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #f8fafc !important;
+
+    border: 1px solid #dbe2ea !important;
+
+    border-right: none !important;
+
+    border-radius: 11px 0 0 11px !important;
+}
+
+
+.min-vh-100.bg-light.py-5
+.input-group .form-control {
+    border-left: none !important;
+
+    border-radius: 0 11px 11px 0 !important;
+}
+
+
+.min-vh-100.bg-light.py-5
+.input-group:focus-within
+.input-group-text {
+    border-color: #6366f1 !important;
+
+    background: #eef2ff !important;
+}
+
+
+.min-vh-100.bg-light.py-5
+.input-group:focus-within
+.form-control {
+    border-color: #6366f1 !important;
+}
+
+
+/* =========================================
+   OPTIONAL TEXT
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.text-muted.fw-normal {
+    color: #94a3b8 !important;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.min-vh-100.bg-light.py-5
+hr {
+    border: 0;
+
+    border-top: 1px solid #e2e8f0;
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   ALERT
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.alert {
+    border-radius: 12px !important;
+
+    padding: 12px 15px;
+
+    font-size: 14px;
+
+    border-width: 1px;
+}
+
+
+.min-vh-100.bg-light.py-5
+.alert-success {
+    color: #047857 !important;
+
+    background: #ecfdf5 !important;
+
+    border-color: #a7f3d0 !important;
+}
+
+
+.min-vh-100.bg-light.py-5
+.alert-danger {
+    color: #b91c1c !important;
+
+    background: #fef2f2 !important;
+
+    border-color: #fecaca !important;
+}
+
+
+/* =========================================
+   CREATE ACCOUNT BUTTON
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.btn-primary {
+    min-height: 49px;
+
+    border: none !important;
+
+    border-radius: 12px !important;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    ) !important;
+
+    color: #ffffff !important;
+
+    font-size: 14px;
+
+    font-weight: 700 !important;
+
+    box-shadow:
+        0 10px 22px rgba(99, 102, 241, 0.24);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.min-vh-100.bg-light.py-5
+.btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 28px rgba(99, 102, 241, 0.32);
+}
+
+
+.min-vh-100.bg-light.py-5
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+
+.min-vh-100.bg-light.py-5
+.btn-primary:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   SIGN IN LINK
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.btn-link {
+    color: #6366f1 !important;
+
+    font-size: 14px;
+
+    text-decoration: none !important;
+
+    transition: color 0.2s ease;
+}
+
+
+.min-vh-100.bg-light.py-5
+.btn-link:hover {
+    color: #4f46e5 !important;
+
+    text-decoration: underline !important;
+}
+
+
+/* =========================================
+   BACK TO HOME
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.btn-light {
+    padding: 8px 14px;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-radius: 9px !important;
+
+    background: #ffffff !important;
+
+    color: #475569 !important;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-decoration: none !important;
+
+    transition: all 0.2s ease;
+}
+
+
+.min-vh-100.bg-light.py-5
+.btn-light:hover {
+    color: #4f46e5 !important;
+
+    background: #eef2ff !important;
+
+    border-color: #c7d2fe !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   ICON FIX
+========================================= */
+
+.min-vh-100.bg-light.py-5
+.bi {
+    line-height: 1;
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+    .min-vh-100.bg-light.py-5 {
+        padding: 30px 15px !important;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body {
+        padding: 35px 28px !important;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body
+    .text-center.mb-4 h2 {
+        font-size: 26px;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 576px) {
+
+    .min-vh-100.bg-light.py-5 {
+        padding: 20px 12px !important;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card {
+        border-radius: 19px !important;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body {
+        padding: 30px 20px !important;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body
+    .text-center.mb-4 h2 {
+        font-size: 24px;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body
+    .text-center.mb-4 p {
+        font-size: 13px;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .form-control,
+    .min-vh-100.bg-light.py-5
+    .form-select {
+        min-height: 45px;
+
+        font-size: 13px;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body
+    .bg-primary.text-white.rounded-3 {
+        width: 58px !important;
+        height: 58px !important;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body
+    .mb-4 h5 {
+        font-size: 16px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .min-vh-100.bg-light.py-5
+    .card-body {
+        padding: 25px 16px !important;
+    }
+
+    .min-vh-100.bg-light.py-5
+    .card-body
+    .text-center.mb-4 h2 {
+        font-size: 22px;
+    }
+}

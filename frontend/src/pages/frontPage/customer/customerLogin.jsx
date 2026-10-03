@@ -1,14 +1,13 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../../service/api";
+import "./customerLogin.css";
 
 const CustomerLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -30,15 +29,13 @@ const CustomerLogin = () => {
             const data = response.data;
 
             localStorage.setItem("token", data.token);
-            localStorage.setItem("role","customer")
+            localStorage.setItem("role", "customer");
 
             if (data.role) {
                 localStorage.setItem("role", data.role);
             }
 
             setMessage("Login successful!");
-
-            console.log("Login response:", data);
 
             setTimeout(() => {
                 navigate("/customer/dashboard");
@@ -55,7 +52,7 @@ const CustomerLogin = () => {
     };
 
     return (
-        <div className="min-vh-100 bg-light d-flex align-items-center">
+        <div className="customer-login-page">
 
             <div className="container">
 
@@ -63,50 +60,37 @@ const CustomerLogin = () => {
 
                     <div className="col-12 col-lg-9 col-xl-8">
 
-                        <div className="row bg-white shadow-lg rounded-4 overflow-hidden">
+                        <div className="customer-login-card row">
 
                             {/* LEFT SIDE */}
-                            <div className="col-md-5 bg-primary text-white p-5 d-flex flex-column justify-content-center">
 
-                                <div className="mb-4">
+                            <div className="customer-login-left col-md-5">
 
-                                    <div
-                                        className="bg-white text-primary rounded-3 d-flex align-items-center justify-content-center mb-4"
-                                        style={{
-                                            width: "55px",
-                                            height: "55px"
-                                        }}
-                                    >
-                                        <i className="bi bi-bag-fill fs-4"></i>
-                                    </div>
-
-                                    <h2 className="fw-bold mb-3">
-                                        Welcome Back!
-                                    </h2>
-
-                                    <p className="mb-0 opacity-75">
-                                        Sign in to continue shopping,
-                                        manage your orders and explore
-                                        our latest products.
-                                    </p>
-
+                                <div className="customer-login-icon">
+                                    <i className="bi bi-bag-check-fill"></i>
                                 </div>
 
+                                <h2>Welcome Back!</h2>
 
-                                <div className="mt-4">
+                                <p>
+                                    Sign in to your account and continue
+                                    shopping with ShopHub.
+                                </p>
 
-                                    <div className="d-flex align-items-center mb-3">
-                                        <i className="bi bi-check-circle-fill me-2"></i>
-                                        <span>Easy shopping experience</span>
+                                <div className="customer-login-features">
+
+                                    <div className="customer-login-feature">
+                                        <i className="bi bi-check-circle-fill"></i>
+                                        <span>Easy and secure shopping</span>
                                     </div>
 
-                                    <div className="d-flex align-items-center mb-3">
-                                        <i className="bi bi-check-circle-fill me-2"></i>
+                                    <div className="customer-login-feature">
+                                        <i className="bi bi-check-circle-fill"></i>
                                         <span>Track your orders</span>
                                     </div>
 
-                                    <div className="d-flex align-items-center">
-                                        <i className="bi bi-check-circle-fill me-2"></i>
+                                    <div className="customer-login-feature">
+                                        <i className="bi bi-check-circle-fill"></i>
                                         <span>Manage your profile</span>
                                     </div>
 
@@ -116,39 +100,28 @@ const CustomerLogin = () => {
 
 
                             {/* RIGHT SIDE */}
-                            <div className="col-md-7 p-4 p-md-5">
 
-                                <div className="mb-4">
+                            <div className="customer-login-right col-md-7">
 
-                                    <h3 className="fw-bold mb-1">
-                                        Customer Sign In
-                                    </h3>
+                                <div className="customer-login-heading">
 
-                                    <p className="text-muted mb-0">
-                                        Enter your details to access your account
+                                    <h3>Customer Sign In</h3>
+
+                                    <p>
+                                        Enter your details to access your account.
                                     </p>
 
                                 </div>
 
 
-                                {/* Message */}
                                 {message && (
                                     <div
-                                        className={`alert ${
-                                            message === "Login successful!"
-                                                ? "alert-success"
-                                                : "alert-danger"
+                                        className={`customer-login-message ${
+                                            message.toLowerCase().includes("successful")
+                                                ? "success"
+                                                : "error"
                                         }`}
-                                        role="alert"
                                     >
-                                        <i
-                                            className={`bi ${
-                                                message === "Login successful!"
-                                                    ? "bi-check-circle"
-                                                    : "bi-exclamation-circle"
-                                            } me-2`}
-                                        ></i>
-
                                         {message}
                                     </div>
                                 )}
@@ -156,27 +129,28 @@ const CustomerLogin = () => {
 
                                 <form onSubmit={handleLogin}>
 
-                                    {/* Email */}
-                                    <div className="mb-4">
+                                    {/* EMAIL */}
 
-                                        <label className="form-label fw-semibold">
+                                    <div className="customer-login-field">
+
+                                        <label htmlFor="email">
                                             Email Address
                                         </label>
 
-                                        <div className="input-group">
+                                        <div className="customer-login-input">
 
-                                            <span className="input-group-text bg-light border-end-0">
-                                                <i className="bi bi-envelope text-secondary"></i>
+                                            <span>
+                                                <i className="bi bi-envelope"></i>
                                             </span>
 
                                             <input
+                                                id="email"
                                                 type="email"
-                                                className="form-control bg-light border-start-0 py-2"
-                                                placeholder="you@example.com"
                                                 value={email}
                                                 onChange={(e) =>
                                                     setEmail(e.target.value)
                                                 }
+                                                placeholder="Enter your email"
                                                 required
                                             />
 
@@ -185,38 +159,28 @@ const CustomerLogin = () => {
                                     </div>
 
 
-                                    {/* Password */}
-                                    <div className="mb-4">
+                                    {/* PASSWORD */}
 
-                                        <div className="d-flex justify-content-between">
+                                    <div className="customer-login-field">
 
-                                            <label className="form-label fw-semibold">
-                                                Password
-                                            </label>
+                                        <label htmlFor="password">
+                                            Password
+                                        </label>
 
-                                            <button
-                                                type="button"
-                                                className="btn btn-link btn-sm p-0 text-decoration-none"
-                                            >
-                                                Forgot Password?
-                                            </button>
+                                        <div className="customer-login-input">
 
-                                        </div>
-
-                                        <div className="input-group">
-
-                                            <span className="input-group-text bg-light border-end-0">
-                                                <i className="bi bi-lock text-secondary"></i>
+                                            <span>
+                                                <i className="bi bi-lock"></i>
                                             </span>
 
                                             <input
+                                                id="password"
                                                 type="password"
-                                                className="form-control bg-light border-start-0 py-2"
-                                                placeholder="Enter your password"
                                                 value={password}
                                                 onChange={(e) =>
                                                     setPassword(e.target.value)
                                                 }
+                                                placeholder="Enter your password"
                                                 required
                                             />
 
@@ -225,10 +189,11 @@ const CustomerLogin = () => {
                                     </div>
 
 
-                                    {/* Login */}
+                                    {/* LOGIN BUTTON */}
+
                                     <button
                                         type="submit"
-                                        className="btn btn-primary w-100 py-2 fw-semibold"
+                                        className="customer-login-button"
                                         disabled={loading}
                                     >
                                         {loading ? (
@@ -242,8 +207,8 @@ const CustomerLogin = () => {
                                             </>
                                         ) : (
                                             <>
+                                                <i className="bi bi-box-arrow-in-right me-2"></i>
                                                 Sign In
-                                                <i className="bi bi-arrow-right ms-2"></i>
                                             </>
                                         )}
                                     </button>
@@ -251,35 +216,35 @@ const CustomerLogin = () => {
                                 </form>
 
 
-                                {/* Signup */}
-                                <div className="text-center mt-4">
+                                {/* REGISTER */}
 
-                                    <span className="text-muted">
-                                        New to ShopHub?
+                                <div className="customer-login-register">
+
+                                    <span>
+                                        Don't have an account?
                                     </span>
 
                                     <button
                                         type="button"
-                                        className="btn btn-link fw-semibold text-decoration-none p-0 ms-1"
                                         onClick={() =>
                                             navigate("/customer/register")
                                         }
                                     >
-                                        Create an account
+                                        Create Account
                                     </button>
 
                                 </div>
 
 
-                                {/* Home */}
-                                <div className="text-center mt-3">
+                                {/* BACK HOME */}
+
+                                <div className="customer-login-home">
 
                                     <button
                                         type="button"
-                                        className="btn btn-sm btn-light"
                                         onClick={() => navigate("/")}
                                     >
-                                        <i className="bi bi-house me-1"></i>
+                                        <i className="bi bi-arrow-left me-1"></i>
                                         Back to Home
                                     </button>
 
@@ -300,4 +265,3 @@ const CustomerLogin = () => {
 };
 
 export default CustomerLogin;
-

@@ -3,6 +3,7 @@ import {
     getAdminOrders,
     updateAdminOrderStatus
 } from "../../service/adminOrderService";
+import "./orders.css"
 
 const AdminOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -62,8 +63,13 @@ const AdminOrders = () => {
 
     if (loading) {
         return (
-            <div className="text-center py-5">
-                Loading orders...
+            <div className="orders-loading">
+                <div
+                    className="spinner-border text-primary"
+                    role="status"
+                ></div>
+
+                <span>Loading orders...</span>
             </div>
         );
     }
@@ -148,7 +154,7 @@ const AdminOrders = () => {
                                                                     item
                                                                 ) =>
                                                                     item.orderId ===
-                                                                    order.orderId
+                                                                        order.orderId
                                                                         ? {
                                                                             ...item,
                                                                             paymentStatus:
@@ -187,7 +193,7 @@ const AdminOrders = () => {
                                                                     item
                                                                 ) =>
                                                                     item.orderId ===
-                                                                    order.orderId
+                                                                        order.orderId
                                                                         ? {
                                                                             ...item,
                                                                             orderStatus:
@@ -232,7 +238,7 @@ const AdminOrders = () => {
                                                                     item
                                                                 ) =>
                                                                     item.orderId ===
-                                                                    order.orderId
+                                                                        order.orderId
                                                                         ? {
                                                                             ...item,
                                                                             shippingStatus:
@@ -275,7 +281,7 @@ const AdminOrders = () => {
                                                                     item
                                                                 ) =>
                                                                     item.orderId ===
-                                                                    order.orderId
+                                                                        order.orderId
                                                                         ? {
                                                                             ...item,
                                                                             trackingNumber:
@@ -304,7 +310,7 @@ const AdminOrders = () => {
                                                 }
                                             >
                                                 {savingId ===
-                                                order.orderId
+                                                    order.orderId
                                                     ? "Saving..."
                                                     : "Save"}
                                             </button>

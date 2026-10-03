@@ -1,0 +1,800 @@
+/* =========================================================
+   ADMIN ORDERS PAGE
+========================================================= */
+
+.orders-page {
+    min-height: 100%;
+    padding: 32px 36px 50px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(99, 102, 241, 0.07),
+            transparent 24%
+        ),
+        #f8fafc;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.orders-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+.orders-header-content h3 {
+    margin: 0 0 5px;
+
+    color: #0f172a;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+.orders-header-content p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.orders-alert {
+    margin-bottom: 20px;
+
+    padding: 13px 16px;
+
+    border: none;
+    border-radius: 11px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.04);
+}
+
+.orders-alert-danger {
+    color: #b91c1c;
+
+    background: #fef2f2;
+}
+
+.orders-alert-info {
+    color: #0369a1;
+
+    background: #f0f9ff;
+}
+
+
+/* =========================================================
+   ORDERS CARD
+========================================================= */
+
+.orders-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+
+/* Top gradient line */
+
+.orders-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #8b5cf6,
+            #06b6d4
+        );
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.orders-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 18px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.orders-table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+.orders-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.orders-table-wrapper::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.orders-table {
+    width: 100%;
+
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    table-layout: fixed;
+}
+
+
+/* =========================================================
+   COLUMN WIDTHS
+========================================================= */
+
+.orders-table th:nth-child(1),
+.orders-table td:nth-child(1) {
+    width: 14%;
+}
+
+.orders-table th:nth-child(2),
+.orders-table td:nth-child(2) {
+    width: 17%;
+}
+
+.orders-table th:nth-child(3),
+.orders-table td:nth-child(3) {
+    width: 9%;
+}
+
+.orders-table th:nth-child(4),
+.orders-table td:nth-child(4) {
+    width: 11%;
+}
+
+.orders-table th:nth-child(5),
+.orders-table td:nth-child(5) {
+    width: 12%;
+}
+
+.orders-table th:nth-child(6),
+.orders-table td:nth-child(6) {
+    width: 12%;
+}
+
+.orders-table th:nth-child(7),
+.orders-table td:nth-child(7) {
+    width: 15%;
+}
+
+.orders-table th:nth-child(8),
+.orders-table td:nth-child(8) {
+    width: 10%;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.orders-table thead th {
+    height: 56px;
+
+    padding: 15px 12px;
+
+    color: #64748b;
+
+    background: #f8fafc;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.orders-table tbody td {
+    height: 78px;
+
+    padding: 13px 12px;
+
+    color: #475569;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eef2f7;
+
+    font-size: 12px;
+
+    vertical-align: middle;
+
+    overflow: hidden;
+}
+
+.orders-table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+.orders-table tbody tr:hover td {
+    background: #fafbff;
+}
+
+.orders-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   ORDER DETAILS
+========================================================= */
+
+.order-number {
+    display: block;
+
+    color: #1e293b;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.order-date {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CUSTOMER
+========================================================= */
+
+.customer-name {
+    display: block;
+
+    color: #1e293b;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.customer-email {
+    display: block;
+
+    max-width: 100%;
+
+    margin-top: 4px;
+
+    padding: 5px 8px;
+
+    color: #7183a3;
+
+    background: #eef2ff;
+
+    border-radius: 8px;
+
+    font-size: 9px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.order-total {
+    color: #1e293b;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.orders-select {
+    width: 100%;
+
+    height: 38px;
+
+    padding: 7px 28px 7px 10px;
+
+    color: #334155;
+
+    background-color: #ffffff;
+
+    border: 1px solid #dbe3ee;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.orders-select:hover {
+    background: #fafbff;
+
+    border-color: #a5b4fc;
+}
+
+.orders-select:focus {
+    color: #334155;
+
+    background: #ffffff;
+
+    border-color: #6366f1;
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.09);
+}
+
+
+/* =========================================================
+   TRACKING INPUT
+========================================================= */
+
+.orders-input {
+    width: 100%;
+
+    height: 38px;
+
+    padding: 7px 10px;
+
+    color: #334155;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe3ee;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.orders-input::placeholder {
+    color: #94a3b8;
+}
+
+.orders-input:hover {
+    border-color: #a5b4fc;
+}
+
+.orders-input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.09);
+}
+
+
+/* =========================================================
+   SAVE BUTTON
+========================================================= */
+
+.orders-save-btn {
+    width: 100%;
+
+    height: 38px;
+
+    padding: 7px 10px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 12px rgba(99, 102, 241, 0.16);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.orders-save-btn:hover {
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(99, 102, 241, 0.23);
+}
+
+.orders-save-btn:active {
+    transform: translateY(0);
+}
+
+.orders-save-btn:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.orders-loading {
+    min-height: 450px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.orders-loading-spinner {
+    width: 32px;
+    height: 32px;
+
+    border: 3px solid #e0e7ff;
+
+    border-top-color: #6366f1;
+
+    border-radius: 50%;
+
+    animation:
+        orders-spin 0.8s linear infinite;
+}
+
+@keyframes orders-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.orders-empty {
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    color: #64748b;
+
+    text-align: center;
+}
+
+.orders-empty-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    color: #6366f1;
+
+    background: #eef2ff;
+
+    border-radius: 16px;
+
+    font-size: 24px;
+}
+
+.orders-empty h5 {
+    margin-bottom: 5px;
+
+    color: #1e293b;
+
+    font-size: 15px;
+
+    font-weight: 750;
+}
+
+.orders-empty p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1400px) {
+
+    .orders-page {
+        padding: 28px 28px 45px;
+    }
+
+    .orders-table thead th {
+        padding: 14px 10px;
+
+        font-size: 9px;
+    }
+
+    .orders-table tbody td {
+        padding: 12px 10px;
+    }
+
+    .orders-select,
+    .orders-input,
+    .orders-save-btn {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .orders-page {
+        padding: 24px 20px 45px;
+    }
+
+    .orders-card {
+        border-radius: 15px;
+    }
+
+    /*
+       At this width the table gets scroll.
+       This prevents the content from being squeezed.
+    */
+
+    .orders-table {
+        min-width: 1050px;
+
+        table-layout: auto;
+    }
+
+    .orders-table th,
+    .orders-table td {
+        white-space: nowrap;
+    }
+
+    .orders-table th:nth-child(1),
+    .orders-table td:nth-child(1) {
+        min-width: 135px;
+    }
+
+    .orders-table th:nth-child(2),
+    .orders-table td:nth-child(2) {
+        min-width: 180px;
+    }
+
+    .orders-table th:nth-child(3),
+    .orders-table td:nth-child(3) {
+        min-width: 100px;
+    }
+
+    .orders-table th:nth-child(4),
+    .orders-table td:nth-child(4) {
+        min-width: 125px;
+    }
+
+    .orders-table th:nth-child(5),
+    .orders-table td:nth-child(5) {
+        min-width: 135px;
+    }
+
+    .orders-table th:nth-child(6),
+    .orders-table td:nth-child(6) {
+        min-width: 130px;
+    }
+
+    .orders-table th:nth-child(7),
+    .orders-table td:nth-child(7) {
+        min-width: 155px;
+    }
+
+    .orders-table th:nth-child(8),
+    .orders-table td:nth-child(8) {
+        min-width: 90px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .orders-page {
+        padding:
+            20px 15px 100px;
+    }
+
+    .orders-header {
+        margin-bottom: 20px;
+    }
+
+    .orders-header-content h3 {
+        font-size: 22px;
+    }
+
+    .orders-header-content p {
+        font-size: 12px;
+    }
+
+    .orders-card {
+        border-radius: 14px;
+    }
+
+    .orders-table-wrapper {
+        border-radius: 14px;
+
+        overflow-x: auto;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .orders-table {
+        min-width: 1050px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .orders-page {
+        padding:
+            18px 11px 100px;
+    }
+
+    .orders-header-content h3 {
+        font-size: 20px;
+    }
+
+    .orders-header-content p {
+        font-size: 11px;
+    }
+
+    .orders-card {
+        border-radius: 12px;
+    }
+}

@@ -50,8 +50,8 @@ const getProductReviews = async (productId) => {
             pr.created_at AS createdAt,
             pr.updated_at AS updatedAt,
 
-            c.firstname,
-            c.lastname
+            c.first_name AS firstName,
+            c.last_name AS lastName
 
         FROM product_review pr
 
@@ -84,7 +84,10 @@ const getReviewById = async (reviewId) => {
             status,
             is_verified_purchase AS isVerifiedPurchase,
             created_at AS createdAt,
-            updated_at AS updatedAt
+            updated_at AS updatedAt,
+
+            c.first_name AS firstName,
+            c.last_name AS lastName
 
         FROM product_review
 

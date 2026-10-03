@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../../service/api";
-import { updateProduct , getProductById } from "../../service/productService"
+import { updateProduct, getProductById } from "../../service/productService"
+import { getCategories } from "../../service/categorieService";
+import "./editProduct.css"
 
 const EditProduct = () => {
 
@@ -26,16 +28,23 @@ const EditProduct = () => {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState("");
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
 
-        const loadProduct = async () => {
+        const loadData = async () => {
 
             try {
 
-                const response = await getProductById(productId);
+                const [productResponse, categoryResponse] =
+                    await Promise.all([
+                        getProductById(productId),
+                        getCategories()
+                    ]);
 
-                const product = response.data;
+                const product = productResponse.data;
+
+                setCategories(categoryResponse.data || []);
 
                 setFormData({
                     productName: product.productName || "",
@@ -47,10 +56,8 @@ const EditProduct = () => {
                     sortOrder: product.sortOrder || 0,
                     status: product.status ?? 1,
                     metaTitle: product.metaTitle || "",
-                    metaDescription:
-                        product.metaDescription || "",
-                    metaKeywords:
-                        product.metaKeywords || "",
+                    metaDescription: product.metaDescription || "",
+                    metaKeywords: product.metaKeywords || "",
                     seoUrl: product.seoUrl || ""
                 });
 
@@ -70,7 +77,7 @@ const EditProduct = () => {
             }
         };
 
-        loadProduct();
+        loadData();
 
     }, [productId]);
 
@@ -133,8 +140,13 @@ const EditProduct = () => {
 
     if (loading) {
         return (
-            <div className="text-center py-5">
-                Loading product...
+            <div className="edit-product-loading">
+                <div
+                    className="spinner-border text-primary"
+                    role="status"
+                ></div>
+
+                <span>Loading product...</span>
             </div>
         );
     }
@@ -237,19 +249,29 @@ const EditProduct = () => {
                             <div className="col-md-4">
 
                                 <label className="form-label">
-                                    Category ID
+                                    Category
                                 </label>
 
-                                <input
-                                    type="number"
+                                <select
                                     name="categoryId"
-                                    className="form-control"
-                                    value={
-                                        formData.categoryId
-                                    }
+                                    className="form-select"
+                                    value={formData.categoryId}
                                     onChange={handleChange}
                                     required
-                                />
+                                >
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    {categories.map((category) => (
+                                        <option
+                                            key={category.categoryId}
+                                            value={category.categoryId}
+                                        >
+                                            {category.categoryName}
+                                        </option>
+                                    ))}
+                                </select>
 
                             </div>
 

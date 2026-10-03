@@ -4,6 +4,8 @@
     import  {uploadProductImages}  from "../../service/productImageService";
     import { getCategories } from "../../service/categorieService";
 
+    import "./CreateProduct.css";
+
     const initialForm ={
             productName: "",
             description: "",

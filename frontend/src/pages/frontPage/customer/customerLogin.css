@@ -1,0 +1,680 @@
+/* =========================================
+   CUSTOMER LOGIN
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center {
+    min-height: 100vh !important;
+    padding: 40px 20px !important;
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(99, 102, 241, 0.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(139, 92, 246, 0.12),
+            transparent 35%
+        ),
+        #f8fafc !important;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.container {
+    width: 100%;
+    max-width: 1050px;
+}
+
+
+/* =========================================
+   LOGIN CARD
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.row.bg-white.shadow-lg.rounded-4.overflow-hidden {
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-radius: 24px !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 25px 60px rgba(15, 23, 42, 0.12) !important;
+}
+
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5.bg-primary {
+    position: relative;
+
+    min-height: 560px;
+
+    overflow: hidden;
+
+    padding: 48px !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(255, 255, 255, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(255, 255, 255, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #4338ca 0%,
+            #6366f1 50%,
+            #7c3aed 100%
+        ) !important;
+}
+
+
+/* Decorative circles */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5.bg-primary::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -130px;
+    top: -130px;
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    border-radius: 50%;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5.bg-primary::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    left: -110px;
+    bottom: -110px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+}
+
+
+/* Keep content above circles */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5.bg-primary > * {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   LEFT ICON
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5 .bg-white.text-primary {
+    width: 64px !important;
+    height: 64px !important;
+
+    padding: 0 !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5 .bg-white.text-primary i {
+    font-size: 25px !important;
+
+    color: #4f46e5 !important;
+}
+
+
+/* =========================================
+   LEFT TITLE
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5 h2 {
+    margin-top: 22px;
+
+    margin-bottom: 15px;
+
+    color: #ffffff !important;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================
+   LEFT DESCRIPTION
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5 p {
+    max-width: 370px;
+
+    margin-bottom: 28px;
+
+    color: rgba(255, 255, 255, 0.84) !important;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   LEFT FEATURES
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5 .d-flex.align-items-center {
+    color: rgba(255, 255, 255, 0.95) !important;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-5 .bi-check-circle-fill {
+    color: #ffffff !important;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-7 {
+    padding: 48px !important;
+
+    background: #ffffff !important;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-7 h3 {
+    margin-bottom: 8px;
+
+    color: #0f172a !important;
+
+    font-size: 29px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.col-md-7 h3 + p {
+    margin-bottom: 30px;
+
+    color: #64748b !important;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   FORM LABEL
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.form-label {
+    margin-bottom: 8px;
+
+    color: #334155 !important;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group {
+    width: 100%;
+
+    border-radius: 12px;
+
+    transition: box-shadow 0.2s ease;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group-text {
+    width: 48px;
+
+    min-width: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-right: 0 !important;
+
+    border-radius: 12px 0 0 12px !important;
+
+    color: #6366f1 !important;
+
+    background: #f8fafc !important;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group-text i {
+    color: #6366f1 !important;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group .form-control {
+    width: 100%;
+
+    min-height: 48px;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-left: 0 !important;
+
+    border-radius: 0 12px 12px 0 !important;
+
+    outline: none !important;
+
+    color: #0f172a !important;
+
+    background: #f8fafc !important;
+
+    font-size: 14px;
+
+    box-shadow: none !important;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group .form-control::placeholder {
+    color: #94a3b8 !important;
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group:focus-within {
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.10);
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group:focus-within .input-group-text {
+    border-color: #6366f1 !important;
+
+    background: #eef2ff !important;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.input-group:focus-within .form-control {
+    border-color: #6366f1 !important;
+}
+
+
+/* =========================================
+   PASSWORD / FORGOT LINK
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.btn-link {
+    color: #6366f1 !important;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    text-decoration: none !important;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.btn-link:hover {
+    color: #4338ca !important;
+
+    text-decoration: underline !important;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+form .btn-primary {
+    width: 100%;
+
+    min-height: 50px;
+
+    margin-top: 8px;
+
+    border: none !important;
+
+    border-radius: 12px !important;
+
+    color: #ffffff !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #4f46e5
+        ) !important;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+form .btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(99, 102, 241, 0.32);
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+form .btn-primary:active {
+    transform: translateY(0);
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+form .btn-primary:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.alert {
+    margin-bottom: 20px;
+
+    padding: 12px 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   REGISTER
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.text-center.mt-4 {
+    margin-top: 25px !important;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.text-center.mt-4 .btn-link {
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   BACK HOME
+========================================= */
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.text-center.mt-3 {
+    margin-top: 18px !important;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.text-center.mt-3 .btn-light {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 15px;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-radius: 9px;
+
+    color: #64748b !important;
+
+    background: #ffffff !important;
+
+    font-size: 12px;
+
+    transition: all 0.2s ease;
+}
+
+
+.min-vh-100.bg-light.d-flex.align-items-center
+.text-center.mt-3 .btn-light:hover {
+    color: #4f46e5 !important;
+
+    background: #f8fafc !important;
+
+    border-color: #cbd5e1 !important;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991.98px) {
+
+    .min-vh-100.bg-light.d-flex.align-items-center {
+        padding: 30px 15px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-5 {
+        padding: 38px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-7 {
+        padding: 38px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-5 h2 {
+        font-size: 28px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767.98px) {
+
+    .min-vh-100.bg-light.d-flex.align-items-center {
+        min-height: 100vh !important;
+
+        padding: 15px 10px !important;
+
+        align-items: flex-start !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .row.bg-white.shadow-lg.rounded-4.overflow-hidden {
+        border-radius: 18px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-5 {
+        min-height: auto;
+
+        padding: 35px 25px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-7 {
+        padding: 32px 25px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-5 h2 {
+        font-size: 25px;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-5 p {
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .min-vh-100.bg-light.d-flex.align-items-center {
+        padding: 10px 7px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-5 {
+        padding: 28px 20px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-7 {
+        padding: 26px 18px !important;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-5 h2 {
+        font-size: 23px;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .col-md-7 h3 {
+        font-size: 23px;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .input-group .form-control {
+        font-size: 13px;
+    }
+
+    .min-vh-100.bg-light.d-flex.align-items-center
+    .text-center.mt-4 {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}

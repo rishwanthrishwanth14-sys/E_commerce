@@ -1,0 +1,526 @@
+/* =========================================================
+   EDIT PRODUCT PAGE
+========================================================= */
+
+.container-fluid.py-4 {
+    min-height: 100vh;
+    padding: 32px 36px !important;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(99, 102, 241, 0.06),
+            transparent 25%
+        ),
+        #f8fafc;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.container-fluid.py-4 > .d-flex.justify-content-between {
+    align-items: center;
+
+    padding: 20px 24px;
+
+    margin-bottom: 22px !important;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+.container-fluid.py-4 > .d-flex.justify-content-between h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.container-fluid.py-4 > .d-flex.justify-content-between
+.btn-outline-secondary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+
+    padding: 9px 16px;
+
+    color: #475569;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe3ee;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition: all 0.2s ease;
+}
+
+.container-fluid.py-4 > .d-flex.justify-content-between
+.btn-outline-secondary:hover {
+    color: #4f46e5;
+
+    background: #f5f3ff;
+
+    border-color: #c7d2fe;
+
+    transform: translateX(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(99, 102, 241, 0.1);
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.container-fluid.py-4 > .alert-danger {
+    margin-bottom: 20px;
+
+    padding: 13px 16px;
+
+    color: #b91c1c;
+
+    background: #fef2f2;
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   MAIN FORM CARD
+========================================================= */
+
+.container-fluid.py-4 > form > .card {
+    position: relative;
+
+    overflow: visible;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0 !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06) !important;
+}
+
+
+/* Top gradient */
+
+.container-fluid.py-4 > form > .card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #8b5cf6,
+            #06b6d4
+        );
+
+    border-radius: 18px 18px 0 0;
+}
+
+
+/* Card body */
+
+.container-fluid.py-4 > form > .card > .card-body {
+    padding: 30px;
+}
+
+
+/* =========================================================
+   FORM LABELS
+========================================================= */
+
+.container-fluid.py-4 .form-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #475569;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.container-fluid.py-4 .form-control,
+.container-fluid.py-4 .form-select {
+    min-height: 46px;
+
+    padding: 10px 13px;
+
+    color: #1e293b;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe3ee;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.container-fluid.py-4 .form-control:hover,
+.container-fluid.py-4 .form-select:hover {
+    border-color: #a5b4fc;
+}
+
+.container-fluid.py-4 .form-control:focus,
+.container-fluid.py-4 .form-select:focus {
+    color: #1e293b;
+
+    background: #ffffff;
+
+    border-color: #6366f1;
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.09);
+}
+
+.container-fluid.py-4 .form-control::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   TEXTAREAS
+========================================================= */
+
+.container-fluid.py-4 textarea.form-control {
+    line-height: 1.6;
+
+    resize: vertical;
+}
+
+.container-fluid.py-4 textarea[name="description"].form-control {
+    min-height: 120px;
+}
+
+.container-fluid.py-4 textarea[name="metaDescription"].form-control {
+    min-height: 100px;
+}
+
+
+/* =========================================================
+   NUMBER INPUT
+========================================================= */
+
+.container-fluid.py-4 input[type="number"].form-control {
+    appearance: textfield;
+}
+
+.container-fluid.py-4 input[type="number"].form-control::-webkit-inner-spin-button,
+.container-fluid.py-4 input[type="number"].form-control::-webkit-outer-spin-button {
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   FORM SECTIONS
+========================================================= */
+
+/*
+   Adds subtle visual separation between:
+   Basic information
+   Pricing / stock
+   SEO information
+*/
+
+.container-fluid.py-4 > form .row.g-3 {
+    row-gap: 20px !important;
+}
+
+
+/* =========================================================
+   SAVE / CANCEL BUTTONS
+========================================================= */
+
+.container-fluid.py-4 > form .card-body > .d-flex.gap-2 {
+    padding-top: 22px;
+
+    margin-top: 25px !important;
+
+    border-top: 1px solid #eef2f7;
+}
+
+
+.container-fluid.py-4 > form .btn-primary {
+    min-height: 43px;
+
+    padding: 10px 19px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 7px 17px rgba(99, 102, 241, 0.2);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.container-fluid.py-4 > form .btn-primary:hover {
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 11px 23px rgba(99, 102, 241, 0.28);
+}
+
+
+.container-fluid.py-4 > form .btn-primary:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* Cancel */
+
+.container-fluid.py-4 > form .btn-secondary {
+    min-height: 43px;
+
+    padding: 10px 19px;
+
+    color: #475569;
+
+    background: #f1f5f9;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: all 0.2s ease;
+}
+
+
+.container-fluid.py-4 > form .btn-secondary:hover {
+    color: #334155;
+
+    background: #e2e8f0;
+
+    border-color: #cbd5e1;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.edit-product-loading {
+    min-height: 400px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.edit-product-loading .spinner-border {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .container-fluid.py-4 {
+        padding: 25px 22px !important;
+    }
+
+    .container-fluid.py-4 > .d-flex.justify-content-between {
+        padding: 19px 21px;
+    }
+
+    .container-fluid.py-4 > .d-flex.justify-content-between h2 {
+        font-size: 24px;
+    }
+
+    .container-fluid.py-4 > form > .card > .card-body {
+        padding: 24px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .container-fluid.py-4 {
+        padding:
+            20px 15px 100px !important;
+    }
+
+
+    /* Header */
+
+    .container-fluid.py-4 > .d-flex.justify-content-between {
+        gap: 15px;
+
+        padding: 18px;
+
+        border-radius: 14px;
+    }
+
+    .container-fluid.py-4 > .d-flex.justify-content-between h2 {
+        font-size: 21px;
+    }
+
+
+    /* Card */
+
+    .container-fluid.py-4 > form > .card {
+        border-radius: 14px !important;
+    }
+
+    .container-fluid.py-4 > form > .card > .card-body {
+        padding: 20px;
+    }
+
+
+    /* Buttons */
+
+    .container-fluid.py-4 > form .card-body > .d-flex.gap-2 {
+        width: 100%;
+    }
+
+    .container-fluid.py-4 > form .card-body > .d-flex.gap-2 .btn {
+        flex: 1;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .container-fluid.py-4 {
+        padding:
+            17px 11px 100px !important;
+    }
+
+
+    .container-fluid.py-4 > .d-flex.justify-content-between {
+        padding: 16px;
+
+        border-radius: 13px;
+    }
+
+    .container-fluid.py-4 > .d-flex.justify-content-between h2 {
+        font-size: 19px;
+    }
+
+
+    .container-fluid.py-4 > form > .card > .card-body {
+        padding: 17px;
+    }
+
+
+    .container-fluid.py-4 > form .card-body > .d-flex.gap-2 {
+        flex-direction: column;
+    }
+
+    .container-fluid.py-4 > form .card-body > .d-flex.gap-2 .btn {
+        width: 100%;
+    }
+}

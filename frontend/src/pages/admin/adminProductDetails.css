@@ -1,0 +1,66 @@
+/* =========================================================
+   BACK TO PRODUCTS BUTTON
+========================================================= */
+
+.container-fluid.py-4 .btn-outline-secondary {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    text-decoration: none !important;
+
+    color: #475569;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 11px;
+
+    padding: 11px 16px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+
+/* IMPORTANT:
+   Prevent any CSS from adding another arrow */
+
+.container-fluid.py-4 .btn-outline-secondary::before,
+.container-fluid.py-4 .btn-outline-secondary::after {
+    content: none !important;
+}
+
+
+/* Bootstrap icon */
+
+.container-fluid.py-4 .btn-outline-secondary i.bi-arrow-left {
+    display: inline-block;
+
+    margin: 0 !important;
+
+    font-size: 15px;
+
+    line-height: 1;
+}
+
+
+/* Hover */
+
+.container-fluid.py-4 .btn-outline-secondary:hover {
+    color: #4f46e5;
+
+    background: #f5f3ff;
+
+    border-color: #c7d2fe;
+
+    transform: translateX(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(99, 102, 241, 0.1);
+}

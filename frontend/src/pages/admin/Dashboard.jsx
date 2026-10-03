@@ -4,6 +4,8 @@ import { getProducts } from "../../service/productService";
 import { getCategories } from "../../service/categorieService";
 import { getMyProfile } from "../../service/adminService";
 
+import "./Dashboard.css"
+
 function AdminDashboard() {
   const navigate = useNavigate();
     const [profile, setProfile] = useState(null);

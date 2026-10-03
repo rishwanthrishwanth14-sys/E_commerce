@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAdminCustomers } from "../../service/adminCustomerService";
+import "./customer.css"
 
 const AdminCustomers = () => {
     const [customers, setCustomers] = useState([]);
@@ -25,7 +26,12 @@ const AdminCustomers = () => {
     }, []);
 
     if (loading) {
-        return <div className="text-center py-5">Loading customers...</div>;
+        return (
+            <div className="customers-loading">
+                <div className="spinner-border text-primary" role="status"></div>
+                <p>Loading customers...</p>
+            </div>
+        );
     }
 
     return (

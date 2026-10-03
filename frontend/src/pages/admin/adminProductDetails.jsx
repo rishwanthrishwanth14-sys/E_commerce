@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import api from "../../service/api";
 import { getProductImageUrl } from "../../service/imageUrl";
 import { addStock, deleteProduct } from "../../service/productService";
+import "./adminProductDetails.css";
 
 const AdminProductDetails = () => {
 

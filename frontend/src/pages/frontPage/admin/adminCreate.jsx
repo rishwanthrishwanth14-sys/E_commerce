@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createAdmin } from "../../../service/adminService";
+import "./adminCreate.css"
 
 const CreateAdmin = () => {
     const navigate = useNavigate();
@@ -67,7 +68,7 @@ const CreateAdmin = () => {
     };
 
     return (
-        <div className="min-vh-100 bg-light py-5">
+        <div className="admin-create-page">
 
             <div className="container">
 
@@ -80,14 +81,10 @@ const CreateAdmin = () => {
                             <div className="card-body p-4 p-md-5">
 
                                 {/* Header */}
-                                <div className="text-center mb-4">
+                                <div className="admin-create-header">
 
                                     <div
                                         className="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center mx-auto mb-3"
-                                        style={{
-                                            width: "55px",
-                                            height: "55px"
-                                        }}
                                     >
                                         <i className="bi bi-person-plus-fill fs-4"></i>
                                     </div>

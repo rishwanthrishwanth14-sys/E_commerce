@@ -1,0 +1,880 @@
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+
+.container-fluid {
+    min-height: 100%;
+    padding: 24px !important;
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(99, 102, 241, 0.07),
+            transparent 28%
+        ),
+        #f8fafc;
+
+    color: var(--text);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.container-fluid > .d-flex {
+    position: relative;
+
+    padding: 26px 28px;
+    margin-bottom: 24px !important;
+
+    border: 1px solid #e8eaf3;
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8f7ff 100%
+        );
+
+    box-shadow:
+        0 10px 35px rgba(15, 23, 42, 0.06);
+
+    overflow: hidden;
+}
+
+.container-fluid > .d-flex::after {
+    content: "";
+
+    position: absolute;
+    width: 180px;
+    height: 180px;
+
+    right: -70px;
+    top: -90px;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.08);
+
+    pointer-events: none;
+}
+
+.container-fluid > .d-flex h2 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 29px;
+    font-weight: 750 !important;
+
+    letter-spacing: -0.7px;
+}
+
+.container-fluid > .d-flex p {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 5px;
+
+    color: #64748b !important;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   HEADER BUTTON
+========================================= */
+
+.container-fluid > .d-flex .btn-primary {
+    position: relative;
+    z-index: 2;
+
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #7c3aed
+    );
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 650;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.container-fluid > .d-flex .btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(99, 102, 241, 0.35);
+}
+
+.container-fluid > .d-flex .btn-primary:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.container-fluid > .alert {
+    margin-bottom: 22px;
+
+    border: 0;
+    border-radius: 14px;
+
+    padding: 14px 17px;
+
+    background: #fff1f2;
+    color: #be123c;
+
+    font-size: 13px;
+    font-weight: 550;
+
+    box-shadow:
+        0 6px 20px rgba(190, 24, 93, 0.06);
+}
+
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.container-fluid > .card {
+    position: relative;
+
+    margin-bottom: 24px !important;
+
+    border: 1px solid #e8eaf0 !important;
+    border-radius: 20px !important;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.055) !important;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.container-fluid > .card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #6366f1,
+            #8b5cf6
+        );
+}
+
+.container-fluid > .card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(15, 23, 42, 0.09) !important;
+}
+
+.container-fluid > .card .card-body {
+    padding: 22px 26px 22px 30px;
+}
+
+.container-fluid > .card h5 {
+    margin-bottom: 5px !important;
+
+    color: #111827;
+
+    font-size: 17px;
+    font-weight: 700 !important;
+}
+
+.container-fluid > .card p {
+    margin: 0;
+
+    color: #64748b !important;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   STAT CARDS
+========================================= */
+
+.container-fluid > .row.g-4 > .col-xl-3 .card {
+    position: relative;
+
+    min-height: 155px;
+
+    border: 1px solid #e7eaf1 !important;
+    border-radius: 20px !important;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 24px rgba(15, 23, 42, 0.055) !important;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.container-fluid > .row.g-4 > .col-xl-3 .card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: var(--card-color, #6366f1);
+}
+
+.container-fluid > .row.g-4 > .col-xl-3 .card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 16px 38px rgba(15, 23, 42, 0.10) !important;
+}
+
+.container-fluid > .row.g-4 > .col-xl-3 .card-body {
+    min-height: 155px;
+
+    padding: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================
+   STAT CARD INDIVIDUAL COLORS
+========================================= */
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(1)
+.card {
+    --card-color: #6366f1;
+}
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(2)
+.card {
+    --card-color: #10b981;
+}
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(3)
+.card {
+    --card-color: #f59e0b;
+}
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(4)
+.card {
+    --card-color: #8b5cf6;
+}
+
+
+/* =========================================
+   STAT TEXT
+========================================= */
+
+.container-fluid
+> .row.g-4
+> .col-xl-3
+p {
+    margin-bottom: 8px !important;
+
+    color: #64748b !important;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.container-fluid
+> .row.g-4
+> .col-xl-3
+h3 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 32px;
+    font-weight: 750 !important;
+
+    letter-spacing: -0.8px;
+}
+
+
+/* =========================================
+   STAT ICON
+========================================= */
+
+.container-fluid
+> .row.g-4
+> .col-xl-3
+.fs-1 {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    font-size: 23px !important;
+
+    flex-shrink: 0;
+
+    transition:
+        transform 0.25s ease,
+        border-radius 0.25s ease;
+}
+
+.container-fluid
+> .row.g-4
+> .col-xl-3
+.card:hover
+.fs-1 {
+    transform: rotate(-4deg) scale(1.08);
+    border-radius: 20px;
+}
+
+
+/* Product */
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(1)
+.fs-1 {
+    color: #6366f1 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.13),
+            rgba(139, 92, 246, 0.08)
+        );
+}
+
+
+/* Active */
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(2)
+.fs-1 {
+    color: #059669 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16, 185, 129, 0.15),
+            rgba(20, 184, 166, 0.08)
+        );
+}
+
+
+/* Out of stock */
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(3)
+.fs-1 {
+    color: #d97706 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245, 158, 11, 0.16),
+            rgba(251, 191, 36, 0.08)
+        );
+}
+
+
+/* Categories */
+
+.container-fluid
+> .row.g-4
+> .col-xl-3:nth-child(4)
+.fs-1 {
+    color: #7c3aed !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.15),
+            rgba(124, 58, 237, 0.07)
+        );
+}
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.container-fluid > .row.g-4.mt-2 {
+    margin-top: 26px !important;
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.col-md-4 {
+    display: flex;
+}
+
+
+/* =========================================
+   QUICK ACTION CARD
+========================================= */
+
+.container-fluid
+> .row.g-4.mt-2
+.card {
+    position: relative;
+
+    width: 100%;
+
+    border: 1px solid #e7eaf1 !important;
+    border-radius: 20px !important;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 24px rgba(15, 23, 42, 0.055) !important;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -45px;
+    bottom: -45px;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.045);
+
+    transition:
+        transform 0.3s ease;
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.11) !important;
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.card:hover::after {
+    transform: scale(1.4);
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.card-body {
+    position: relative;
+    z-index: 1;
+
+    padding: 27px;
+}
+
+
+/* =========================================
+   QUICK ACTION ICON
+========================================= */
+
+.container-fluid
+> .row.g-4.mt-2
+.fs-2 {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    margin-bottom: 18px !important;
+
+    font-size: 22px !important;
+}
+
+
+/* Add */
+
+.container-fluid
+> .row.g-4.mt-2
+.col-md-4:nth-child(1)
+.fs-2 {
+    color: #6366f1 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.13),
+            rgba(139, 92, 246, 0.08)
+        );
+}
+
+
+/* Products */
+
+.container-fluid
+> .row.g-4.mt-2
+.col-md-4:nth-child(2)
+.fs-2 {
+    color: #059669 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16, 185, 129, 0.14),
+            rgba(20, 184, 166, 0.07)
+        );
+}
+
+
+/* Categories */
+
+.container-fluid
+> .row.g-4.mt-2
+.col-md-4:nth-child(3)
+.fs-2 {
+    color: #d97706 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245, 158, 11, 0.15),
+            rgba(251, 191, 36, 0.07)
+        );
+}
+
+
+/* =========================================
+   QUICK ACTION TEXT
+========================================= */
+
+.container-fluid
+> .row.g-4.mt-2
+h5 {
+    margin-bottom: 8px;
+
+    color: #111827;
+
+    font-size: 17px;
+    font-weight: 700 !important;
+}
+
+.container-fluid
+> .row.g-4.mt-2
+p {
+    min-height: 44px;
+
+    margin-bottom: 19px;
+
+    color: #64748b !important;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   QUICK ACTION BUTTONS
+========================================= */
+
+.container-fluid
+> .row.g-4.mt-2
+.btn {
+    min-height: 40px;
+
+    padding: 0 17px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 650;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Create */
+
+.container-fluid
+> .row.g-4.mt-2
+.btn-primary {
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 6px 16px rgba(99, 102, 241, 0.18);
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.btn-primary:hover {
+    box-shadow:
+        0 10px 23px rgba(99, 102, 241, 0.28);
+}
+
+
+/* Outline */
+
+.container-fluid
+> .row.g-4.mt-2
+.btn-outline-primary {
+    border: 1px solid #6366f1;
+
+    color: #6366f1;
+
+    background: #ffffff;
+}
+
+.container-fluid
+> .row.g-4.mt-2
+.btn-outline-primary:hover {
+    background: #6366f1;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(99, 102, 241, 0.18);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 992px) {
+
+    .container-fluid {
+        padding: 20px !important;
+    }
+
+    .container-fluid > .d-flex {
+        padding: 22px;
+    }
+
+    .container-fluid > .d-flex h2 {
+        font-size: 25px;
+    }
+
+    .container-fluid
+    > .row.g-4
+    > .col-xl-3
+    .card-body {
+        min-height: 135px;
+        padding: 21px;
+    }
+
+    .container-fluid
+    > .row.g-4
+    > .col-xl-3
+    h3 {
+        font-size: 28px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .container-fluid {
+        padding: 16px !important;
+    }
+
+    .container-fluid > .d-flex {
+        padding: 20px;
+
+        gap: 15px;
+    }
+
+    .container-fluid > .d-flex h2 {
+        font-size: 23px;
+    }
+
+    .container-fluid > .d-flex .btn-primary {
+        min-height: 42px;
+        padding: 0 14px;
+
+        font-size: 12px;
+    }
+
+    .container-fluid > .card .card-body {
+        padding: 20px 22px;
+    }
+
+    .container-fluid
+    > .row.g-4
+    > .col-xl-3
+    .card-body {
+        min-height: 125px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 576px) {
+
+    .container-fluid {
+        padding: 12px !important;
+    }
+
+    .container-fluid > .d-flex {
+        flex-direction: column;
+
+        align-items: stretch !important;
+
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+    .container-fluid > .d-flex h2 {
+        font-size: 21px;
+    }
+
+    .container-fluid > .d-flex p {
+        font-size: 12px;
+    }
+
+    .container-fluid > .d-flex .btn-primary {
+        width: 100%;
+    }
+
+    .container-fluid > .card {
+        border-radius: 17px !important;
+    }
+
+    .container-fluid
+    > .row.g-4
+    > .col-xl-3
+    .card {
+        border-radius: 17px !important;
+    }
+
+    .container-fluid
+    > .row.g-4
+    > .col-xl-3
+    h3 {
+        font-size: 27px;
+    }
+
+    .container-fluid
+    > .row.g-4
+    > .col-xl-3
+    .fs-1 {
+        width: 50px;
+        height: 50px;
+
+        font-size: 20px !important;
+    }
+
+    .container-fluid
+    > .row.g-4.mt-2
+    .card {
+        border-radius: 17px !important;
+    }
+
+    .container-fluid
+    > .row.g-4.mt-2
+    .card-body {
+        padding: 22px;
+    }
+
+    .container-fluid
+    > .row.g-4.mt-2
+    p {
+        min-height: auto;
+    }
+
+}

@@ -5,6 +5,7 @@ import {
     updateCategory,
     deleteCategory
 } from "../../service/categorieService"
+import "./categories.css"
 
 const emptyForm = {
     categoryName: "",
@@ -321,10 +322,10 @@ const Categories = () => {
                                     </label>
 
                                     <select
-                                        name="parentId"
+                                        name="parent"
                                         className="form-select"
                                         value={
-                                            formData.parentId
+                                            formData.parent
                                         }
                                         onChange={handleChange}
                                     >

@@ -8,6 +8,7 @@ import {
 } from "../../service/productService";
 
 import { getProductImageUrl } from "../../service/imageUrl";
+import "./ProductList.css";
 
 const ProductList = () => {
 
