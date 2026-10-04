@@ -1,0 +1,1117 @@
+/* =========================================================
+   CUSTOMER CART
+========================================================= */
+
+.customer-main {
+    background:
+        radial-gradient(
+            circle at 92% 5%,
+            rgba(99, 102, 241, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 5% 75%,
+            rgba(6, 182, 212, 0.06),
+            transparent 25%
+        ),
+        #f8f9fd;
+}
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+    padding: 24px 26px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.08),
+            rgba(139, 92, 246, 0.04)
+        );
+
+    border: 1px solid rgba(99, 102, 241, 0.10);
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.04);
+
+    gap: 15px;
+}
+
+.customer-main > div > .d-flex h3 {
+    color: #111827;
+    font-size: 25px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.customer-main > div > .d-flex p {
+    font-size: 13px;
+}
+
+/* =========================================================
+   HEADER BUTTONS
+========================================================= */
+
+.customer-main > div > .d-flex > .btn {
+    border-radius: 10px;
+
+    padding: 10px 15px;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    transition: all 0.2s ease;
+}
+
+.customer-main > div > .d-flex > .btn-outline-secondary {
+    color: #475569;
+    border-color: #dbe1ea;
+    background: #ffffff;
+}
+
+.customer-main > div > .d-flex > .btn-outline-secondary:hover {
+    color: #4f46e5;
+    background: #eef2ff;
+    border-color: #c7d2fe;
+
+    transform: translateY(-1px);
+}
+
+.customer-main > div > .d-flex > .btn-outline-danger {
+    color: #ef4444;
+    border-color: #fecaca;
+    background: #ffffff;
+}
+
+.customer-main > div > .d-flex > .btn-outline-danger:hover {
+    color: #ffffff;
+    background: #ef4444;
+    border-color: #ef4444;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(239, 68, 68, 0.18);
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.customer-main .alert-danger {
+    border: none;
+    border-left: 4px solid #ef4444;
+
+    border-radius: 11px;
+
+    background: #fff1f2;
+    color: #be123c;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 6px 18px rgba(15, 23, 42, 0.04);
+
+    animation: cartAlert 0.3s ease;
+}
+
+@keyframes cartAlert {
+    from {
+        opacity: 0;
+        transform: translateY(-7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   EMPTY CART
+========================================================= */
+
+.customer-main .card.border-0.shadow-sm {
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06) !important;
+
+    overflow: hidden;
+}
+
+.customer-main .card-body.text-center.py-5 {
+    padding: 70px 25px !important;
+}
+
+.customer-main .card-body.text-center.py-5 > i {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 82px;
+    height: 82px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f5f3ff
+        );
+
+    color: #6366f1 !important;
+
+    font-size: 36px !important;
+
+    margin-bottom: 10px;
+}
+
+.customer-main .card-body.text-center.py-5 h5 {
+    color: #1e293b;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.customer-main .card-body.text-center.py-5 .btn-primary {
+    margin-top: 10px;
+
+    padding: 11px 22px;
+
+    border: none;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    font-size: 13px;
+    font-weight: 650;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.20);
+
+    transition: all 0.2s ease;
+}
+
+.customer-main .card-body.text-center.py-5 .btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(99, 102, 241, 0.28);
+}
+
+/* =========================================================
+   CART MAIN CARD
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-8 > .card {
+    border-radius: 18px !important;
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* =========================================================
+   CART TABLE
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-8 .table {
+    margin-bottom: 0;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table thead {
+    background:
+        linear-gradient(
+            90deg,
+            #f8f9ff,
+            #fafaff
+        ) !important;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table thead th {
+    padding: 16px 18px;
+
+    color: #64748b;
+
+    border-bottom: 1px solid #edf0f5;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table tbody td {
+    padding: 18px;
+
+    color: #334155;
+
+    border-color: #f0f2f6;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table tbody tr {
+    transition:
+        background 0.2s ease;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table tbody tr:hover {
+    background: #fafbff;
+}
+
+/* =========================================================
+   PRODUCT IMAGE
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-8 .table img {
+    width: 70px;
+    height: 70px;
+
+    object-fit: cover;
+
+    border-radius: 12px !important;
+
+    border: 1px solid #edf0f5;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.06);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table tbody tr:hover img {
+    transform: scale(1.04);
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.10);
+}
+
+/* =========================================================
+   PRODUCT NAME
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-8 .fw-semibold {
+    color: #1e293b;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+.customer-main .row.g-4 > .col-lg-8 small {
+    color: #94a3b8 !important;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   QUANTITY CONTROL
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-8 .input-group {
+    width: 130px !important;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 10px rgba(15, 23, 42, 0.04);
+}
+
+.customer-main .row.g-4 > .col-lg-8 .input-group .btn {
+    width: 38px;
+
+    border-color: #e2e8f0;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .input-group .btn:hover:not(:disabled) {
+    color: #4f46e5;
+
+    background: #eef2ff;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .input-group .btn:disabled {
+    opacity: 0.35;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .input-group .form-control {
+    border-color: #e2e8f0;
+
+    background: #ffffff;
+
+    color: #1e293b;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-8 .table td:nth-child(2) {
+    color: #64748b;
+
+    font-weight: 550;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table td:nth-child(4) {
+    color: #111827;
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-8 .table .btn-outline-danger {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border-radius: 9px;
+
+    color: #ef4444;
+
+    border-color: #fecaca;
+
+    background: #ffffff;
+
+    transition: all 0.2s ease;
+}
+
+.customer-main .row.g-4 > .col-lg-8 .table .btn-outline-danger:hover {
+    color: #ffffff;
+
+    background: #ef4444;
+
+    border-color: #ef4444;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 14px rgba(239, 68, 68, 0.18);
+}
+
+/* =========================================================
+   ORDER SUMMARY
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-4 > .card {
+    position: sticky;
+
+    top: 115px;
+
+    border-radius: 18px !important;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fafaff
+        );
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.08) !important;
+}
+
+.customer-main .row.g-4 > .col-lg-4 > .card::before {
+    content: "";
+
+    display: block;
+
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #8b5cf6,
+            #06b6d4
+        );
+}
+
+.customer-main .row.g-4 > .col-lg-4 .card-body {
+    padding: 25px;
+}
+
+.customer-main .row.g-4 > .col-lg-4 h5 {
+    color: #111827;
+
+    font-size: 18px;
+    font-weight: 750;
+
+    margin-bottom: 20px;
+}
+
+.customer-main .row.g-4 > .col-lg-4 .d-flex span {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.customer-main .row.g-4 > .col-lg-4 .d-flex strong {
+    color: #1e293b;
+
+    font-size: 14px;
+}
+
+.customer-main .row.g-4 > .col-lg-4 hr {
+    margin: 20px 0;
+
+    border-color: #e9edf3;
+
+    opacity: 1;
+}
+
+.customer-main .row.g-4 > .col-lg-4 .d-flex:last-of-type strong {
+    color: #111827;
+
+    font-size: 17px;
+}
+
+/* =========================================================
+   CHECKOUT BUTTON
+========================================================= */
+
+.customer-main .row.g-4 > .col-lg-4 .btn-primary {
+    position: relative;
+
+    overflow: hidden;
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    font-size: 13px;
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 22px rgba(99, 102, 241, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.customer-main .row.g-4 > .col-lg-4 .btn-primary::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.5s ease;
+}
+
+.customer-main .row.g-4 > .col-lg-4 .btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 28px rgba(99, 102, 241, 0.30);
+}
+
+.customer-main .row.g-4 > .col-lg-4 .btn-primary:hover::after {
+    left: 130%;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .customer-main .row.g-4 > .col-lg-4 > .card {
+        position: static;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+        flex-wrap: wrap;
+        align-items: flex-start !important;
+    }
+
+    .customer-main > div > .d-flex > div {
+        width: 100%;
+    }
+
+    .customer-main > div > .d-flex > .btn {
+        margin-left: 0 !important;
+    }
+
+    .customer-main > div > .d-flex > .btn-outline-secondary {
+        margin-top: 4px;
+    }
+
+    .customer-main > div > .d-flex > .btn-outline-danger {
+        margin-top: 4px;
+    }
+
+    .customer-main .row.g-4 > .col-lg-8 .table {
+        min-width: 720px;
+    }
+
+    .customer-main .row.g-4 > .col-lg-8 .card {
+        overflow-x: auto;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .customer-main > div > .d-flex h3 {
+        font-size: 21px;
+    }
+
+    .customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+        padding: 20px;
+    }
+
+    .customer-main > div > .d-flex > .btn {
+        width: 100%;
+    }
+
+    .customer-main .card-body.text-center.py-5 {
+        padding: 55px 20px !important;
+    }
+
+    .customer-main .row.g-4 > .col-lg-4 .card-body {
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   CLEAR CART BUTTON - FIX CLICK ISSUE
+========================================================= */
+
+/* Header decorative bubble should never block clicks */
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4::before,
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4::after {
+    pointer-events: none !important;
+}
+
+/* Keep header content above decorative background */
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Clear Cart button */
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 .btn-outline-danger {
+    position: relative;
+    z-index: 10 !important;
+
+    pointer-events: auto !important;
+    cursor: pointer;
+
+    color: #ef4444;
+    background: #ffffff;
+    border: 1px solid #fecaca;
+
+    border-radius: 10px;
+
+    padding: 10px 17px;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 .btn-outline-danger:hover {
+    color: #ffffff !important;
+    background: #ef4444 !important;
+    border-color: #ef4444 !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(239, 68, 68, 0.20);
+}
+
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 .btn-outline-danger:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   CART - FINAL BOX ALIGNMENT
+========================================================= */
+
+/* Main cart page */
+.customer-main > div {
+    width: 100%;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+    width: 100%;
+    min-height: 125px;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    padding: 26px 30px !important;
+
+    margin-bottom: 30px !important;
+
+    border-radius: 20px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header text */
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 > div:first-child {
+    flex: 1;
+}
+
+/* Header buttons wrapper problem avoid */
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 > .btn {
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   HEADER BUTTON GROUPING
+========================================================= */
+
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4
+> .btn-outline-secondary {
+    margin-left: auto !important;
+}
+
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4
+> .btn-outline-danger {
+    margin-left: 12px !important;
+}
+
+/* =========================================================
+   CART + SUMMARY CONTAINER
+========================================================= */
+
+.customer-main > div > .row.g-4 {
+    width: 100%;
+
+    display: flex !important;
+    align-items: flex-start !important;
+
+    margin-top: 0 !important;
+}
+
+/* =========================================================
+   LEFT CART BOX
+========================================================= */
+
+.customer-main > div > .row.g-4 > .col-lg-8 {
+    width: 66.666667%;
+
+    display: block !important;
+
+    flex: 0 0 66.666667%;
+
+    padding-right: 12px;
+}
+
+/* Cart card */
+.customer-main > div > .row.g-4 > .col-lg-8 > .card {
+    width: 100%;
+
+    margin: 0 !important;
+
+    border-radius: 20px !important;
+
+    overflow: hidden;
+}
+
+/* =========================================================
+   RIGHT SUMMARY BOX
+========================================================= */
+
+.customer-main > div > .row.g-4 > .col-lg-4 {
+    width: 33.333333%;
+
+    flex: 0 0 33.333333%;
+
+    padding-left: 12px;
+
+    margin: 0 !important;
+}
+
+/* VERY IMPORTANT:
+   Remove the large vertical gap */
+.customer-main > div > .row.g-4 > .col-lg-4 > .card {
+    position: relative !important;
+
+    top: 0 !important;
+
+    margin: 0 !important;
+
+    width: 100%;
+
+    border-radius: 20px !important;
+}
+
+/* =========================================================
+   TABLE BOX
+========================================================= */
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table-responsive {
+    width: 100%;
+}
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table {
+    width: 100%;
+
+    table-layout: fixed;
+}
+
+/* Column widths */
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table th:nth-child(1),
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table td:nth-child(1) {
+    width: 42%;
+}
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table th:nth-child(2),
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table td:nth-child(2) {
+    width: 16%;
+}
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table th:nth-child(3),
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table td:nth-child(3) {
+    width: 20%;
+}
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table th:nth-child(4),
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table td:nth-child(4) {
+    width: 16%;
+}
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table th:nth-child(5),
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .card
+> .table td:nth-child(5) {
+    width: 6%;
+}
+
+/* =========================================================
+   PRODUCT ROW
+========================================================= */
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table tbody td {
+    height: 105px;
+
+    vertical-align: middle;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* Product image */
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table img {
+    width: 70px !important;
+    height: 70px !important;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+}
+
+/* Product information */
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table td:first-child > div {
+    min-width: 0;
+}
+
+/* =========================================================
+   QUANTITY BOX
+========================================================= */
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table .input-group {
+    width: 130px !important;
+
+    margin: 0 auto;
+}
+
+/* =========================================================
+   PRICE / TOTAL ALIGNMENT
+========================================================= */
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table td:nth-child(2),
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table td:nth-child(4) {
+    white-space: nowrap;
+}
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table td:last-child {
+    text-align: center;
+}
+
+.customer-main > div > .row.g-4
+> .col-lg-8
+> .table td:last-child .btn {
+    margin: 0 auto;
+}
+
+/* =========================================================
+   ORDER SUMMARY INTERNAL ALIGNMENT
+========================================================= */
+
+.customer-main > div > .row.g-4
+> .col-lg-4
+> .card
+> .card-body {
+    min-height: auto;
+
+    padding: 27px !important;
+}
+
+.customer-main > div > .row.g-4
+> .col-lg-4
+> .card h5 {
+    margin-bottom: 25px;
+}
+
+/* Summary rows */
+.customer-main > div > .row.g-4
+> .col-lg-4
+> .card .d-flex.justify-content-between {
+    min-height: 28px;
+
+    align-items: center;
+}
+
+/* Total */
+.customer-main > div > .row.g-4
+> .col-lg-4
+> .card .d-flex.justify-content-between:last-of-type {
+    margin-top: 8px;
+}
+
+/* Checkout button */
+.customer-main > div > .row.g-4
+> .col-lg-4
+> .card .btn-primary {
+    width: 100%;
+
+    margin-top: 22px !important;
+}
+
+/* =========================================================
+   DESKTOP BALANCE
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .customer-main > div > .row.g-4
+    > .col-lg-8 {
+        padding-right: 15px;
+    }
+
+    .customer-main > div > .row.g-4
+    > .col-lg-4 {
+        padding-left: 15px;
+    }
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .customer-main > div > .row.g-4 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .customer-main > div > .row.g-4 > .col-lg-8,
+    .customer-main > div > .row.g-4 > .col-lg-4 {
+        width: 100%;
+
+        flex: 0 0 100%;
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .customer-main > div > .row.g-4 > .col-lg-4 {
+        margin-top: 0 !important;
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+        min-height: auto;
+
+        padding: 20px !important;
+
+        flex-direction: column;
+
+        align-items: stretch !important;
+    }
+
+    .customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4
+    > .btn {
+        width: 100%;
+
+        margin-left: 0 !important;
+
+        margin-top: 10px;
+    }
+
+    .customer-main > div > .row.g-4
+    > .col-lg-8
+    > .card {
+        overflow-x: auto;
+    }
+
+    .customer-main > div > .row.g-4
+    > .col-lg-8
+    > .card
+    > .table-responsive {
+        overflow-x: auto;
+    }
+
+    .customer-main > div > .row.g-4
+    > .col-lg-8
+    > .card
+    > .table {
+        min-width: 760px;
+    }
+
+}

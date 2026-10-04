@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getMyOrder } from "../../service/orderService";
+import "./customerOrder.css"
 
 const CustomerOrders = () => {
     const [orders, setOrders] = useState([]);

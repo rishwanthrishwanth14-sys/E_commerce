@@ -1,45 +1,20 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../customer/navbar";
 import CustomerSidebar from "../customer/sidebar";
+import "./layout.css";
 
 const CustomerLayout = () => {
-
     return (
-        <div
-            style={{
-                minHeight: "100vh",
-                backgroundColor: "#f5f7fa"
-            }}
-        >
+        <div className="customer-layout">
 
             <CustomerSidebar />
 
-            <div
-                style={{
-                    marginLeft:
-                        window.innerWidth <= 768
-                            ? "0"
-                            : "260px",
-
-                    minHeight: "100vh"
-                }}
-            >
+            <div className="customer-content">
 
                 <Navbar />
 
-                <main
-                    style={{
-                        padding: "30px",
-
-                        paddingBottom:
-                            window.innerWidth <= 768
-                                ? "90px"
-                                : "30px"
-                    }}
-                >
-
+                <main className="customer-main">
                     <Outlet />
-
                 </main>
 
             </div>

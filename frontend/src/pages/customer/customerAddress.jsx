@@ -5,6 +5,7 @@ import {
     updateAddress,
     deleteAddress
 } from "../../service/addressService";
+import "./customerAddress.css"
 
 const CustomerAddresses = () => {
   const [addresses, setAddresses] = useState([]);

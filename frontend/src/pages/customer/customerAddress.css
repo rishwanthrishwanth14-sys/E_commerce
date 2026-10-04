@@ -1,0 +1,677 @@
+/* =========================================================
+   CUSTOMER ADDRESS PAGE
+========================================================= */
+
+.customer-main {
+    background:
+        radial-gradient(
+            circle at 90% 5%,
+            rgba(99, 102, 241, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 5% 80%,
+            rgba(139, 92, 246, 0.07),
+            transparent 25%
+        ),
+        #f8f9fd;
+    min-height: calc(100vh - 96px);
+}
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+    padding: 26px 28px;
+    margin-bottom: 28px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.10),
+            rgba(139, 92, 246, 0.06)
+        );
+
+    border: 1px solid rgba(99, 102, 241, 0.10);
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.customer-main > div > .d-flex h3 {
+    color: #111827;
+    font-size: 25px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.customer-main > div > .d-flex p {
+    color: #64748b !important;
+    font-size: 14px;
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.customer-main .btn-primary {
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #7c3aed
+    );
+
+    border: none;
+    border-radius: 11px;
+
+    padding: 11px 18px;
+
+    font-size: 13px;
+    font-weight: 650;
+
+    box-shadow:
+        0 8px 20px rgba(99, 102, 241, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+.customer-main .btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(99, 102, 241, 0.30);
+
+    filter: brightness(1.04);
+}
+
+.customer-main .btn-primary:active {
+    transform: translateY(0);
+}
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.customer-main .alert {
+    border: none;
+    border-radius: 13px;
+
+    padding: 14px 17px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    box-shadow:
+        0 6px 18px rgba(15, 23, 42, 0.05);
+
+    animation: addressAlert 0.3s ease;
+}
+
+.customer-main .alert-success {
+    color: #047857;
+    background: #ecfdf5;
+    border-left: 4px solid #10b981;
+}
+
+.customer-main .alert-danger {
+    color: #b91c1c;
+    background: #fef2f2;
+    border-left: 4px solid #ef4444;
+}
+
+@keyframes addressAlert {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.customer-main .spinner-border {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 3px;
+}
+
+.customer-main .text-center.py-5 p {
+    font-size: 13px;
+}
+
+/* =========================================================
+   EMPTY ADDRESS STATE
+========================================================= */
+
+.customer-main .card.border-0.shadow-sm {
+    border-radius: 18px !important;
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+.customer-main .card-body.text-center.py-5 {
+    padding: 65px 25px !important;
+}
+
+.customer-main .card-body.text-center.py-5 > i {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 78px;
+    height: 78px;
+
+    border-radius: 22px;
+
+    color: #6366f1 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f5f3ff
+        );
+
+    font-size: 34px !important;
+
+    margin-bottom: 10px;
+}
+
+.customer-main .card-body.text-center.py-5 h5 {
+    color: #1e293b;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.customer-main .card-body.text-center.py-5 p {
+    font-size: 13px;
+}
+
+/* =========================================================
+   ADDRESS GRID
+========================================================= */
+
+.customer-main .row.g-4 {
+    animation: addressCards 0.45s ease both;
+}
+
+@keyframes addressCards {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================================
+   ADDRESS CARD
+========================================================= */
+
+.customer-main .row.g-4 .card {
+    position: relative;
+
+    border-radius: 18px !important;
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.customer-main .row.g-4 .card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6366f1,
+            #8b5cf6,
+            #06b6d4
+        );
+}
+
+.customer-main .row.g-4 .card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.10) !important;
+}
+
+.customer-main .row.g-4 .card-body {
+    padding: 25px;
+}
+
+/* =========================================================
+   ADDRESS NAME
+========================================================= */
+
+.customer-main .row.g-4 .card-body h5 {
+    color: #111827;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    letter-spacing: -0.2px;
+}
+
+.customer-main .row.g-4 .card-body small {
+    font-size: 12px;
+}
+
+/* =========================================================
+   ADDRESS BADGE
+========================================================= */
+
+.customer-main .row.g-4 .badge.text-bg-light {
+    color: #6366f1 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f5f3ff
+        ) !important;
+
+    border: 1px solid #e0e7ff;
+
+    border-radius: 20px;
+
+    padding: 7px 11px;
+
+    font-size: 11px;
+    font-weight: 650;
+}
+
+/* =========================================================
+   ADDRESS CONTENT
+========================================================= */
+
+.customer-main .row.g-4 .card-body .text-muted {
+    color: #64748b !important;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+.customer-main .row.g-4 .card-body .fw-semibold {
+    color: #334155;
+
+    font-size: 13px;
+}
+
+.customer-main .row.g-4 .card-body .fw-semibold i {
+    color: #6366f1;
+}
+
+/* =========================================================
+   CARD ACTION AREA
+========================================================= */
+
+.customer-main .row.g-4 .card-body .border-top {
+    border-color: #edf0f5 !important;
+
+    margin-top: 20px;
+    padding-top: 18px !important;
+}
+
+.customer-main .row.g-4 .btn-sm {
+    border-radius: 9px;
+
+    padding: 8px 13px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        all 0.2s ease;
+}
+
+/* Edit */
+
+.customer-main .row.g-4 .btn-outline-primary {
+    color: #6366f1;
+
+    border-color: #c7d2fe;
+
+    background: #ffffff;
+}
+
+.customer-main .row.g-4 .btn-outline-primary:hover {
+    color: #ffffff;
+
+    background: #6366f1;
+
+    border-color: #6366f1;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(99, 102, 241, 0.20);
+}
+
+/* Delete */
+
+.customer-main .row.g-4 .btn-outline-danger {
+    color: #ef4444;
+
+    border-color: #fecaca;
+
+    background: #ffffff;
+}
+
+.customer-main .row.g-4 .btn-outline-danger:hover {
+    color: #ffffff;
+
+    background: #ef4444;
+
+    border-color: #ef4444;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 15px rgba(239, 68, 68, 0.20);
+}
+
+/* =========================================================
+   MODAL BACKDROP
+========================================================= */
+
+.customer-main .modal.show {
+    background-color: rgba(15, 23, 42, 0.62) !important;
+
+    backdrop-filter: blur(6px);
+
+    animation: modalBackdrop 0.2s ease;
+}
+
+@keyframes modalBackdrop {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.customer-main .modal-dialog {
+    animation: modalOpen 0.3s ease;
+}
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.customer-main .modal-content {
+    border: none;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25);
+}
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.customer-main .modal-header {
+    padding: 21px 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8f9ff,
+            #ffffff
+        );
+
+    border-bottom: 1px solid #edf0f5;
+}
+
+.customer-main .modal-title {
+    color: #111827;
+
+    font-size: 18px;
+    font-weight: 750;
+}
+
+.customer-main .modal-header .btn-close {
+    opacity: 0.6;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.customer-main .modal-header .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* =========================================================
+   MODAL BODY
+========================================================= */
+
+.customer-main .modal-body {
+    padding: 25px;
+    background: #ffffff;
+}
+
+.customer-main .modal-body .form-label {
+    color: #334155;
+
+    font-size: 12px;
+    font-weight: 650;
+
+    margin-bottom: 7px;
+}
+
+.customer-main .modal-body .text-danger {
+    margin-left: 3px;
+}
+
+/* =========================================================
+   FORM INPUTS
+========================================================= */
+
+.customer-main .modal-body .form-control {
+    min-height: 45px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    color: #1e293b;
+
+    font-size: 13px;
+
+    padding: 10px 13px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.customer-main .modal-body .form-control:hover {
+    border-color: #cbd5e1;
+}
+
+.customer-main .modal-body .form-control:focus {
+    border-color: #818cf8;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.10);
+
+    outline: none;
+}
+
+.customer-main .modal-body .form-control::placeholder {
+    color: #94a3b8;
+}
+
+/* =========================================================
+   MODAL FOOTER
+========================================================= */
+
+.customer-main .modal-footer {
+    padding: 18px 25px;
+
+    background: #fafbfc;
+
+    border-top: 1px solid #edf0f5;
+}
+
+.customer-main .modal-footer .btn {
+    min-width: 110px;
+
+    border-radius: 10px;
+
+    padding: 10px 16px;
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.customer-main .modal-footer .btn-secondary {
+    color: #475569;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+}
+
+.customer-main .modal-footer .btn-secondary:hover {
+    background: #f8fafc;
+
+    border-color: #cbd5e1;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+        padding: 20px;
+
+        border-radius: 16px;
+
+        align-items: flex-start !important;
+
+        gap: 15px;
+    }
+
+    .customer-main > div > .d-flex h3 {
+        font-size: 21px;
+    }
+
+    .customer-main > div > .d-flex .btn-primary {
+        white-space: nowrap;
+
+        padding: 9px 13px;
+
+        font-size: 12px;
+    }
+
+    .customer-main .row.g-4 .card-body {
+        padding: 21px;
+    }
+
+    .customer-main .modal-dialog {
+        margin: 12px;
+    }
+
+    .customer-main .modal-body {
+        padding: 20px;
+    }
+
+    .customer-main .modal-footer {
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .customer-main > div > .d-flex.justify-content-between.align-items-center.mb-4 {
+        flex-direction: column;
+
+        align-items: stretch !important;
+    }
+
+    .customer-main > div > .d-flex .btn-primary {
+        width: 100%;
+    }
+
+    .customer-main .row.g-4 .card-body {
+        padding: 19px;
+    }
+
+    .customer-main .row.g-4 .badge.text-bg-light {
+        font-size: 10px;
+        padding: 6px 9px;
+    }
+
+    .customer-main .modal-body .row {
+        row-gap: 14px !important;
+    }
+
+    .customer-main .modal-footer {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+    .customer-main .modal-footer .btn {
+        width: 100%;
+    }
+}

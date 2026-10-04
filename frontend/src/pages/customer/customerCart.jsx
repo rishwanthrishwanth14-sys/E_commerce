@@ -7,6 +7,7 @@ import {
     clearCart
 } from "../../service/cartService";
 import { getProductImageUrl } from "../../service/imageUrl";
+import "./customerCart.css"
 
 const CustomerCart = () => {
     const navigate = useNavigate();

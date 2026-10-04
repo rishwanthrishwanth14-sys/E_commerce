@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getCustomerProducts } from "../../service/customerProductService";
 import { addToCart } from "../../service/cartService";
 import { getProductImageUrl } from "../../service/imageUrl";
+import "./customerShop.css"
 
 const CustomerShop = () => {
     const navigate = useNavigate();

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getCart } from "../../service/cartService";
 import { getAddresses } from "../../service/addressService";
 import { placeOrder } from "../../service/checkoutService";
+import "./customercheckout.css"
 
 const CustomerCheckout = () => {
     const location = useLocation();

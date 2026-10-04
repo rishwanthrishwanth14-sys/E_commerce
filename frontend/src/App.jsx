@@ -18,7 +18,7 @@ import CreateCustomer from "./pages/frontPage/customer/customerCreate";
 import CustomerLogin from "./pages/frontPage/customer/customerLogin";
 import CustomerDashboard from "./pages/customer/customerdashboard";
 import CustomerAddresses from "./pages/customer/customerAddress";
-import CustomerOrders from "./pages/customer/customeOrder";
+import CustomerOrders from "./pages/customer/customerOrder";
 import CustomerProfile from "./pages/customer/customerprofile";
 import CustomerShop from "./pages/customer/customerShop";
 import CustomerProduct from "./pages/customer/customerProduct";

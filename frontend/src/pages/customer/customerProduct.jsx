@@ -7,6 +7,7 @@ import {
     addToCart
 } from "../../service/cartService";
 import { getProductImageUrl } from "../../service/imageUrl";
+import "./customerProduct.css"
 
 const CustomerProduct = () => {
     const { productId } = useParams();
@@ -114,7 +115,7 @@ const CustomerProduct = () => {
                 : [];
 
     return (
-        <div>
+        <div className="customer-product-page">
             {message && (
                 <div className="alert alert-success">
                     {message}
@@ -141,17 +142,10 @@ const CustomerProduct = () => {
                             <img
                                 src={getProductImageUrl(selectedImage)}
                                 alt={product.productName}
-                                className="card-img-top"
-                                style={{
-                                    height: "500px",
-                                    objectFit: "contain"
-                                }}
+                                className="customer-product-main-image"
                             />
                         ) : (
-                            <div
-                                className="d-flex align-items-center justify-content-center bg-light"
-                                style={{ height: "500px" }}
-                            >
+                            <div className="customer-product-no-image">
                                 No Image
                             </div>
                         )}
@@ -171,11 +165,7 @@ const CustomerProduct = () => {
                                     <img
                                         src={getProductImageUrl(image)}
                                         alt=""
-                                        width="80"
-                                        height="80"
-                                        style={{
-                                            objectFit: "cover"
-                                        }}
+                                        className="customer-product-thumbnail"
                                     />
                                 </button>
                             ))}
@@ -218,8 +208,7 @@ const CustomerProduct = () => {
                                     min="1"
                                     max={product.quantity}
                                     value={quantity}
-                                    className="form-control"
-                                    style={{ width: "100px" }}
+                                    className="form-control customer-product-quantity"
                                     onChange={(e) =>
                                         setQuantity(
                                             Math.min(

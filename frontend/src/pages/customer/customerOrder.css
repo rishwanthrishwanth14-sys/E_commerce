@@ -1,0 +1,758 @@
+/* =========================================================
+   CUSTOMER DASHBOARD
+   Premium customer-facing design
+========================================================= */
+
+.customer-main {
+    background:
+        radial-gradient(
+            circle at 90% 5%,
+            rgba(99, 102, 241, 0.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 5% 80%,
+            rgba(139, 92, 246, 0.06),
+            transparent 25%
+        ),
+        #f8f9fd;
+
+    min-height: calc(100vh - 96px);
+
+    transition: background 0.4s ease;
+}
+
+
+/* =========================================================
+   MAIN DASHBOARD CONTAINER
+========================================================= */
+
+.customer-main > div {
+    position: relative;
+}
+
+
+/* =========================================================
+   WELCOME SECTION
+========================================================= */
+
+.customer-main > div > .mb-4 {
+    position: relative;
+
+    padding: 28px 30px;
+
+    margin-bottom: 28px !important;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            #ffffff 0%,
+            #f7f5ff 50%,
+            #eef8ff 100%
+        );
+
+    border: 1px solid rgba(99, 102, 241, 0.10);
+
+    box-shadow:
+        0 12px 35px rgba(31, 41, 55, 0.055);
+
+    animation: dashboardFadeUp 0.6s ease;
+}
+
+.customer-main > div > .mb-4::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -70px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.16),
+            rgba(139, 92, 246, 0.04)
+        );
+
+    transition: transform 0.5s ease;
+}
+
+.customer-main > div > .mb-4:hover::before {
+    transform: scale(1.2);
+}
+
+.customer-main > div > .mb-4 h3 {
+    position: relative;
+
+    margin-bottom: 7px;
+
+    color: #17172c;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.7px;
+}
+
+.customer-main > div > .mb-4 p {
+    position: relative;
+
+    margin: 0;
+
+    color: #85899c !important;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.customer-main .row.g-4.mb-4 {
+    animation: dashboardFadeUp 0.7s ease;
+}
+
+.customer-main .row.g-4.mb-4 > div > .card {
+    position: relative;
+
+    min-height: 145px;
+
+    overflow: hidden;
+
+    border: 1px solid #e9eaf2 !important;
+
+    border-radius: 20px !important;
+
+    background: rgba(255,255,255,0.95);
+
+    box-shadow:
+        0 10px 30px rgba(31, 41, 55, 0.055) !important;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.customer-main .row.g-4.mb-4 > div > .card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -45px;
+    bottom: -50px;
+
+    border-radius: 50%;
+
+    background: rgba(99,102,241,0.06);
+
+    transition: transform 0.35s ease;
+}
+
+.customer-main .row.g-4.mb-4 > div > .card:hover {
+    transform: translateY(-6px);
+
+    border-color: #dcd9ff !important;
+
+    box-shadow:
+        0 18px 40px rgba(65, 58, 150, 0.10) !important;
+}
+
+.customer-main .row.g-4.mb-4 > div > .card:hover::after {
+    transform: scale(1.5);
+}
+
+
+/* =========================================================
+   STAT CARD CONTENT
+========================================================= */
+
+.customer-main .row.g-4.mb-4 .card-body {
+    position: relative;
+
+    z-index: 2;
+
+    padding: 24px !important;
+}
+
+.customer-main .row.g-4.mb-4 .card-body p {
+    margin-bottom: 8px !important;
+
+    color: #9295a7 !important;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+}
+
+.customer-main .row.g-4.mb-4 .card-body h3 {
+    color: #202036;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   STAT ICONS
+========================================================= */
+
+.customer-main .row.g-4.mb-4 .card-body > i {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eeeaff,
+            #e9e7ff
+        );
+
+    color: #635bdb !important;
+
+    font-size: 22px !important;
+
+    box-shadow:
+        0 8px 18px rgba(99, 91, 219, 0.10);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.customer-main .row.g-4.mb-4 .card:hover .card-body > i {
+    transform: rotate(-6deg) scale(1.08);
+
+    background:
+        linear-gradient(
+            135deg,
+            #635bdb,
+            #8b5cf6
+        );
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   RECENT ORDERS
+========================================================= */
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 {
+    overflow: hidden;
+
+    border: 1px solid #e8e9f0 !important;
+
+    border-radius: 22px !important;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 35px rgba(31, 41, 55, 0.055) !important;
+
+    animation: dashboardFadeUp 0.8s ease;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 .card-header {
+    padding: 20px 24px !important;
+
+    border-bottom: 1px solid #eeeeF3 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #fafaff
+        ) !important;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 .card-header h5 {
+    color: #24233b;
+
+    font-size: 16px;
+
+    font-weight: 800;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 .card-header button {
+    color: #635bdb !important;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 .card-header button:hover {
+    color: #4338ca !important;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   RECENT ORDERS TABLE
+========================================================= */
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table {
+    margin: 0 !important;
+
+    min-width: 650px;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table thead {
+    background: #fafaff;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table th {
+    padding: 14px 20px !important;
+
+    border-bottom: 1px solid #eeeeF3 !important;
+
+    color: #9698aa;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table td {
+    padding: 16px 20px !important;
+
+    border-bottom: 1px solid #f2f2f6 !important;
+
+    color: #65697b;
+
+    font-size: 12px;
+
+    vertical-align: middle;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table tbody tr {
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table tbody tr:hover {
+    background: #faf9ff;
+}
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+
+/* Order number */
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table tbody td:first-child {
+    color: #5148c9;
+
+    font-weight: 750;
+}
+
+
+/* Amount */
+
+.customer-main > div > .card.border-0.shadow-sm.mb-4 table tbody td:nth-child(3) {
+    color: #222137;
+
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   ACCOUNT + ADDRESS CARDS
+========================================================= */
+
+.customer-main .row.g-4:not(.mb-4) {
+    animation: dashboardFadeUp 0.9s ease;
+}
+
+.customer-main .row.g-4:not(.mb-4) > div > .card {
+    position: relative;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid #e9e9f0 !important;
+
+    border-radius: 22px !important;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 32px rgba(31, 41, 55, 0.055) !important;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.customer-main .row.g-4:not(.mb-4) > div > .card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #635bff,
+            #8b5cf6,
+            #06b6d4
+        );
+
+    transform: scaleX(0.4);
+
+    transform-origin: left;
+
+    transition: transform 0.35s ease;
+}
+
+.customer-main .row.g-4:not(.mb-4) > div > .card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(65, 58, 150, 0.09) !important;
+}
+
+.customer-main .row.g-4:not(.mb-4) > div > .card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   ACCOUNT / ADDRESS HEADER
+========================================================= */
+
+.customer-main .row.g-4:not(.mb-4) .card-header {
+    padding: 19px 23px !important;
+
+    border-bottom: 1px solid #eeeeF3 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #fafaff
+        ) !important;
+}
+
+.customer-main .row.g-4:not(.mb-4) .card-header h5 {
+    color: #29273f;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   ACCOUNT / ADDRESS BODY
+========================================================= */
+
+.customer-main .row.g-4:not(.mb-4) .card-body {
+    padding: 23px !important;
+}
+
+.customer-main .row.g-4:not(.mb-4) .card-body p {
+    color: #777b8d;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.customer-main .row.g-4:not(.mb-4) .card-body p strong {
+    color: #29273f;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.customer-main .row.g-4:not(.mb-4) .btn-primary {
+    padding: 10px 17px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #635bff,
+            #7c3aed
+        );
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 18px rgba(99, 91, 255, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.customer-main .row.g-4:not(.mb-4) .btn-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(99, 91, 255, 0.30);
+}
+
+
+.customer-main .row.g-4:not(.mb-4) .btn-outline-primary {
+    padding: 10px 17px;
+
+    border: 1px solid #cfcaff;
+
+    border-radius: 10px;
+
+    background: #f8f7ff;
+
+    color: #635bdb;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.customer-main .row.g-4:not(.mb-4) .btn-outline-primary:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #635bff,
+            #7c3aed
+        );
+
+    border-color: transparent;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.customer-main > div > .alert-danger {
+    border: none !important;
+
+    border-left: 4px solid #ef5350 !important;
+
+    border-radius: 12px;
+
+    background: #fff1f1 !important;
+
+    color: #c33c3c;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.customer-main .spinner-border {
+    width: 34px;
+    height: 34px;
+
+    color: #635bff;
+}
+
+.customer-main .text-center.py-5 p {
+    color: #9295a7 !important;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes dashboardFadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .customer-main > div > .mb-4 {
+        padding: 24px;
+    }
+
+    .customer-main > div > .mb-4 h3 {
+        font-size: 25px;
+    }
+
+    .customer-main .row.g-4.mb-4 {
+        row-gap: 18px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .customer-main {
+        min-height: 100vh;
+    }
+
+    .customer-main > div > .mb-4 {
+        padding: 21px;
+
+        border-radius: 18px;
+    }
+
+    .customer-main > div > .mb-4 h3 {
+        font-size: 22px;
+    }
+
+    .customer-main > div > .mb-4 p {
+        font-size: 12px;
+    }
+
+    .customer-main .row.g-4.mb-4 {
+        gap: 0 !important;
+    }
+
+    .customer-main .row.g-4.mb-4 > div {
+        margin-bottom: 16px;
+    }
+
+    .customer-main .row.g-4.mb-4 > div > .card {
+        min-height: 125px;
+    }
+
+    .customer-main .row.g-4.mb-4 .card-body {
+        padding: 20px !important;
+    }
+
+    .customer-main > div > .card.border-0.shadow-sm.mb-4 {
+        border-radius: 18px !important;
+    }
+
+    .customer-main > div > .card.border-0.shadow-sm.mb-4 .card-header {
+        padding: 17px 18px !important;
+    }
+
+    .customer-main > div > .card.border-0.shadow-sm.mb-4 .table-responsive {
+        overflow-x: auto;
+    }
+
+    .customer-main .row.g-4:not(.mb-4) > div {
+        margin-bottom: 16px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .customer-main > div > .mb-4 {
+        padding: 18px;
+    }
+
+    .customer-main > div > .mb-4 h3 {
+        font-size: 20px;
+    }
+
+    .customer-main .row.g-4.mb-4 .card-body h3 {
+        font-size: 22px;
+    }
+
+    .customer-main .row.g-4.mb-4 .card-body > i {
+        width: 45px;
+        height: 45px;
+
+        font-size: 19px !important;
+    }
+}
