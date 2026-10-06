@@ -21,8 +21,8 @@ const authenticate = (req, res, next) => {
         // Bearer TOKEN
 
          const parts = authHeader.trim().split(/\s+/);
-        if (parts.length !== 2 || parts[0] !== "Bearer" || !parts[1]) {
-            return res.status(401).json({
+        if (parts.length !== 2 || parts[0] !== "Bearer" || !parts[1]) {  // edhula 3 la yedachum onu true nalum condition trigger agum                                                            
+            return res.status(401).json({                                   //  !parts[1]=false so condition not trigget 
                 success: false,
                 message: "Invalid authorization format"
             });

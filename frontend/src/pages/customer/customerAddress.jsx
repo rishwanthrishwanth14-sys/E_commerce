@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import {
-    getAddresses,
-    createAddress,
-    updateAddress,
-    deleteAddress
+  getAddresses,
+  createAddress,
+  updateAddress,
+  deleteAddress
 } from "../../service/addressService";
 import "./customerAddress.css"
 
