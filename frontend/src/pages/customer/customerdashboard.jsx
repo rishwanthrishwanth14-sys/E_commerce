@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getMyProfile } from "../../service/customerService";
 import { getMyOrder } from "../../service/orderService";
 import { getAddresses } from "../../service/addressService";
+import "./customerDashboard.css"
 
 const CustomerDashboard = () => {
     const navigate = useNavigate();
@@ -71,7 +72,7 @@ const CustomerDashboard = () => {
         .join(" ") || "Customer";
 
     return (
-        <div>
+        <div className="customer-dashboard">
             {error && <div className="alert alert-danger">{error}</div>}
 
             <div className="mb-4">

@@ -1,0 +1,473 @@
+/* =========================================
+   CUSTOMER DASHBOARD
+========================================= */
+
+.customer-dashboard {
+    padding: 10px 4px 40px;
+    color: #1f2937;
+}
+
+
+/* =========================================
+   WELCOME SECTION
+========================================= */
+
+.customer-dashboard .dashboard-welcome {
+    margin-bottom: 28px;
+}
+
+.customer-dashboard .dashboard-welcome h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #171b2e;
+}
+
+.customer-dashboard .dashboard-welcome p {
+    margin: 0;
+    color: #7b8498;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   STAT CARDS
+========================================= */
+
+.customer-dashboard .stats-row {
+    margin-bottom: 30px;
+}
+
+.customer-dashboard .stat-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 165px;
+    border: 1px solid #edf0f7;
+    border-radius: 20px;
+    background: #ffffff;
+    padding: 24px;
+    box-shadow: 0 8px 30px rgba(32, 40, 70, 0.06);
+    transition: all 0.25s ease;
+}
+
+.customer-dashboard .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(32, 40, 70, 0.11);
+}
+
+.customer-dashboard .stat-card::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    right: -30px;
+    bottom: -35px;
+    border-radius: 50%;
+    background: rgba(99, 82, 235, 0.07);
+}
+
+.customer-dashboard .stat-content {
+    position: relative;
+    z-index: 2;
+}
+
+.customer-dashboard .stat-title {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 6px 11px;
+    border-radius: 8px;
+    background: #f5f6fb;
+    color: #78839a;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.customer-dashboard .stat-value {
+    margin: 0;
+    color: #20243a;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.customer-dashboard .stat-icon {
+    position: absolute;
+    right: 22px;
+    bottom: 20px;
+    z-index: 2;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+    background: #eeebff;
+    color: #6754e8;
+
+    font-size: 23px;
+}
+
+.customer-dashboard .stat-card:nth-child(2) .stat-icon {
+    background: #e9e7ff;
+    color: #6754e8;
+}
+
+.customer-dashboard .stat-card:nth-child(3) .stat-icon {
+    background: #e9f9f1;
+    color: #20a66a;
+}
+
+.customer-dashboard .stat-card:nth-child(4) .stat-icon {
+    background: #fff2df;
+    color: #ed9b2f;
+}
+
+
+/* =========================================
+   COMMON SECTION CARD
+========================================= */
+
+.customer-dashboard .dashboard-card {
+    border: 1px solid #edf0f7 !important;
+    border-radius: 20px !important;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(32, 40, 70, 0.06) !important;
+}
+
+.customer-dashboard .dashboard-card .card-header {
+    min-height: 68px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #eef0f5;
+    background: #ffffff !important;
+}
+
+.customer-dashboard .dashboard-card .card-header h5 {
+    color: #20243a;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   VIEW ALL BUTTON
+========================================= */
+
+.customer-dashboard .view-all-btn {
+    color: #6754e8;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.customer-dashboard .view-all-btn:hover {
+    color: #4f3dd0;
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   ORDERS TABLE
+========================================= */
+
+.customer-dashboard .orders-table {
+    margin: 0;
+}
+
+.customer-dashboard .orders-table thead th {
+    padding: 15px 24px;
+    border-bottom: 1px solid #edf0f5;
+    background: #f8f9fc;
+    color: #7b8498;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.customer-dashboard .orders-table tbody td {
+    padding: 17px 24px;
+    border-bottom: 1px solid #f0f1f5;
+    color: #4b5568;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.customer-dashboard .orders-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.customer-dashboard .orders-table tbody tr:hover {
+    background: #fafaff;
+}
+
+.customer-dashboard .order-number {
+    color: #6754e8;
+    font-weight: 700;
+}
+
+.customer-dashboard .order-amount {
+    color: #20243a;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   STATUS BADGES
+========================================= */
+
+.customer-dashboard .status-badge {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    background: #f1f2f7;
+    color: #697386;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.customer-dashboard .payment-status {
+    color: #596579;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   INFORMATION CARDS
+========================================= */
+
+.customer-dashboard .info-card {
+    height: 100%;
+    border: 1px solid #edf0f7 !important;
+    border-radius: 20px !important;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(32, 40, 70, 0.06) !important;
+}
+
+.customer-dashboard .info-card .card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #edf0f5;
+    background: #ffffff !important;
+}
+
+.customer-dashboard .info-card .card-header h5 {
+    color: #20243a;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.customer-dashboard .info-card .card-body {
+    padding: 24px;
+}
+
+.customer-dashboard .info-item {
+    margin-bottom: 15px;
+    color: #667085;
+    font-size: 14px;
+}
+
+.customer-dashboard .info-item strong {
+    display: inline-block;
+    min-width: 65px;
+    color: #30364a;
+}
+
+.customer-dashboard .address-name {
+    margin-bottom: 10px;
+    color: #20243a;
+    font-size: 15px;
+}
+
+.customer-dashboard .address-text {
+    line-height: 1.8;
+    color: #7b8498;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.customer-dashboard .primary-btn {
+    border: none;
+    border-radius: 10px;
+    background: #6754e8;
+    padding: 10px 17px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.customer-dashboard .primary-btn:hover {
+    background: #5542d5;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(103, 84, 232, 0.25);
+}
+
+.customer-dashboard .outline-btn {
+    border: 1px solid #6754e8;
+    border-radius: 10px;
+    background: transparent;
+    padding: 10px 17px;
+    color: #6754e8;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.customer-dashboard .outline-btn:hover {
+    background: #6754e8;
+    color: #ffffff;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.customer-dashboard .empty-state {
+    padding: 45px 20px;
+    text-align: center;
+    color: #98a2b3;
+}
+
+.customer-dashboard .empty-state i {
+    display: block;
+    margin-bottom: 10px;
+    color: #c5c9d5;
+    font-size: 35px;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.customer-dashboard .dashboard-error {
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 12px;
+    background: #fff1f1;
+    color: #d64545;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.customer-dashboard .dashboard-loading {
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.customer-dashboard .dashboard-loading .spinner-border {
+    width: 35px;
+    height: 35px;
+    color: #6754e8;
+}
+
+.customer-dashboard .dashboard-loading p {
+    color: #8a94a6;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 992px) {
+
+    .customer-dashboard {
+        padding: 10px 0 30px;
+    }
+
+    .customer-dashboard .stat-card {
+        min-height: 150px;
+    }
+
+    .customer-dashboard .stat-value {
+        font-size: 26px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .customer-dashboard .dashboard-welcome h3 {
+        font-size: 24px;
+    }
+
+    .customer-dashboard .stat-card {
+        min-height: 140px;
+        padding: 20px;
+    }
+
+    .customer-dashboard .stat-icon {
+        width: 46px;
+        height: 46px;
+        right: 18px;
+        bottom: 18px;
+    }
+
+    .customer-dashboard .dashboard-card .card-header,
+    .customer-dashboard .info-card .card-header {
+        padding: 17px 18px;
+    }
+
+    .customer-dashboard .orders-table thead th,
+    .customer-dashboard .orders-table tbody td {
+        padding: 13px 15px;
+        white-space: nowrap;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .customer-dashboard .dashboard-welcome h3 {
+        font-size: 21px;
+    }
+
+    .customer-dashboard .dashboard-welcome p {
+        font-size: 13px;
+    }
+
+    .customer-dashboard .stat-card {
+        min-height: 135px;
+        border-radius: 16px;
+    }
+
+    .customer-dashboard .stat-value {
+        font-size: 24px;
+    }
+
+    .customer-dashboard .stat-title {
+        font-size: 10px;
+    }
+
+    .customer-dashboard .stat-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .customer-dashboard .dashboard-card,
+    .customer-dashboard .info-card {
+        border-radius: 16px !important;
+    }
+}
