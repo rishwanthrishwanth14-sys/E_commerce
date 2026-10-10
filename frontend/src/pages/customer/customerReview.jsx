@@ -5,6 +5,7 @@ import {
     updateReview,
     deleteReview
 } from "../../service/reviewService";
+import "./customerReview.css"
 
 const ProductReview = ({ productId }) => {
 
