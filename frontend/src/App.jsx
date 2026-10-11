@@ -26,6 +26,7 @@ import CustomerCart from "./pages/customer/customerCart";
 import CustomerCheckout from "./pages/customer/customerCheckout";
 import AdminLayout from "./components/admin/layout";
 import CustomerLayout from "./components/customer/layout";
+import ProductReview from "./pages/customer/customerReview";
 
 
 import PublicRoutes from "./components/auth/publicRoutes";
@@ -76,6 +77,7 @@ export default function App() {
           <Route path="product/:productId" element={<CustomerProduct />} />
           <Route path="cart" element={<CustomerCart />} />
           <Route path="checkout" element={<CustomerCheckout />} />
+          <Route path="review" element={<ProductReview/>} />
         </Route>
       </Route>
     </Routes>
