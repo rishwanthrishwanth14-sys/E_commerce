@@ -7,6 +7,7 @@ import {
     addToCart
 } from "../../service/cartService";
 import { getProductImageUrl } from "../../service/imageUrl";
+import ProductReview from "./ProductReview";
 import "./customerProduct.css"
 
 const CustomerProduct = () => {
