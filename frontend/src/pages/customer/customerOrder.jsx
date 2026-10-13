@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { getMyOrder } from "../../service/orderService";
 import "./customerOrder.css"
 
@@ -110,6 +110,7 @@ const CustomerOrders = () => {
                                         <th>Order Status</th>
                                         <th>Shipping</th>
                                         <th>Tracking</th>
+                                        <th>Review</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -151,6 +152,17 @@ const CustomerOrders = () => {
                                             <td>
                                                 {order.trackingNumber || (
                                                     <span className="text-muted">Not available</span>
+                                                )}
+                                            </td>
+                                            <td>
+                                                {order.paymentStatus === "paid" && 
+                                                order.orderStatus === "comleted" &&
+                                                order.shippingStatus === "delivered" &&(
+                                                    <button
+                                                    onClick={()=>Navigate("/customer/review")}
+                                                    >                                                       
+                                                    Review
+                                                    </button>
                                                 )}
                                             </td>
                                         </tr>
