@@ -285,13 +285,16 @@ const getAllOrders = async () => {
     return rows;
 };
 
-const getOrdersByCustomerId = async (customerId) => {
 
-    const sql = /*sql*/`
+const getOrdersByCustomerId = async (customerId) => {
+    const orderSql = `
         SELECT
             order_id AS orderId,
             order_number AS orderNumber,
+            subtotal,
+            shipping_amount AS shippingAmount,
             total_amount AS totalAmount,
+            payment_method AS paymentMethod,
             payment_status AS paymentStatus,
             order_status AS orderStatus,
             shipping_status AS shippingStatus,
@@ -299,14 +302,51 @@ const getOrdersByCustomerId = async (customerId) => {
             created_at AS createdAt
         FROM \`order\`
         WHERE customer_id = ?
-        AND deleted_at IS NULL
+          AND deleted_at IS NULL
         ORDER BY order_id DESC
     `;
 
-    const [rows] = await mysqlPool.execute(sql, [customerId]);
+    const [orders] = await mysqlPool.execute(orderSql, [customerId]);
 
-    return rows;
+    if (orders.length === 0) {
+        return [];
+    }
+
+    const orderIds = orders.map((order) => order.orderId);
+    const placeholders = orderIds.map(() => "?").join(", ");
+
+    const productSql = `
+        SELECT
+            order_id AS orderId,
+            product_id AS productId,
+            product_name AS productName,
+            sku,
+            price,
+            quantity,
+            total
+        FROM order_product
+        WHERE order_id IN (${placeholders})
+        ORDER BY order_id DESC
+    `;
+
+    const [products] = await mysqlPool.execute(productSql, orderIds);
+
+    const productsByOrder = {};
+
+    for (const product of products) {
+        if (!productsByOrder[product.orderId]) {
+            productsByOrder[product.orderId] = [];
+        }
+
+        productsByOrder[product.orderId].push(product);
+    }
+
+    return orders.map((order) => ({
+        ...order,
+        products: productsByOrder[order.orderId] || []
+    }));
 };
+
 
 const updateOrderStatus = async (
     orderId,

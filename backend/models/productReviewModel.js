@@ -76,23 +76,20 @@ const getReviewById = async (reviewId) => {
     const [rows] = await mysqlPool.query(
         `
         SELECT
-            review_id AS reviewId,
-            product_id AS productId,
-            customer_id AS customerId,
-            rating,
-            review_text AS reviewText,
-            status,
-            is_verified_purchase AS isVerifiedPurchase,
-            created_at AS createdAt,
-            updated_at AS updatedAt,
-
+            pr.review_id AS reviewId,
+            pr.product_id AS productId,
+            pr.customer_id AS customerId,
+            pr.rating,
+            pr.review_text AS reviewText,
+            pr.status,
+            pr.is_verified_purchase AS isVerifiedPurchase,
+            pr.created_at AS createdAt,
+            pr.updated_at AS updatedAt,
             c.first_name AS firstName,
             c.last_name AS lastName
-
-        FROM product_review
-
-        WHERE review_id = ?
-
+        FROM product_review pr
+        INNER JOIN customer c ON pr.customer_id = c.customer_id
+        WHERE pr.review_id = ?
         LIMIT 1
         `,
         [reviewId]
@@ -211,8 +208,8 @@ const getAllReviews = async () => {
 
             p.product_name AS productName,
 
-            c.firstname,
-            c.lastname
+            c.first_name AS firstName,
+            c.last_name AS lastName
 
         FROM product_review pr
 

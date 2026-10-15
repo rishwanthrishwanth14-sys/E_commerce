@@ -3,7 +3,7 @@ import api from "./api";
 // Create review
 export const createReview = async (reviewData) => {
     const response = await api.post(
-        "/api/customer/review",
+        "/api/customer/reviews",
         reviewData
     );
 
@@ -13,7 +13,7 @@ export const createReview = async (reviewData) => {
 // Get reviews for a product
 export const getProductReviews = async (productId) => {
     const response = await api.get(
-        `/api/customer/product/${productId}/reviews`
+        `/api/customer/reviews/product/${productId}`
     );
 
     return response.data;
@@ -22,7 +22,7 @@ export const getProductReviews = async (productId) => {
 // Update review
 export const updateReview = async (reviewId, reviewData) => {
     const response = await api.put(
-        `/api/customer/review/${reviewId}`,
+        `/api/customer/reviews/${reviewId}`,
         reviewData
     );
 
@@ -32,7 +32,7 @@ export const updateReview = async (reviewId, reviewData) => {
 // Delete review
 export const deleteReview = async (reviewId) => {
     const response = await api.delete(
-        `/api/customer/review/${reviewId}`
+        `/api/customer/reviews/${reviewId}`
     );
 
     return response.data;

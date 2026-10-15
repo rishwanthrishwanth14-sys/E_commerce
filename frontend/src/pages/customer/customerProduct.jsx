@@ -226,7 +226,16 @@ const CustomerProduct = () => {
                                 />
                             </div>
 
-                            <div className="d-flex gap-2">
+                            
+                            <div className="d-flex gap-2 flex-wrap">
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-secondary"
+                                    onClick={() => navigate(`/customer/review/${productId}`)}
+                                >
+                                    <i className="bi bi-star me-2" />
+                                    Reviews & Ratings
+                                </button>
                                 <button
                                     className="btn btn-outline-primary"
                                     disabled={actionLoading}
