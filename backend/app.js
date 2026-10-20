@@ -20,6 +20,7 @@ const customerAddressRoutes = require("./routes/routesForCustomer/customerAddres
 const productRoutes = require("./routes/routesForCustomer/productRoutes");
 const cartRoutes = require("./routes/routesForCustomer/cartRouts");
 const customerReview = require("./routes/routesForCustomer/customerReviewRouts");
+const aiRoutes =require("./routes/aiRoutes");
 
 const { connectDB } = require("./config/db");
 const { logger, requestLogger } = require("./services/loggerService");
@@ -71,6 +72,7 @@ app.use(customerAddressRoutes);
 app.use(productRoutes);
 app.use(cartRoutes);
 app.use(customerReview);
+app.use("/api/ai/",aiRoutes);
 
 app.get("/test", async (req, res) => {
     try {
