@@ -1,10 +1,12 @@
+require("dotenv").config();
+
 const aiModel = require("./models/aiModel");
 const aiService = require("./services/aiService");
 
 const testAI = async () => {
     try {
         // Step 1: Fetch actual reviews from MySQL
-        const reviews = await aiModel.getReviewsForAI(1);
+        const reviews = await aiModel.getReviewsForAI(6);
 
         console.log("Reviews from MySQL:");
         console.log(reviews);
