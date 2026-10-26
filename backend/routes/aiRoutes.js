@@ -2,12 +2,15 @@
 const express = require("express");
 const router = express.Router();
 
-// Temporary test route
-router.get("/test", (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "AI route is working"
-    });
-});
+
+const {
+    getProductReviewSummary
+} = require("../controllers/aiController");
+
+// Generate an AI summary for a product's customer reviews
+router.get(
+    "/products/:productId/review-summary",
+    getProductReviewSummary
+);
 
 module.exports = router;
