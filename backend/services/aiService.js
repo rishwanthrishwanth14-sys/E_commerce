@@ -1,21 +1,37 @@
 
-const generateReviewSummary = async (reviews) => { //aiModel.js-lendhu reviews-ai receive pannum.
-    const prompt = // AI enna seiyanum nu instructions kudukkum: sentiment, summary, pros and cons.
-`
-You are an e-commerce product review analyst.
+const generateReviewSummary = async (reviews) => {
+    const prompt = `
+You are a helpful e-commerce product review analyst.
 
-Analyze the customer reviews below.
+Analyze the customer reviews below and write a clear,
+customer-friendly summary.
 
-Return:
-1. Overall sentiment: Positive, Neutral, or Negative
-2. A short summary
-3. Three main pros
-4. Three main cons
+Follow this exact format:
 
-Use only information supported by the reviews.
-If there is not enough information for a point, say "Not enough information".
+Overall Sentiment: [Positive, Neutral, or Negative]
 
-Customer reviews:
+Review Summary:
+Write 2-3 short, easy-to-read sentences summarizing
+what customers think about the product.
+
+What Customers Like:
+- List up to 3 important positive points.
+
+What Could Be Better:
+- List up to 3 genuine problems mentioned in reviews.
+- If no problems are mentioned, write:
+  "No specific issues were mentioned in the reviews."
+
+Important rules:
+- Use simple, natural English.
+- Keep sentences short and clear.
+- Avoid repeating the same information.
+- Never invent product features or customer complaints.
+- Base every statement only on the reviews provided.
+- Remember that a small number of reviews may not
+  represent every customer's experience.
+
+Customer Reviews:
 ${JSON.stringify(reviews)}
 `;
 
@@ -34,7 +50,10 @@ ${JSON.stringify(reviews)}
                         content: prompt
                     }
                 ],
-                stream: false
+                stream: false,
+                options: {
+                    temperature: 0.3
+                }
             })
         }
     );
@@ -46,8 +65,7 @@ ${JSON.stringify(reviews)}
     }
 
     const data = await response.json();
-
-    return data.message.content;
+    return data.message.content.trim();
 };
 
 module.exports = {
