@@ -7,6 +7,9 @@ import {
     addToCart
 } from "../../service/cartService";
 import { getProductImageUrl } from "../../service/imageUrl";
+import{
+    getProductReviewSummary
+} from "../../service/aiService"
 
 import "./customerProduct.css"
 
@@ -21,6 +24,9 @@ const CustomerProduct = () => {
     const [actionLoading, setActionLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const [aiSummary,setAiSummary] = useState(null);
+    const [aiError,setAiError] = useState("");
+    const [aiLoding,setAiLoding] = useState(false);
 
     useEffect(() => {
         const loadProduct = async () => {
@@ -53,6 +59,34 @@ const CustomerProduct = () => {
 
         loadProduct();
     }, [productId]);
+
+    useEffect(()=>{
+        let isActive = true;
+
+        const loadAISummary = async() =>{
+            setAiSummary(null);
+            setAiError("");
+            setAiLoding(true);
+
+            try {
+                const result = await getProductReviewSummary(productId);
+
+                if(isActive){
+                    aiSummary(result);
+                }
+            }catch(err){
+                if (isActive){
+                    setAiError(
+                        err.response?.data?.message||"unable to load Ai review summary."
+                    )
+                }
+            }finally{
+                if(isActive){
+                    setAiLoding(false)
+                }
+            }
+        };
+    },[productId]);
 
     const handleAddToCart = async () => {
         try {
