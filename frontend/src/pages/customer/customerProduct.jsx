@@ -7,7 +7,7 @@ import {
     addToCart
 } from "../../service/cartService";
 import { getProductImageUrl } from "../../service/imageUrl";
-import{
+import {
     getProductReviewSummary
 } from "../../service/aiService"
 
@@ -24,9 +24,9 @@ const CustomerProduct = () => {
     const [actionLoading, setActionLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
-    const [aiSummary,setAiSummary] = useState(null);
-    const [aiError,setAiError] = useState("");
-    const [aiLoding,setAiLoding] = useState(false);
+    const [aiSummary, setAiSummary] = useState(null);
+    const [aiError, setAiError] = useState("");
+    const [aiLoading, setAiLoading] = useState(false);
 
     useEffect(() => {
         const loadProduct = async () => {
@@ -60,33 +60,43 @@ const CustomerProduct = () => {
         loadProduct();
     }, [productId]);
 
-    useEffect(()=>{
+
+    useEffect(() => {
         let isActive = true;
 
-        const loadAISummary = async() =>{
+        const loadAISummary = async () => {
             setAiSummary(null);
             setAiError("");
-            setAiLoding(true);
+            setAiLoading(true);
 
             try {
-                const result = await getProductReviewSummary(productId);
+                const result =
+                    await getProductReviewSummary(productId);
 
-                if(isActive){
-                    aiSummary(result);
+                if (isActive) {
+                    setAiSummary(result);
                 }
-            }catch(err){
-                if (isActive){
+            } catch (err) {
+                if (isActive) {
                     setAiError(
-                        err.response?.data?.message||"unable to load Ai review summary."
-                    )
+                        err.response?.data?.message ||
+                        "Unable to load AI review summary."
+                    );
                 }
-            }finally{
-                if(isActive){
-                    setAiLoding(false)
+            } finally {
+                if (isActive) {
+                    setAiLoading(false);
                 }
             }
         };
-    },[productId]);
+
+        loadAISummary();
+
+        return () => {
+            isActive = false;
+        };
+    }, [productId]);
+
 
     const handleAddToCart = async () => {
         try {
@@ -260,7 +270,7 @@ const CustomerProduct = () => {
                                 />
                             </div>
 
-                            
+
                             <div className="d-flex gap-2 flex-wrap">
                                 <button
                                     type="button"
@@ -291,6 +301,60 @@ const CustomerProduct = () => {
                     )}
                 </div>
             </div>
+            <section className="ai-review-card mt-5">
+                <div className="ai-review-heading">
+                    <span className="ai-review-icon">✦</span>
+                    <div>
+                        <h3>AI Review Summary</h3>
+                        <p>Understand what customers think at a glance</p>
+                    </div>
+                </div>
+
+                {aiLoading ? (
+                    <p className="ai-review-muted">
+                        Analyzing customer reviews...
+                    </p>
+                ) : aiError ? (
+                    <p className="ai-review-muted">
+                        {aiError}
+                    </p>
+                ) : aiSummary?.success ? (
+                    <>
+                        <div className="ai-review-sentiment">
+                            <strong>Customer sentiment</strong>
+                            <span>
+                                {aiSummary.summary.match(
+                                    /Overall Sentiment:\s*(Positive|Neutral|Negative)/i
+                                )?.[1] || "Review insights"}
+                            </span>
+                        </div>
+
+                        <div className="ai-review-content">
+                            {aiSummary.summary
+                                .split(/\n+/)
+                                .filter((line) => line.trim())
+                                .map((line, index) => (
+                                    <p key={index}>
+                                        {line.replace(/^\s*[-*]\s*/, "")
+                                            .replace(/^\s*\d+\.\s*/, "")
+                                            .replace(/\*\*/g, "")
+                                            .trim()}
+                                    </p>
+                                ))}
+                        </div>
+
+                        <p className="ai-review-footnote">
+                            Generated from {aiSummary.reviewCount} customer
+                            {aiSummary.reviewCount === 1 ? "" : " reviews"}.
+                            AI-generated insights may not represent every buyer.
+                        </p>
+                    </>
+                ) : (
+                    <p className="ai-review-muted">
+                        No AI review summary is available for this product.
+                    </p>
+                )}
+            </section>
         </div>
     );
 };
