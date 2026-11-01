@@ -301,9 +301,11 @@ const CustomerProduct = () => {
                     )}
                 </div>
             </div>
+
             <section className="ai-review-card mt-5">
                 <div className="ai-review-heading">
                     <span className="ai-review-icon">✦</span>
+
                     <div>
                         <h3>AI Review Summary</h3>
                         <p>Understand what customers think at a glance</p>
@@ -320,27 +322,38 @@ const CustomerProduct = () => {
                     </p>
                 ) : aiSummary?.success ? (
                     <>
+                        {/* Overall Sentiment */}
                         <div className="ai-review-sentiment">
-                            <strong>Customer sentiment</strong>
-                            <span>
-                                {aiSummary.summary.match(
-                                    /Overall Sentiment:\s*(Positive|Neutral|Negative)/i
-                                )?.[1] || "Review insights"}
-                            </span>
+                            <strong>Overall Sentiment</strong>
+                            <span>{aiSummary.summary.sentiment}</span>
                         </div>
 
-                        <div className="ai-review-content">
-                            {aiSummary.summary
-                                .split(/\n+/)
-                                .filter((line) => line.trim())
-                                .map((line, index) => (
-                                    <p key={index}>
-                                        {line.replace(/^\s*[-*]\s*/, "")
-                                            .replace(/^\s*\d+\.\s*/, "")
-                                            .replace(/\*\*/g, "")
-                                            .trim()}
-                                    </p>
+                        {/* Review Summary */}
+                        <div className="ai-review-section">
+                            <h4>Review Summary</h4>
+                            <p>{aiSummary.summary.reviewSummary}</p>
+                        </div>
+
+                        {/* Pros */}
+                        <div className="ai-review-section">
+                            <h4>What Customers Like</h4>
+
+                            <ul>
+                                {aiSummary.summary.pros.map((pro, index) => (
+                                    <li key={index}>{pro}</li>
                                 ))}
+                            </ul>
+                        </div>
+
+                        {/* Cons */}
+                        <div className="ai-review-section">
+                            <h4>What Could Be Better</h4>
+
+                            <ul>
+                                {aiSummary.summary.cons.map((con, index) => (
+                                    <li key={index}>{con}</li>
+                                ))}
+                            </ul>
                         </div>
 
                         <p className="ai-review-footnote">
@@ -355,6 +368,7 @@ const CustomerProduct = () => {
                     </p>
                 )}
             </section>
+
         </div>
     );
 };
