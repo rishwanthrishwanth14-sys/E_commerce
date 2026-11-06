@@ -51,7 +51,7 @@ ${JSON.stringify(reviews)}
                 stream: false,
                 format: "json",
                 options: {
-                    temperature: 0.3
+                    temperature: 0.3  // predicted accuracy of an ai model 
                 }
             })
         }
